@@ -1,0 +1,27 @@
+package eu.kunas.homeclowd.service;
+
+import eu.kunas.homeclowd.dao.UserDaoImpl;
+import eu.kunas.homeclowd.dto.UserDto;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by ramazan on 27.04.15.
+ */
+@Service(value = "userService")
+public class UserServiceImpl {
+
+    @Inject
+    @Named("userDao")
+    private UserDaoImpl userDao;
+
+    public boolean isAvailable(String u, String p) {
+        return userDao.exists(u,p);
+    }
+
+}

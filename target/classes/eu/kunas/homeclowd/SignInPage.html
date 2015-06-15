@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:extend>
+    <form action="" wicket:id="loginForm">
+        <div style="display: table;border: solid 0px;padding:5px;width:300px; margin:0 auto;">
+            <div style="display: table-row;">
+                <div style="display: table-cell;">Username:</div>
+                <div style="display: table-cell;"><input type="text" wicket:id="username"/></div>
+            </div>
+            <div style="display: table-row;">
+                <div style="display: table-cell;">Password:</div>
+                <div style="display: table-cell;"><input type="password" wicket:id="password"/></div>
+            </div>
+            <div style="display: table-row" >
+                <input type="submit"  value="Login"/>
+            </div>
+
+            <div style="color:red;display: table-row" wicket:id="feedbackMessage">
+            </div>
+        </div>
+
+    </form>
+
+</wicket:extend>
+</body>
+</html>

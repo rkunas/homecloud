@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:head>
+    <title>HOMECLOWD - Homepage</title>
+</wicket:head>
+<wicket:extend>
+    Willkommen bei HOMECLOWD
+
+    <form wicket:id="uploadForm">
+        <input type="file" wicket:id="fileUploadField"/>
+        <input type="submit" value="Upload"/>
+    </form>
+
+    <div wicket:id="feedbackPanel">
+    </div>
+
+    <ul>
+        <li wicket:id="listItems"></li>
+    </ul>
+
+</wicket:extend>
+</body>
+</html>
