@@ -35,16 +35,24 @@ public class FilesFolderServiceImpl {
         return configService.getAllHashMap().get("FOLDER_URL");
     }
 
-    public List<MediaDto> getFolderItems(File f){
+    public List<MediaDto> getFolderItems(File toFolder){
 
         List<MediaDto> list = new ArrayList<MediaDto>();
         try {
             File temp = null;
 
-            if (f == null) {
+            if (toFolder == null) {
                 temp = new File(configService.getAllHashMap().get("FOLDER_URL").getValue());
             } else {
-                temp = f;
+                temp = toFolder;
+            }
+
+            if(toFolder !=null){
+                MediaDto parentFolder = new MediaDto();
+                parentFolder.setType("Folder");
+                parentFolder.setDescription("/..");
+                parentFolder.setAbsolutePath(toFolder.getParentFile().getAbsolutePath());
+                list.add(parentFolder);
             }
 
 

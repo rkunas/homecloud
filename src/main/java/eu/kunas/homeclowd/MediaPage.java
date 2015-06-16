@@ -16,6 +16,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.handler.resource.ResourceStreamRequestHandler;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.util.file.Folder;
 import org.apache.wicket.util.resource.FileResourceStream;
 import org.apache.wicket.util.resource.IResourceStream;
 import org.springframework.stereotype.Controller;
@@ -74,6 +75,7 @@ public class MediaPage extends TemplatePage {
                 item.add(new Link<Void>("viewFolderButton") {
                     @Override
                     public void onClick() {
+
                         previous = selected;
                         selected = item.getModelObject();
                     }
@@ -105,7 +107,9 @@ public class MediaPage extends TemplatePage {
         }else{
             remove("folder");
             add(new Label("folder", new Model(selected.getAbsolutePath().replace(filesFolderService.getRootFolderEntity().getValue(),""))));
-            refill(new File(selected.getAbsolutePath()));
+                refill(new File(selected.getAbsolutePath()));
+
+
         }
 
 
@@ -114,10 +118,12 @@ public class MediaPage extends TemplatePage {
 
     }
 
-    public void refill(File f) {
+    public void refill( File to) {
         ListView<MediaDto> listView = (ListView<MediaDto>) get("medias");
         listView.getModel().getObject().clear();
-        listView.setModelObject(filesFolderService.getFolderItems(f));
+
+        listView.setModelObject(filesFolderService.getFolderItems(to));
+
     }
 
 
