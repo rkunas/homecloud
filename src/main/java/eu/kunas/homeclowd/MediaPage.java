@@ -1,5 +1,6 @@
 package eu.kunas.homeclowd;
 
+import de.agilecoders.wicket.core.markup.html.bootstrap.list.BootstrapListView;
 import eu.kunas.homeclowd.dto.MediaDto;
 import eu.kunas.homeclowd.service.FilesFolderServiceImpl;
 import eu.kunas.homeclowd.template.TemplatePage;
@@ -16,6 +17,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.resource.FileResourceStream;
 import org.apache.wicket.util.resource.IResourceStream;
+import org.springframework.stereotype.Controller;
 
 import java.io.File;
 import java.util.Collections;
@@ -38,9 +40,7 @@ public class MediaPage extends TemplatePage {
 
         List<MediaDto> mediasModel = Collections.emptyList();
 
-        add(new Label("folder", new PropertyModel<MediaDto>(new MediaDto(), "absolutPath")));
-
-        add(new ListView<MediaDto>("medias", mediasModel) {
+        add(new BootstrapListView<MediaDto>("medias", mediasModel) {
             @Override
             protected void populateItem(ListItem<MediaDto> item) {
                 item.add(new Label("description", new PropertyModel(item.getModel(), "description")));
@@ -69,7 +69,7 @@ public class MediaPage extends TemplatePage {
                 item.add(new Link<Void>("viewFolderButton") {
                     @Override
                     public void onClick() {
-
+                        selected = item.getModelObject();
                     }
 
                     @Override
@@ -95,7 +95,10 @@ public class MediaPage extends TemplatePage {
 
         if (selected == null) {
             refill(null);
+        }else{
+            refill(new File(selected.getAbsolutePath()));
         }
+
 
     }
 
