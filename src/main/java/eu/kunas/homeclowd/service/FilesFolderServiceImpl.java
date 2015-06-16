@@ -1,6 +1,7 @@
 package eu.kunas.homeclowd.service;
 
 import eu.kunas.homeclowd.dto.MediaDto;
+import eu.kunas.homeclowd.model.HCConfigEntity;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -29,6 +30,10 @@ public class FilesFolderServiceImpl {
     @Inject
     @Named("configService")
     private ConfigServiceImpl configService;
+
+    public HCConfigEntity getRootFolderEntity(){
+        return configService.getAllHashMap().get("FOLDER_URL");
+    }
 
     public List<MediaDto> getFolderItems(File f){
 

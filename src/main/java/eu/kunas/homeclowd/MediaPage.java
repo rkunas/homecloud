@@ -11,6 +11,7 @@ import org.apache.wicket.markup.html.link.DownloadLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.handler.resource.ResourceStreamRequestHandler;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -33,12 +34,16 @@ public class MediaPage extends TemplatePage {
 
     private List<MediaDto> medias;
 
+    private MediaDto previous;
+
     private MediaDto selected;
 
     public MediaPage(final PageParameters parameters) {
         super("HOMECLOWD - MEDIA");
 
         List<MediaDto> mediasModel = Collections.emptyList();
+
+        add(new Label("folder", new Model("/")));
 
         add(new BootstrapListView<MediaDto>("medias", mediasModel) {
             @Override
@@ -69,6 +74,7 @@ public class MediaPage extends TemplatePage {
                 item.add(new Link<Void>("viewFolderButton") {
                     @Override
                     public void onClick() {
+                        previous = selected;
                         selected = item.getModelObject();
                     }
 
@@ -94,10 +100,16 @@ public class MediaPage extends TemplatePage {
             app.restartResponseAtSignInPage();
 
         if (selected == null) {
+
             refill(null);
         }else{
+            remove("folder");
+            add(new Label("folder", new Model(selected.getAbsolutePath().replace(filesFolderService.getRootFolderEntity().getValue(),""))));
             refill(new File(selected.getAbsolutePath()));
         }
+
+
+
 
 
     }
