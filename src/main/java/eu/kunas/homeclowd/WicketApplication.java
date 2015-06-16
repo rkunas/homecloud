@@ -2,6 +2,10 @@ package eu.kunas.homeclowd;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import de.agilecoders.wicket.core.settings.ThemeProvider;
+import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
+import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvider;
 import eu.kunas.homeclowd.utils.SpringContext;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
@@ -48,10 +52,7 @@ public class WicketApplication extends AuthenticatedWebApplication {
 		new BeanValidationConfiguration().configure(this);
 		getApplicationSettings().setDefaultMaximumUploadSize(Bytes.kilobytes(100));
 
-		Bootstrap.install(this);
-
-		BootstrapSettings settings = new BootstrapSettings();
-		Bootstrap.install(this, settings);
+		configureBootstrap();
 
 		setHeaderResponseDecorator(new JavaScriptToBucketResponseDecorator("footer-container"));
 
@@ -63,6 +64,16 @@ public class WicketApplication extends AuthenticatedWebApplication {
 		ctx.scan("eu.kunas.homeclowd");
 		getComponentInstantiationListeners().add(new SpringComponentInjector(this, ctx));
 
+	}
+
+	public void configureBootstrap(){
+		final IBootstrapSettings settings = new BootstrapSettings();
+		final ThemeProvider themeProvider = new BootswatchThemeProvider(BootswatchTheme.Paper);
+
+		settings.setJsResourceFilterName("footer-container")
+				.setThemeProvider(themeProvider);
+
+		Bootstrap.install(this, settings);
 	}
 
 	static class JavaScriptToBucketResponseDecorator implements IHeaderResponseDecorator

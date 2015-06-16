@@ -9,16 +9,20 @@
     <div wicket:id="folder"></div>
     <div wicket:id="medias" style="display: table-row;">
 
-        <div class="table" style="display: table-row">
+        <table class="table table-hover" >
+            <tbody>
+            <tr>
             <div wicket:id="type" style="display: table-cell; padding-right: 10px; width: 70px"></div>
-            <div wicket:id="description" style="display: table-cell; width: 400px;overflow-x: hidden;"></div>
-            <div wicket:id="size" style="display: table-cell; width: 110px;overflow-x: hidden;"></div>
+            <div wicket:id="description" style="display: table-cell; width: 100%;overflow-x: hidden;"></div>
+            <div wicket:id="size" style="display: table-cell; width: 150px;overflow-x: hidden;"></div>
             <div style="display: table-cell;">
                 <input type="button" wicket:id="downloadButton" value="Download"/>
 
                 <input type="submit" wicket:id="viewFolderButton" value="View"/>
             </div>
-        </div>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
 </wicket:extend>
