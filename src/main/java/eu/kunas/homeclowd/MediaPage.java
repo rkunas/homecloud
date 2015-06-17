@@ -18,13 +18,10 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.handler.resource.ResourceStreamRequestHandler;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.apache.wicket.util.file.Folder;
 import org.apache.wicket.util.resource.FileResourceStream;
 import org.apache.wicket.util.resource.IResourceStream;
-import org.springframework.stereotype.Controller;
 
 import java.io.File;
-import java.text.NumberFormat;
 import java.util.Collections;
 import java.util.List;
 
@@ -54,17 +51,29 @@ public class MediaPage extends TemplatePage {
             protected void populateItem(ListItem<MediaDto> item) {
                 item.add(new Label("description", new PropertyModel(item.getModel(), "description")));
                 item.add(new Label("type", new PropertyModel(item.getModel(), "type")));
-                item.add(new Label("size", new PropertyModel<Long>(item.getModel(), "size")){
+                item.add(new Label("size", new PropertyModel<Long>(item.getModel(), "size")) {
                     @Override
                     public void onComponentTagBody(MarkupStream markupStream, ComponentTag openTag) {
-                        Long currentLabelsVal = (Long)getDefaultModelObject();
-                        if(currentLabelsVal == 0){
+                        Long currentLabelsVal = (Long) getDefaultModelObject();
+                        if (currentLabelsVal == 0) {
                             replaceComponentTagBody(markupStream, openTag, "--");
-                        }else{
-                            if(currentLabelsVal < 1024) {
+                        } else {
+                            if (currentLabelsVal < 1024) {
                                 replaceComponentTagBody(markupStream, openTag, currentLabelsVal + " Byte");
                             }
-                            else {
+                            if (currentLabelsVal <= 1024000 && currentLabelsVal > 1024) {
+                                replaceComponentTagBody(markupStream, openTag, String.format("%.2f%n",new Double(currentLabelsVal / 1024D)) + " Kilobyte");
+
+                            }
+                            if (currentLabelsVal <= 1024000000  && currentLabelsVal > 1024000) {
+                                replaceComponentTagBody(markupStream, openTag, String.format("%.2f%n",new Double(currentLabelsVal / 1024D / 1024D)) + " Megabyte");
+
+                            }
+                            if (currentLabelsVal <= 1024000000000L  && currentLabelsVal > 1024000000 ) {
+                                replaceComponentTagBody(markupStream, openTag, String.format("%.2f%n",new Double(currentLabelsVal / 1024D / 1024D / 1024D)) + " Gigabyte");
+                            }
+
+                            if (currentLabelsVal >= 1024000000001L) {
                                 super.onComponentTagBody(markupStream, openTag);
                             }
                         }
@@ -123,21 +132,18 @@ public class MediaPage extends TemplatePage {
         if (selected == null) {
 
             refill(null);
-        }else{
+        } else {
             remove("folder");
-            add(new Label("folder", new Model(selected.getAbsolutePath().replace(filesFolderService.getRootFolderEntity().getValue(),""))));
-                refill(new File(selected.getAbsolutePath()));
+            add(new Label("folder", new Model(selected.getAbsolutePath().replace(filesFolderService.getRootFolderEntity().getValue(), ""))));
+            refill(new File(selected.getAbsolutePath()));
 
 
         }
 
 
-
-
-
     }
 
-    public void refill( File to) {
+    public void refill(File to) {
         ListView<MediaDto> listView = (ListView<MediaDto>) get("medias");
         listView.getModel().getObject().clear();
 

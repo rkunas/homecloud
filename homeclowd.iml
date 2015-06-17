@@ -55,14 +55,19 @@
     <orderEntry type="library" name="Maven: org.apache.wicket:wicket-extensions:6.19.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.3.2" level="project" />
     <orderEntry type="library" name="Maven: de.agilecoders.maven:maven-parent-config:0.3.5" level="project" />
+    <orderEntry type="library" name="Maven: de.agilecoders.wicket:wicket-bootstrap-less:0.9.8" level="project" />
+    <orderEntry type="library" name="Maven: com.github.sommeri:less4j:1.8.4" level="project" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr-runtime:3.5.2" level="project" />
+    <orderEntry type="library" name="Maven: commons-io:commons-io:2.3" level="project" />
+    <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.8.3" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20090211" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:2.5.0" level="project" />
     <orderEntry type="library" name="Maven: de.agilecoders.wicket:wicket-bootstrap-extensions:0.9.8" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:Eonasdan-bootstrap-datetimepicker:4.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:momentjs:2.9.0" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:14.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.javascript:closure-compiler:v20130603" level="project" />
     <orderEntry type="library" name="Maven: args4j:args4j:2.0.16" level="project" />
-    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:2.4.1" level="project" />
-    <orderEntry type="library" name="Maven: org.json:json:20090211" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquerypp:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquery-ui:1.10.4" level="project" />
@@ -94,7 +99,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.1.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-test:4.1.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.1.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: javax.el:javax.el-api:2.2.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:4.1.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.apache.wicket:wicket-ioc:6.19.0" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib:2.2.2" level="project" />
