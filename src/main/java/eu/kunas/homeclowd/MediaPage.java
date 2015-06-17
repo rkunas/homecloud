@@ -6,6 +6,8 @@ import eu.kunas.homeclowd.service.FilesFolderServiceImpl;
 import eu.kunas.homeclowd.template.TemplatePage;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
+import org.apache.wicket.markup.ComponentTag;
+import org.apache.wicket.markup.MarkupStream;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.DownloadLink;
 import org.apache.wicket.markup.html.link.Link;
@@ -22,6 +24,7 @@ import org.apache.wicket.util.resource.IResourceStream;
 import org.springframework.stereotype.Controller;
 
 import java.io.File;
+import java.text.NumberFormat;
 import java.util.Collections;
 import java.util.List;
 
@@ -51,7 +54,23 @@ public class MediaPage extends TemplatePage {
             protected void populateItem(ListItem<MediaDto> item) {
                 item.add(new Label("description", new PropertyModel(item.getModel(), "description")));
                 item.add(new Label("type", new PropertyModel(item.getModel(), "type")));
-                item.add(new Label("size", new PropertyModel(item.getModel(), "size")));
+                item.add(new Label("size", new PropertyModel<Long>(item.getModel(), "size")){
+                    @Override
+                    public void onComponentTagBody(MarkupStream markupStream, ComponentTag openTag) {
+                        Long currentLabelsVal = (Long)getDefaultModelObject();
+                        if(currentLabelsVal == 0){
+                            replaceComponentTagBody(markupStream, openTag, "--");
+                        }else{
+                            if(currentLabelsVal < 1024) {
+                                replaceComponentTagBody(markupStream, openTag, currentLabelsVal + " Byte");
+                            }
+                            else {
+                                super.onComponentTagBody(markupStream, openTag);
+                            }
+                        }
+                    }
+                });
+
                 item.add(new DownloadLink("downloadButton", new File(item.getModel().getObject().getAbsolutePath()), "download") {
                     @Override
                     public void onClick() {

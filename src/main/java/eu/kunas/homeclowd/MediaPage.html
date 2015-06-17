@@ -7,23 +7,19 @@
 <wicket:extend>
 
     <div wicket:id="folder"></div>
-    <div wicket:id="medias" style="display: table-row;">
+    <table class="tabler" wicket:id="medias">
 
-        <table class="table table-hover" >
-            <tbody>
-            <tr>
-            <div wicket:id="type" style="display: table-cell; padding-right: 10px; width: 70px"></div>
-            <div wicket:id="description" style="display: table-cell; width: 100%;overflow-x: hidden;"></div>
-            <div wicket:id="size" style="display: table-cell; width: 150px;overflow-x: hidden;"></div>
-            <div style="display: table-cell;">
+        <tr>
+            <td wicket:id="type"></td>
+            <td wicket:id="description"></td>
+            <td wicket:id="size"></td>
+            <td>
                 <input type="button" wicket:id="downloadButton" value="Download"/>
 
                 <input type="submit" wicket:id="viewFolderButton" value="View"/>
-            </div>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+            </td>
+        </tr>
+    </table>
 
 </wicket:extend>
 </body>

@@ -52,6 +52,7 @@ public class FilesFolderServiceImpl {
                 parentFolder.setType("Folder");
                 parentFolder.setDescription("/..");
                 parentFolder.setAbsolutePath(toFolder.getParentFile().getAbsolutePath());
+                parentFolder.setSize(0L);
                 list.add(parentFolder);
             }
 
@@ -61,12 +62,14 @@ public class FilesFolderServiceImpl {
                 m.setAbsolutePath(fileEntry.getAbsolutePath());
                 m.setDescription(fileEntry.getName());
 
-                m.setSize(fileEntry.length());
+
 
                 if (fileEntry.isDirectory()) {
                     m.setType("Folder");
+                    m.setSize(0L);
                 } else {
                     m.setType("File");
+                    m.setSize(fileEntry.length());
 
                 }
 
