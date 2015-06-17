@@ -7,16 +7,15 @@
 <wicket:extend>
 
     <div wicket:id="folder"></div>
-    <table class="tabler" wicket:id="medias">
+    <table class="table table-condensed" style="margin-bottom: 0px" wicket:id="medias">
 
         <tr>
-            <td wicket:id="type"></td>
-            <td wicket:id="description"></td>
-            <td wicket:id="size"></td>
-            <td>
-                <input type="button" wicket:id="downloadButton" value="Download"/>
-
-                <input type="submit" wicket:id="viewFolderButton" value="View"/>
+            <td wicket:id="type" style="width: 100px;"></td>
+            <td wicket:id="description" style="width: 90%"></td>
+            <td wicket:id="size" style="width: 200px"></td>
+            <td style="width:200px">
+                <input type="button" class="btn-small btn-primary" wicket:id="downloadButton" value="Download"/>
+                <input type="submit" class="btn-small btn-primary" wicket:id="viewFolderButton" value="View"/>
             </td>
         </tr>
     </table>

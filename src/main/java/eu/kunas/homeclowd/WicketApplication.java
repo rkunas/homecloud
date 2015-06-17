@@ -68,7 +68,7 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
 	public void configureBootstrap(){
 		final IBootstrapSettings settings = new BootstrapSettings();
-		final ThemeProvider themeProvider = new BootswatchThemeProvider(BootswatchTheme.Paper);
+		final ThemeProvider themeProvider = new BootswatchThemeProvider(BootswatchTheme.Sandstone);
 
 		settings.setJsResourceFilterName("footer-container")
 				.setThemeProvider(themeProvider);
