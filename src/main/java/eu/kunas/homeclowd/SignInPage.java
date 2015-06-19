@@ -34,6 +34,7 @@ public class SignInPage extends TemplatePage {
 
     private UserDto user = new UserDto();
 
+    FeedbackPanel feedbackPanel;
     public SignInPage() {
         super("Sign In");
     }
@@ -45,18 +46,23 @@ public class SignInPage extends TemplatePage {
         StatelessForm form = new StatelessForm("loginForm") {
             @Override
             protected void onSubmit() {
-                if (Strings.isEmpty(user.getUsername()) || Strings.isEmpty(user.getPassword())){
-                    getPage().error("Please enter Username and Password");
-                    return;
-                }
 
                 boolean authResult = AuthenticatedWebSession.get().signIn(user.getUsername(), user.getPassword());
 
                 if (authResult) {
+                    feedbackPanel.setVisible(false);
                     continueToOriginalDestination();
                 }else{
+                    feedbackPanel.setVisible(true);
                     getPage().error("Login Failed");
                 }
+            }
+
+            @Override
+            protected void onError() {
+                feedbackPanel.setVisible(true);
+                super.onError();
+
             }
         };
 
@@ -67,7 +73,10 @@ public class SignInPage extends TemplatePage {
 
         add(form);
 
-        form.add(new FeedbackPanel("feedbackMessage",
-                new ExactErrorLevelFilter(FeedbackMessage.ERROR)));
+        feedbackPanel = new FeedbackPanel("feedbackMessage", new ExactErrorLevelFilter(FeedbackMessage.ERROR));
+        feedbackPanel.setVisible(false);
+
+
+        form.add(feedbackPanel);
     }
 }
