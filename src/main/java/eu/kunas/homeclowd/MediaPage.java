@@ -1,6 +1,5 @@
 package eu.kunas.homeclowd;
 
-import de.agilecoders.wicket.core.markup.html.bootstrap.list.BootstrapListView;
 import eu.kunas.homeclowd.dto.MediaDto;
 import eu.kunas.homeclowd.service.FilesFolderServiceImpl;
 import eu.kunas.homeclowd.template.TemplatePage;
@@ -46,7 +45,7 @@ public class MediaPage extends TemplatePage {
 
         add(new Label("folder", new Model("/")));
 
-        add(new BootstrapListView<MediaDto>("medias", mediasModel) {
+        add(new ListView<MediaDto>("medias", mediasModel) {
             @Override
             protected void populateItem(ListItem<MediaDto> item) {
                 item.add(new Label("description", new PropertyModel(item.getModel(), "description")));

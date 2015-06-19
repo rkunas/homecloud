@@ -3,20 +3,21 @@
 <body>
 <wicket:extend>
     <form action="" wicket:id="loginForm">
-        <div style="display: table;border: solid 0px;padding:5px;width:300px; margin:0 auto;">
-            <div style="display: table-row;">
-                <div style="display: table-cell;">Username:</div>
-                <div style="display: table-cell;"><input type="text" wicket:id="username"/></div>
-            </div>
-            <div style="display: table-row;">
-                <div style="display: table-cell;">Password:</div>
-                <div style="display: table-cell;"><input type="password" wicket:id="password"/></div>
-            </div>
-            <div style="display: table-row" >
-                <input type="submit" class="btn tn-large btn-block btn-primary"   value="Login"/>
+        <div style="padding:5px;width:300px; margin:0 auto;">
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" wicket:id="username" id="username"/>
             </div>
 
-            <div style="color:red;display: table-row" wicket:id="feedbackMessage">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" wicket:id="password" id="password"/>
+            </div>
+
+            <input type="submit" class="btn tn-large btn-block btn-primary" value="Login"/>
+
+            <div style="color:red" wicket:id="feedbackMessage">
             </div>
         </div>
 
