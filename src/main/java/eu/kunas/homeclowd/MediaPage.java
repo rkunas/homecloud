@@ -133,7 +133,13 @@ public class MediaPage extends TemplatePage {
             refill(null);
         } else {
             remove("folder");
-            add(new Label("folder", new Model(selected.getAbsolutePath().replace(filesFolderService.getRootFolderEntity().getValue(), ""))));
+
+            String s = selected.getAbsolutePath().replace(filesFolderService.getRootFolderEntity().getValue(),"/");
+            if(s.startsWith("//")){
+                s = s.replace("//","/");
+            }
+
+                    add(new Label("folder", new Model(s)));
             refill(new File(selected.getAbsolutePath()));
 
 
