@@ -30,6 +30,26 @@ public class UserDaoImpl {
         }
     }
 
+    public HCUserEntity getUser(String username, String password ){
+
+        HCUserEntity userEntity = null;
+        try {
+
+            userEntity = (HCUserEntity) em.createQuery("FROM " + HCUserEntity.class.getSimpleName() + " hcuser " +
+                    " WHERE hcuser.username = :uName AND hcuser.password = :uPass")
+
+                    .setParameter("uName", username)
+                    .setParameter("uPass", password).getSingleResult();
+
+            return userEntity;
+
+        } catch (NoResultException exc) {
+            exc.printStackTrace();
+            return userEntity;
+        }
+
+    }
+
     public Boolean exists(String username, String password) {
 
         HCUserEntity userEntity = null;
@@ -41,11 +61,9 @@ public class UserDaoImpl {
             .setParameter("uName", username)
             .setParameter("uPass", password).getSingleResult();
 
-
             if (userEntity != null) {
                 return Boolean.TRUE;
             }
-
 
         } catch (NoResultException exc) {
             exc.printStackTrace();

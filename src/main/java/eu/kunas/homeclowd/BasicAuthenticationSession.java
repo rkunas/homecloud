@@ -16,6 +16,7 @@
  */
 package eu.kunas.homeclowd;
 
+import eu.kunas.homeclowd.model.HCUserEntity;
 import eu.kunas.homeclowd.service.UserServiceImpl;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;
@@ -27,6 +28,8 @@ public class BasicAuthenticationSession extends AuthenticatedWebSession {
 
 	@SpringBean
 	private UserServiceImpl userService;
+
+	private HCUserEntity userEntity;
 
 	public BasicAuthenticationSession(Request request) {
 		super(request);
@@ -40,11 +43,20 @@ public class BasicAuthenticationSession extends AuthenticatedWebSession {
 
 	@Override
 	public boolean authenticate(String username, String password) {
-		return userService.isAvailable(username,password);
+		userEntity =  userService.getUser(username,password);
+		if(userEntity != null){
+			return true;
+		}
+		return false;
 	}
 
 	@Override
 	public Roles getRoles() {
+		if (isSignedIn()) {
+			Roles roles = new Roles();
+			roles.add(userEntity.getRole());
+			return roles;
+		}
 		return null;
 	}
 

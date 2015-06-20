@@ -3,15 +3,18 @@ package eu.kunas.homeclowd;
 import eu.kunas.homeclowd.model.HCConfigEntity;
 import eu.kunas.homeclowd.service.ConfigServiceImpl;
 import eu.kunas.homeclowd.template.TemplatePage;
+import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.protocol.http.WebSession;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
  * Created by ramazan on 05.05.15.
  */
+@AuthorizeInstantiation("ADMIN")
 public class Settings extends TemplatePage {
 
     @SpringBean
@@ -54,7 +57,12 @@ public class Settings extends TemplatePage {
 
         settingsForm.setModel(new CompoundPropertyModel(this));
 
-        settingsForm.add(new TextField("configEntity.value"));
+        settingsForm.add(new TextField("configEntity.value"){
+            @Override
+            public boolean isEnabled() {
+                return true;
+            }
+        });
 
 
         add(settingsForm);

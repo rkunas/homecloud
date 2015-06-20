@@ -4,6 +4,7 @@ import eu.kunas.homeclowd.utils.SpringContext;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.bean.validation.BeanValidationConfiguration;
+import org.apache.wicket.core.request.mapper.CryptoMapper;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.filter.JavaScriptFilteredIntoFooterHeaderResponse;
 import org.apache.wicket.markup.html.IHeaderResponseDecorator;
@@ -40,6 +41,8 @@ public class WicketApplication extends AuthenticatedWebApplication {
     public void init() {
         super.init();
 
+        getApplicationSettings().setAccessDeniedPage(AccessDenied.class);
+
         new BeanValidationConfiguration().configure(this);
         getApplicationSettings().setDefaultMaximumUploadSize(Bytes.kilobytes(100));
 
@@ -47,11 +50,10 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
         setHeaderResponseDecorator(new JavaScriptToBucketResponseDecorator("footer-container"));
 
-        // setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this));
+        setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this));
 
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(SpringContext.class);
 
-        //Scan package for annotated beans
         ctx.scan("eu.kunas.homeclowd");
         getComponentInstantiationListeners().add(new SpringComponentInjector(this, ctx));
 

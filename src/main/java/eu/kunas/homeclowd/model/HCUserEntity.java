@@ -23,8 +23,19 @@ public class HCUserEntity implements Serializable {
     @Column(name = "PASSWORD")
     private String password;
 
+    @Column(name = "ROLE")
+    private String role;
+
     public HCUserEntity() {
 
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getUsername() {

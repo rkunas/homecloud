@@ -2,6 +2,7 @@ package eu.kunas.homeclowd.service;
 
 import eu.kunas.homeclowd.dao.UserDaoImpl;
 import eu.kunas.homeclowd.dto.UserDto;
+import eu.kunas.homeclowd.model.HCUserEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,10 @@ public class UserServiceImpl {
 
     public boolean isAvailable(String u, String p) {
         return userDao.exists(u,p);
+    }
+
+    public HCUserEntity getUser(String username, String password){
+        return userDao.getUser(username,password);
     }
 
 }
