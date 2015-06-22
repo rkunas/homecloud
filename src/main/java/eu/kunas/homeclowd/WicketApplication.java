@@ -41,6 +41,11 @@ public class WicketApplication extends AuthenticatedWebApplication {
     public void init() {
         super.init();
 
+        mountPage("/login", SignInPage.class);
+        mountPage("/settings",Settings.class);
+        mountPage("/media",MediaPage.class);
+        
+
         getApplicationSettings().setAccessDeniedPage(AccessDenied.class);
 
         new BeanValidationConfiguration().configure(this);
@@ -50,7 +55,7 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
         setHeaderResponseDecorator(new JavaScriptToBucketResponseDecorator("footer-container"));
 
-        setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this));
+      //  setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this));
 
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(SpringContext.class);
 
