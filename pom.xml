@@ -234,6 +234,11 @@
             <artifactId>javax.annotation-api</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.wicketstuff</groupId>
+            <artifactId>wicketstuff-html5</artifactId>
+            <version>6.20.0</version>
+        </dependency>
 
 
     </dependencies>

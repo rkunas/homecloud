@@ -91,10 +91,28 @@ public class MediaPage extends TemplatePage {
 
                     @Override
                     public boolean isVisible() {
-                        if (item.getModel().getObject().getType().contains("Folder")) {
+                        if (item.getModel().getObject().getType().contains("Folder") || item.getModel().getObject().getDescription().endsWith(".mp4")) {
                             return false;
                         }
                         return true;
+                    }
+
+                });
+
+                item.add(new DownloadLink("playVideoButton", new File(item.getModel().getObject().getAbsolutePath()), "download") {
+                    @Override
+                    public void onClick() {
+                        PlayerPage newPlayerPage = new PlayerPage(parameters,item.getModelObject());
+
+                        setResponsePage(newPlayerPage);
+                    }
+
+                    @Override
+                    public boolean isVisible() {
+                        if (item.getModel().getObject().getDescription().endsWith(".mp4")) {
+                            return true;
+                        }
+                        return false;
                     }
 
                 });
@@ -109,7 +127,7 @@ public class MediaPage extends TemplatePage {
 
                     @Override
                     public boolean isVisible() {
-                        if (item.getModel().getObject().getType().contains("File")) {
+                        if (item.getModel().getObject().getType().contains("File") ) {
                             return false;
                         }
                         return true;
@@ -134,7 +152,7 @@ public class MediaPage extends TemplatePage {
         } else {
             remove("folder");
 
-            String s = selected.getAbsolutePath().replace(filesFolderService.getRootFolderEntity().getValue(),"/");
+            String s = selected.getAbsolutePath().replace(filesFolderService.getRootFolderEntity().getValue(), "/");
             if(s.startsWith("//")){
                 s = s.replace("//","/");
             }

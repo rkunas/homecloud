@@ -42,8 +42,12 @@ public class WicketApplication extends AuthenticatedWebApplication {
         super.init();
 
         mountPage("/login", SignInPage.class);
-        mountPage("/settings",Settings.class);
-        mountPage("/media",MediaPage.class);
+        mountPage("/settings", Settings.class);
+        mountPage("/media", MediaPage.class);
+
+        mountPage("/currentvideo",CurrentVideo.class);
+
+        mountPage("/player",PlayerPage.class);
         
 
         getApplicationSettings().setAccessDeniedPage(AccessDenied.class);
