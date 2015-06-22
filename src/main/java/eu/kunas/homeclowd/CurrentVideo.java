@@ -56,6 +56,7 @@ public class CurrentVideo extends TemplatePage {
             @Override
             public void respond(IRequestCycle iRequestCycle) {
 
+
             }
 
             @Override
@@ -63,6 +64,8 @@ public class CurrentVideo extends TemplatePage {
                 try {
                     Response response = iRequestCycle.getResponse();
 
+                    WebResponse response1 = (WebResponse) response;
+                    response1.setContentLength(fileBytes.length);
                     response.write(fileBytes);
 
                     response.close();
@@ -76,5 +79,9 @@ public class CurrentVideo extends TemplatePage {
 
     }
 
-
+    @Override
+    protected void configureResponse(WebResponse response) {
+        response.setContentLength(fileBytes.length);
+        response.setContentType("video/mp4");
+    }
 }

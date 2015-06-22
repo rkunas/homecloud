@@ -35,6 +35,9 @@ public class PlayerPage extends TemplatePage {
         final List<MediaSource> mm = new ArrayList<>();
 
         mm.add(new MediaSource(contextPath + "/currentvideo?videofile=" + selectedMedia.getAbsolutePath().replace(configService.getAllHashMap().get("FOLDER_URL").getValue(), ""), "video/mp4"));
+        mm.add(new MediaSource(contextPath + "/currentvideo?videofile=" + selectedMedia.getAbsolutePath().replace(configService.getAllHashMap().get("FOLDER_URL").getValue(), ""), "video/ogg"));
+        mm.add(new MediaSource(contextPath + "/currentvideo?videofile=" + selectedMedia.getAbsolutePath().replace(configService.getAllHashMap().get("FOLDER_URL").getValue(), ""), "video/webm"));
+
         IModel<List<MediaSource>> mediaSourceList = new AbstractReadOnlyModel<List<MediaSource>>() {
 
             private static final long serialVersionUID = 1L;
