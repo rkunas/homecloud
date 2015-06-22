@@ -26,13 +26,15 @@ public class CurrentVideo extends TemplatePage {
 
     private byte[] fileBytes;
 
+    private StringValue fileParam = null;
+
     public CurrentVideo(final PageParameters parameters) {
         super("HOMECLOWD - Video");
         setVersioned(false);
 
         FileInputStream fileInputStream = null;
 
-        StringValue fileParam = parameters.get("videofile");
+        fileParam = parameters.get("videofile");
 
         try {
 
@@ -49,6 +51,7 @@ public class CurrentVideo extends TemplatePage {
             exc.printStackTrace();
         }
 
+
         getRequestCycle().scheduleRequestHandlerAfterCurrent(new IRequestHandler() {
             @Override
             public void respond(IRequestCycle iRequestCycle) {
@@ -59,6 +62,7 @@ public class CurrentVideo extends TemplatePage {
             public void detach(IRequestCycle iRequestCycle) {
                 try {
                     Response response = iRequestCycle.getResponse();
+
                     response.write(fileBytes);
 
                     response.close();
@@ -72,12 +76,5 @@ public class CurrentVideo extends TemplatePage {
 
     }
 
-
-    @Override
-    protected void configureResponse(WebResponse response) {
-
-        response.setContentLength(fileBytes.length);
-        response.setContentType("video/mp4");
-    }
 
 }
