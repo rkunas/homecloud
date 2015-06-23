@@ -18,6 +18,7 @@ package eu.kunas.homeclowd;
 
 
 import eu.kunas.homeclowd.dto.UserDto;
+import eu.kunas.homeclowd.template.LoginTemplatePage;
 import eu.kunas.homeclowd.template.TemplatePage;
 import eu.kunas.homeclowd.utils.ExactErrorLevelFilter;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
@@ -30,7 +31,7 @@ import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.util.string.Strings;
 
-public class SignInPage extends TemplatePage {
+public class SignInPage extends LoginTemplatePage {
 
     private UserDto user = new UserDto();
 

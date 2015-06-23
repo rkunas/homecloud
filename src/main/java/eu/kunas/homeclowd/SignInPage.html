@@ -2,31 +2,29 @@
 <html xmlns:wicket="http://wicket.apache.org">
 <body>
 <wicket:extend>
-    <form action="" wicket:id="loginForm">
-        <div style="padding:5px;width:300px; margin:0 auto;">
+    <div class="container">
+        <form action="" wicket:id="loginForm" class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
 
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" wicket:id="username" placeholder="Enter Username"
-                       id="username"/>
-            </div>
+            <label for="inputUsername" class="sr-only">Username</label>
+            <input type="text" class="form-control" wicket:id="username" placeholder="Enter Username"
+                   id="inputUsername" required autofocus/>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" wicket:id="password" placeholder="Enter Password"
-                       id="password"/>
-            </div>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" class="form-control" wicket:id="password" required placeholder="Enter Password"
+                   id="inputPassword"/>
 
-            <input type="submit" class="btn tn-large btn-block btn-primary" value="Login"/>
+            <input type="submit" class="bbtn btn-lg btn-primary btn-block" value="Login"/>
 
             <br/>
 
             <div class="alert alert-danger" role="alert" wicket:id="feedbackMessage">
             </div>
 
-        </div>
+            Version 0.1
+        </form>
 
-    </form>
+    </div>
 
 </wicket:extend>
 </body>
