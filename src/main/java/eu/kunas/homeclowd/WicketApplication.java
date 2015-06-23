@@ -1,5 +1,6 @@
 package eu.kunas.homeclowd;
 
+import eu.kunas.homeclowd.service.ConfigServiceImpl;
 import eu.kunas.homeclowd.utils.SpringContext;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
@@ -9,6 +10,9 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.filter.JavaScriptFilteredIntoFooterHeaderResponse;
 import org.apache.wicket.markup.html.IHeaderResponseDecorator;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.request.resource.IResource;
+import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.util.lang.Bytes;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -16,6 +20,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 /**
  */
 public class WicketApplication extends AuthenticatedWebApplication {
+
+
+    @SpringBean
+    private ConfigServiceImpl configService;
+
     /**
      * @see org.apache.wicket.Application#getHomePage()
      */
@@ -29,6 +38,8 @@ public class WicketApplication extends AuthenticatedWebApplication {
         return BasicAuthenticationSession.class;
     }
 
+    private SpringComponentInjector inj =null;
+
     @Override
     protected Class<? extends WebPage> getSignInPageClass() {
         return SignInPage.class;
@@ -41,13 +52,28 @@ public class WicketApplication extends AuthenticatedWebApplication {
     public void init() {
         super.init();
 
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(SpringContext.class);
+
+        ctx.scan("eu.kunas.homeclowd");
+        inj = new SpringComponentInjector(this, ctx);
+        getComponentInstantiationListeners().add(inj);
+
+
         mountPage("/login", SignInPage.class);
         mountPage("/settings", Settings.class);
         mountPage("/media", MediaPage.class);
 
-        mountPage("/currentvideo",CurrentVideo.class);
-
         mountPage("/player",PlayerPage.class);
+
+        //resource mounted to path /foo with a required indexed parameter
+        ResourceReference resourceReference = new ResourceReference("videoProducer"){
+            VideoProducerResource rssResource = new VideoProducerResource();
+            @Override
+            public IResource getResource() {
+                inj.inject(rssResource);
+                return rssResource;
+            }};
+        mountResource("/videoroot?videofile=${videofile}", resourceReference);
         
 
         getApplicationSettings().setAccessDeniedPage(AccessDenied.class);
@@ -61,10 +87,6 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
       //  setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this));
 
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(SpringContext.class);
-
-        ctx.scan("eu.kunas.homeclowd");
-        getComponentInstantiationListeners().add(new SpringComponentInjector(this, ctx));
 
     }
 
