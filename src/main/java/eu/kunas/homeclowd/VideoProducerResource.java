@@ -14,9 +14,6 @@ import java.io.OutputStream;
  */
 public class VideoProducerResource extends ByteArrayResource {
 
-
-    public final VideoBin videoBin = new VideoBin();
-
     @SpringBean
     private ConfigServiceImpl configService;
 
@@ -25,14 +22,6 @@ public class VideoProducerResource extends ByteArrayResource {
 
     public VideoProducerResource() {
         super("video/mp4");
-    }
-
-    @Override
-    protected byte[] getData(Attributes attributes) {
-
-        System.out.println("getData()");
-
-        return super.getData(attributes);
     }
 
     @Override
@@ -52,21 +41,15 @@ public class VideoProducerResource extends ByteArrayResource {
 
                 String filesString = configService.getAllHashMap().get("FOLDER_URL").getValue() + attr;
 
-                videoBin.vbin = filesFolderService.readFile(filesString);
-
                 OutputStream outputStream = attributes.getResponse().getOutputStream();
                 BufferedOutputStream buff = new BufferedOutputStream(outputStream);
 
-                buff.write(videoBin.vbin);
+                buff.write(filesFolderService.readFile(filesString));
 
                 buff.close();
 
             }
         });
-
-        if (videoBin.vbin != null) {
-            resourceResponse.setContentLength(videoBin.vbin.length);
-        }
 
         return resourceResponse;
 
