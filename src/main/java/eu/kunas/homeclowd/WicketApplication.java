@@ -63,15 +63,14 @@ public class WicketApplication extends AuthenticatedWebApplication {
         mountPage("/settings", Settings.class);
         mountPage("/media", MediaPage.class);
 
-        mountPage("/player",PlayerPage.class);
+        mountPage("/player", PlayerPage.class);
 
-        //resource mounted to path /foo with a required indexed parameter
         ResourceReference resourceReference = new ResourceReference("videoProducer"){
-            VideoProducerResource rssResource = new VideoProducerResource();
+            VideoProducerResource videoResource = new VideoProducerResource();
             @Override
             public IResource getResource() {
-                inj.inject(rssResource);
-                return rssResource;
+                inj.inject(videoResource);
+                return videoResource;
             }};
         mountResource("/videoroot?videofile=${videofile}", resourceReference);
         
