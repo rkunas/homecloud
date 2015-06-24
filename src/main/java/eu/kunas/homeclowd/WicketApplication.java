@@ -67,6 +67,9 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
         ResourceReference resourceReference = new ResourceReference("videoProducer"){
             VideoProducerResource videoResource = new VideoProducerResource();
+
+
+
             @Override
             public IResource getResource() {
                 inj.inject(videoResource);

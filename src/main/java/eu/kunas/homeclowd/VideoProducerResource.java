@@ -3,6 +3,7 @@ package eu.kunas.homeclowd;
 import eu.kunas.homeclowd.service.ConfigServiceImpl;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.request.resource.AbstractResource;
+import org.apache.wicket.request.resource.ByteArrayResource;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.io.*;
@@ -10,10 +11,17 @@ import java.io.*;
 /**
  * Created by ramazan on 23.06.15.
  */
-public class VideoProducerResource extends AbstractResource {
+public class VideoProducerResource extends ByteArrayResource {
+
+
 
     @SpringBean
     private ConfigServiceImpl configService;
+
+    public VideoProducerResource(){
+        super("video/mp4");
+    }
+
 
     @Override
     protected ResourceResponse newResourceResponse(Attributes attributes) {
@@ -24,8 +32,12 @@ public class VideoProducerResource extends AbstractResource {
         resourceResponse.setContentType("video/mp4");
         resourceResponse.setTextEncoding("utf-8");
 
+
+
         resourceResponse.setWriteCallback(new WriteCallback()
         {
+
+
             @Override
             public void writeData(Attributes attributes) throws IOException
             {
