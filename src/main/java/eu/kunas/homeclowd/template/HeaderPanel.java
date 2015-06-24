@@ -1,10 +1,13 @@
 package eu.kunas.homeclowd.template;
 
+import eu.kunas.homeclowd.BasicAuthenticationSession;
 import eu.kunas.homeclowd.Settings;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.WebApplication;
 
 /**
@@ -40,6 +43,27 @@ public class HeaderPanel extends Panel {
                 setResponsePage(getApplication().getHomePage());
             }
         });
+
+        Link profile = new Link("profile") {
+            @Override
+            public void onClick() {
+            }
+        };
+
+        BasicAuthenticationSession session = (BasicAuthenticationSession) getSession();
+        if (session.getUserEntity() != null) {
+            Label profileLabel = new Label("profileName", new Model<>("Hello " + session.getUserEntity().getUsername()));
+
+            profile.add(profileLabel);
+
+            add(profile);
+        }else{
+            Label profileLabel = new Label("profileName", new Model<>(""));
+
+            profile.add(profileLabel);
+
+            add(profile);
+        }
 
         add(new Link("settings") {
 

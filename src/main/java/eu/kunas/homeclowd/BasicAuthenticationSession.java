@@ -36,6 +36,10 @@ public class BasicAuthenticationSession extends AuthenticatedWebSession {
 		injectDependencies();
 	}
 
+	public HCUserEntity getUserEntity(){
+		return userEntity;
+	}
+
 
 	private void injectDependencies() {
 		Injector.get().inject(this);

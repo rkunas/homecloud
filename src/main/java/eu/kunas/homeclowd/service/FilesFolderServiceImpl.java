@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,26 @@ public class FilesFolderServiceImpl {
 
     public HCConfigEntity getRootFolderEntity() {
         return configService.getAllHashMap().get("FOLDER_URL");
+    }
+
+    public byte[] readFile(String s) {
+
+        try {
+            File file = new File(s);
+
+            byte[] fileBytes = new byte[(int) file.length()];
+
+            FileInputStream fileInputStream = new FileInputStream(file);
+
+            fileInputStream.read(fileBytes);
+
+            fileInputStream.close();
+
+        } catch (Exception exc) {
+            exc.printStackTrace();
+        }
+
+        return null;
     }
 
     public List<MediaDto> getFolderItems(File toFolder) {

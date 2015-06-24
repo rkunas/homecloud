@@ -24,7 +24,6 @@ public class PlayerPage extends TemplatePage {
     @SpringBean
     private ConfigServiceImpl configService;
 
-
     public PlayerPage(final PageParameters parameters, MediaDto mediaDto) {
         super("HOMECLOWD - Player");
         setVersioned(false);
