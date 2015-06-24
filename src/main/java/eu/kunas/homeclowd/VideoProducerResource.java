@@ -42,7 +42,7 @@ public class VideoProducerResource extends ByteArrayResource {
 
         ResourceResponse resourceResponse = new ResourceResponse();
         resourceResponse.setContentType("video/mp4");
-        resourceResponse.setTextEncoding("utf-8");
+        resourceResponse.setTextEncoding("pplication/octet-stream");
 
         resourceResponse.setWriteCallback(new WriteCallback() {
 
