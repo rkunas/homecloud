@@ -34,14 +34,17 @@ public class VideoProducerResource extends AbstractResource {
 
             @Override
             public void writeData(Attributes attributes) throws IOException {
+
                 String attr = attributes.getParameters().get("videofile").toString();
 
                 String filesString = configService.getAllHashMap().get("FOLDER_URL").getValue() + attr;
 
+                byte[] fileBytes = filesFolderService.readFile(filesString);
+
                 OutputStream outputStream = attributes.getResponse().getOutputStream();
                 BufferedOutputStream buff = new BufferedOutputStream(outputStream);
 
-                buff.write(filesFolderService.readFile(filesString));
+                buff.write(fileBytes);
 
                 buff.close();
 
