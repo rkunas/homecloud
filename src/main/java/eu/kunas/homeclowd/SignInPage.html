@@ -6,13 +6,23 @@
         <form action="" wicket:id="loginForm" class="form-signin">
             <h2 class="form-signin-heading">Please sign in</h2>
 
-            <label for="inputUsername" class="sr-only">Username</label>
-            <input type="text" class="form-control" wicket:id="username" placeholder="Enter Username"
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-lock"></i>
+                </span>
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input type="text" class="form-control" wicket:id="username" placeholder="Enter Username"
                    id="inputUsername" required autofocus/>
-
-            <label for="inputPassword" class="sr-only">Password</label>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                </span>
+                 <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" class="form-control" wicket:id="password" required placeholder="Enter Password"
                    id="inputPassword"/>
+            </div>
+           
 
             <input type="submit" class="bbtn btn-lg btn-primary btn-block" value="Login"/>
 
