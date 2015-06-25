@@ -28,7 +28,7 @@ public class VideoProducerResource extends AbstractResource {
 
         ResourceResponse resourceResponse = new ResourceResponse();
         resourceResponse.setContentType("video/mp4");
-        resourceResponse.setTextEncoding("application/octet-stream");
+        resourceResponse.setTextEncoding("utf-8");
 
         resourceResponse.setWriteCallback(new WriteCallback() {
 
