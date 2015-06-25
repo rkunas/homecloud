@@ -24,16 +24,25 @@ import eu.kunas.homeclowd.utils.ExactErrorLevelFilter;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.bean.validation.PropertyValidator;
 import org.apache.wicket.feedback.FeedbackMessage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.util.string.Strings;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 
 public class SignInPage extends LoginTemplatePage {
 
     private UserDto user = new UserDto();
+
+    Properties p;
 
     FeedbackPanel feedbackPanel;
     public SignInPage() {
@@ -43,6 +52,10 @@ public class SignInPage extends LoginTemplatePage {
     @Override
     protected void onInitialize() {
         super.onInitialize();
+
+        handleProperties();
+
+        add(new Label("buildNo",new Model<>(p.getProperty("version") + " " + p.getProperty("build.date"))));
 
         StatelessForm form = new StatelessForm("loginForm") {
             @Override
@@ -79,5 +92,18 @@ public class SignInPage extends LoginTemplatePage {
 
 
         form.add(feedbackPanel);
+    }
+
+    private void handleProperties() {
+
+        try {
+            p = new Properties();
+            p.load(new FileInputStream("build.properties"));
+
+        }catch (FileNotFoundException exc){
+            exc.printStackTrace();
+        }catch (IOException exc){
+        exc.printStackTrace();
+        }
     }
 }
