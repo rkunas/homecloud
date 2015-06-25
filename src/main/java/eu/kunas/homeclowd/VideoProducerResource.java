@@ -41,10 +41,14 @@ public class VideoProducerResource extends AbstractResource {
 
                 byte[] fileBytes = filesFolderService.readFile(filesString);
 
+
+
                 OutputStream outputStream = attributes.getResponse().getOutputStream();
                 BufferedOutputStream buff = new BufferedOutputStream(outputStream);
 
                 buff.write(fileBytes);
+
+                resourceResponse.setContentLength(fileBytes.length);
 
                 buff.close();
 
