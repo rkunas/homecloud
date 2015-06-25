@@ -38,6 +38,7 @@ public class FilesFolderServiceImpl {
 
             fileInputStream.close();
 
+            return fileBytes;
         } catch (Exception exc) {
             exc.printStackTrace();
         }

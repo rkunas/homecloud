@@ -2,6 +2,7 @@ package eu.kunas.homeclowd;
 
 import eu.kunas.homeclowd.service.ConfigServiceImpl;
 import eu.kunas.homeclowd.service.FilesFolderServiceImpl;
+import org.apache.wicket.request.http.WebResponse;
 import org.apache.wicket.request.resource.AbstractResource;
 import org.apache.wicket.request.resource.ByteArrayResource;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -30,7 +31,7 @@ public class VideoProducerResource extends AbstractResource {
         resourceResponse.setContentType("video/mp4");
         resourceResponse.setTextEncoding("utf-8");
 
-        resourceResponse.setWriteCallback(new WriteCallback() {
+        resourceResponse.setWriteCallback(new WriteCallback( ) {
 
             @Override
             public void writeData(Attributes attributes) throws IOException {
@@ -41,14 +42,17 @@ public class VideoProducerResource extends AbstractResource {
 
                 byte[] fileBytes = filesFolderService.readFile(filesString);
 
-
-
                 OutputStream outputStream = attributes.getResponse().getOutputStream();
                 BufferedOutputStream buff = new BufferedOutputStream(outputStream);
 
+
+                WebResponse response= (WebResponse)  attributes.getResponse();
+
+                response.setContentLength(fileBytes.length);
+
                 buff.write(fileBytes);
 
-                resourceResponse.setContentLength(fileBytes.length);
+
 
                 buff.close();
 

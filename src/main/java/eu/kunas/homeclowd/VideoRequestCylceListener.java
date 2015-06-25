@@ -14,27 +14,27 @@ public class VideoRequestCylceListener implements IRequestCycleListener {
 
     @Override
     public void onBeginRequest(RequestCycle requestCycle) {
-
+        System.out.println("onBeginRequest");
     }
 
     @Override
     public void onEndRequest(RequestCycle requestCycle) {
-
+        System.out.println("onEndRequest");
     }
 
     @Override
     public void onDetach(RequestCycle requestCycle) {
-
+        System.out.println("onDetach");
     }
 
     @Override
     public void onRequestHandlerResolved(RequestCycle requestCycle, IRequestHandler iRequestHandler) {
-
+        System.out.println("onRequestHandlerResolved");
     }
 
     @Override
     public void onRequestHandlerScheduled(RequestCycle requestCycle, IRequestHandler iRequestHandler) {
-
+        System.out.println("onRequestHandlerScheduled");
     }
 
     @Override
