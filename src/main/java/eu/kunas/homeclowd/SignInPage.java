@@ -98,7 +98,7 @@ public class SignInPage extends LoginTemplatePage {
 
         try {
             p = new Properties();
-            p.load(new FileInputStream("build.properties"));
+            p.load(SignInPage.class.getClassLoader().getResourceAsStream("build.properties"));
 
         }catch (FileNotFoundException exc){
             exc.printStackTrace();
