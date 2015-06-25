@@ -55,7 +55,6 @@ public class SignInPage extends LoginTemplatePage {
 
         handleProperties();
 
-        add(new Label("buildNo",new Model<>(p.getProperty("version") + " " + p.getProperty("build.date"))));
 
         StatelessForm form = new StatelessForm("loginForm") {
             @Override
@@ -81,6 +80,7 @@ public class SignInPage extends LoginTemplatePage {
         };
 
         form.setDefaultModel(new CompoundPropertyModel(user));
+        form.add(new Label("buildNo", new Model<>(p.getProperty("version") + " " + p.getProperty("build.date"))));
 
         form.add(new TextField("username").add(new PropertyValidator()));
         form.add(new PasswordTextField("password").add(new PropertyValidator()));
