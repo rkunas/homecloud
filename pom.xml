@@ -39,6 +39,26 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <profiles>
+        <profile>
+            <id>deploy</id>
+            <properties>
+                <buildIt>true</buildIt>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <buildIt>false</buildIt>
+            </properties>
+
+        </profile>
+    </profiles>
+
     <properties>
         <wicket.version>6.20.0</wicket.version>
         <jetty.version>7.6.13.v20130916</jetty.version>
@@ -254,8 +274,9 @@
     <build>
         <finalName>homeclowd</finalName>
         <resources>
+
             <resource>
-                <filtering>true</filtering>
+                <filtering>${buildIt}</filtering>
                 <directory>src/main/resources</directory>
             </resource>
             <resource>
