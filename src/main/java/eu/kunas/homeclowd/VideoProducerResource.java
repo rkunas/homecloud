@@ -2,6 +2,7 @@ package eu.kunas.homeclowd;
 
 import eu.kunas.homeclowd.service.ConfigServiceImpl;
 import eu.kunas.homeclowd.service.FilesFolderServiceImpl;
+import org.apache.wicket.request.resource.AbstractResource;
 import org.apache.wicket.request.resource.ByteArrayResource;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
@@ -12,17 +13,13 @@ import java.io.OutputStream;
 /**
  * Created by ramazan on 23.06.15.
  */
-public class VideoProducerResource extends ByteArrayResource {
+public class VideoProducerResource extends AbstractResource {
 
     @SpringBean
     private ConfigServiceImpl configService;
 
     @SpringBean
     private FilesFolderServiceImpl filesFolderService;
-
-    public VideoProducerResource() {
-        super("video/mp4");
-    }
 
     @Override
     protected ResourceResponse newResourceResponse(Attributes attributes) {
