@@ -10,6 +10,7 @@ import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.filter.JavaScriptFilteredIntoFooterHeaderResponse;
 import org.apache.wicket.markup.html.IHeaderResponseDecorator;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.request.cycle.IRequestCycleListener;
 import org.apache.wicket.request.resource.IResource;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -87,7 +88,11 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
         setHeaderResponseDecorator(new JavaScriptToBucketResponseDecorator("footer-container"));
 
-      //  setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this));
+        IRequestCycleListener videoRequest = new VideoRequestCylceListener();
+
+        getRequestCycleListeners().add(videoRequest);
+
+        //  setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this));
 
 
     }
