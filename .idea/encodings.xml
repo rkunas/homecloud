@@ -2,8 +2,15 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/css/video-js.css" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/css/video-js.min.css" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/js/video.js" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/videojs/font" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/videojs/lang" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/videojs/video-js.css" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/videojs/video-js.less" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/videojs/video-js.min.css" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/videojs/video-js.swf" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/videojs/video.dev.js" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/videojs/video.js" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/videojs/video.novtt.dev.js" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/videojs/video.novtt.js" charset="windows-1252" />
   </component>
 </project>
