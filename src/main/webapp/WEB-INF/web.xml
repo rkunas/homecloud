@@ -25,8 +25,19 @@
 		</init-param>
 	</filter>
 
+	<servlet>
+		<servlet-name>stream</servlet-name>
+		<servlet-class>eu.kunas.homeclowd.VideoStreamingServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>stream</servlet-name>
+		<url-pattern>/stream</url-pattern>
+	</servlet-mapping>
+
 	<filter-mapping>
 		<filter-name>wicket.homeclowd</filter-name>
 		<url-pattern>/*</url-pattern>
+
 	</filter-mapping>
 </web-app>

@@ -88,9 +88,9 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
         setHeaderResponseDecorator(new JavaScriptToBucketResponseDecorator("footer-container"));
 
-        IRequestCycleListener videoRequest = new VideoRequestCylceListener();
+       // IRequestCycleListener videoRequest = new VideoRequestCylceListener();
 
-        getRequestCycleListeners().add(videoRequest);
+       // getRequestCycleListeners().add(videoRequest);
 
         //  setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this));
 
