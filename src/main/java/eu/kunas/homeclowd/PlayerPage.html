@@ -9,15 +9,16 @@
 <wicket:extend>
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <video wicket:id="currentVideoPlayer" class="video-js vjs-default-skin vjs-big-play-centered" id="currentVideoPlayer" controls
-                       width="100%" height="auto">
-                </video>
-            </div>
-            <div class="col-md-4">
-                <h4 wicket:id="filename"></h4>
-            </div>
+            <video wicket:id="currentVideoPlayer" class="video-js vjs-default-skin vjs-big-play-centered"
+                   id="currentVideoPlayer" controls
+                   width="100%" height="auto">
+            </video>
 
+
+        </div>
+        <br/>
+        <div class="row">
+            <h4 style="margin:0 auto;text-align: center" wicket:id="filename"></h4>
         </div>
     </div>
 
