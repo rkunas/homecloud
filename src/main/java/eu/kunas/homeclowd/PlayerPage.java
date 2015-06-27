@@ -3,7 +3,9 @@ package eu.kunas.homeclowd;
 import eu.kunas.homeclowd.dto.MediaDto;
 import eu.kunas.homeclowd.service.ConfigServiceImpl;
 import eu.kunas.homeclowd.template.TemplatePage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -28,6 +30,8 @@ public class PlayerPage extends TemplatePage {
         super("HOMECLOWD - Player");
         setVersioned(false);
         selectedMedia = mediaDto;
+
+        setDefaultModel(new CompoundPropertyModel<Object>(selectedMedia));
 
         String contextPath = WebApplication.get().getServletContext().getContextPath();
 
@@ -67,6 +71,8 @@ public class PlayerPage extends TemplatePage {
 
 
         });
+
+        add(new Label("filename", "File: " + selectedMedia.getDescription()));
     }
 
 }
