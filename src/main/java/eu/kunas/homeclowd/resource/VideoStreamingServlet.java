@@ -32,7 +32,6 @@ import static java.nio.file.StandardOpenOption.READ;
  *
  * Created by ramazan on 26.06.15.
  */
-@Component
 public final class VideoStreamingServlet extends HttpServlet {
 
     ConfigServiceImpl configService;
