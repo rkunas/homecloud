@@ -62,7 +62,7 @@
     <properties>
         <wicket.version>6.20.0</wicket.version>
         <jetty.version>7.6.13.v20130916</jetty.version>
-        <marytts.version>5.1</marytts.version>
+        <marytts.version>5.2-SNAPSHOT</marytts.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
         <wtp.version>none</wtp.version>
@@ -252,11 +252,7 @@
             <version>${wicket.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-auth-roles</artifactId>
-            <version>${wicket.version}</version>
-        </dependency>
+
 
         <dependency>
             <groupId>org.apache.wicket</groupId>
@@ -386,8 +382,11 @@
         </repository>
         <repository>
             <id>marytts</id>
-            <url>https://maven-repository.com/artifact/latest</url>
-
+            <url>http://maven-repository.com/artifact/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots><enabled>true</enabled></snapshots>
         </repository>
     </repositories>
 </project>

@@ -1,8 +1,13 @@
 package eu.kunas.homeclowd;
 
+import marytts.LocalMaryInterface;
+import marytts.MaryInterface;
+import marytts.util.data.audio.AudioPlayer;
+import net.didion.jwnl.data.Exc;
 import org.junit.Test;
 
 import javax.sound.sampled.AudioInputStream;
+import java.util.Set;
 
 /**
  * Created by developer on 27.06.15.
@@ -10,13 +15,13 @@ import javax.sound.sampled.AudioInputStream;
 public class MaryTest {
 
     @Test
-    public void testMary(){
-       // MaryInterface marytts = new LocalMaryInterface();
-       // Set<String> voices = marytts.getAvailableVoices();
-       // marytts.setVoice(voices.iterator().next());
-       // AudioInputStream audio = marytts.generateAudio("Hello world.");
-       // AudioPlayer player = new AudioPlayer(audio);
-       // player.start();
-       // player.join();
+    public void testMary() throws Exception{
+       MaryInterface marytts = new LocalMaryInterface();
+       Set<String> voices = marytts.getAvailableVoices();
+       marytts.setVoice(voices.iterator().next());
+        AudioInputStream audio = marytts.generateAudio("System is running and online!");
+        AudioPlayer player = new AudioPlayer(audio);
+        player.start();
+        player.join();
     }
 }
