@@ -1,4 +1,4 @@
-package eu.kunas.homeclowd;
+package eu.kunas.homeclowd.resource;
 
 import org.apache.wicket.IRequestCycleProvider;
 import org.apache.wicket.request.IRequestHandler;

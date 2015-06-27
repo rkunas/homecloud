@@ -27,7 +27,7 @@
 
 	<servlet>
 		<servlet-name>stream</servlet-name>
-		<servlet-class>eu.kunas.homeclowd.VideoStreamingServlet</servlet-class>
+		<servlet-class>eu.kunas.homeclowd.resource.VideoStreamingServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>

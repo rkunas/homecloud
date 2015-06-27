@@ -1,4 +1,4 @@
-package eu.kunas.homeclowd;
+package eu.kunas.homeclowd.resource;
 
 import eu.kunas.homeclowd.service.ConfigServiceImpl;
 import eu.kunas.homeclowd.utils.SpringContext;

@@ -1,16 +1,15 @@
 package eu.kunas.homeclowd;
 
+import eu.kunas.homeclowd.resource.VideoProducerResource;
 import eu.kunas.homeclowd.service.ConfigServiceImpl;
 import eu.kunas.homeclowd.utils.SpringContext;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.bean.validation.BeanValidationConfiguration;
-import org.apache.wicket.core.request.mapper.CryptoMapper;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.filter.JavaScriptFilteredIntoFooterHeaderResponse;
 import org.apache.wicket.markup.html.IHeaderResponseDecorator;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.request.cycle.IRequestCycleListener;
 import org.apache.wicket.request.resource.IResource;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -25,6 +24,7 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
     @SpringBean
     private ConfigServiceImpl configService;
+    private SpringComponentInjector inj = null;
 
     /**
      * @see org.apache.wicket.Application#getHomePage()
@@ -38,8 +38,6 @@ public class WicketApplication extends AuthenticatedWebApplication {
     protected Class<? extends AbstractAuthenticatedWebSession> getWebSessionClass() {
         return BasicAuthenticationSession.class;
     }
-
-    private SpringComponentInjector inj =null;
 
     @Override
     protected Class<? extends WebPage> getSignInPageClass() {
@@ -63,21 +61,21 @@ public class WicketApplication extends AuthenticatedWebApplication {
         mountPage("/login", SignInPage.class);
         mountPage("/settings", Settings.class);
         mountPage("/media", MediaPage.class);
-
+        mountPage("/stlviewer", StlviewerPage.class);
         mountPage("/player", PlayerPage.class);
 
-        ResourceReference resourceReference = new ResourceReference("videoProducer"){
+        ResourceReference resourceReference = new ResourceReference("videoProducer") {
             VideoProducerResource videoResource = new VideoProducerResource();
-
 
 
             @Override
             public IResource getResource() {
                 inj.inject(videoResource);
                 return videoResource;
-            }};
+            }
+        };
         mountResource("/videoroot?videofile=${videofile}", resourceReference);
-        
+
 
         getApplicationSettings().setAccessDeniedPage(AccessDenied.class);
 
@@ -88,9 +86,9 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
         setHeaderResponseDecorator(new JavaScriptToBucketResponseDecorator("footer-container"));
 
-       // IRequestCycleListener videoRequest = new VideoRequestCylceListener();
+        // IRequestCycleListener videoRequest = new VideoRequestCylceListener();
 
-       // getRequestCycleListeners().add(videoRequest);
+        // getRequestCycleListeners().add(videoRequest);
 
         //  setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this));
 
