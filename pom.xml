@@ -62,6 +62,7 @@
     <properties>
         <wicket.version>6.20.0</wicket.version>
         <jetty.version>7.6.13.v20130916</jetty.version>
+        <marytts.version>5.1</marytts.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- allowed values: R7, 1.0, 1.5, 2.0 or none -->
         <wtp.version>none</wtp.version>
@@ -83,7 +84,21 @@
             <version>${wicket.version}</version>
         </dependency>
         -->
-
+        <dependency>
+            <groupId>de.dfki.mary</groupId>
+            <artifactId>marytts-runtime</artifactId>
+            <version>${marytts.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.dfki.mary</groupId>
+            <artifactId>marytts-lang-en</artifactId>
+            <version>${marytts.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.dfki.mary</groupId>
+            <artifactId>voice-cmu-slt-hsmm</artifactId>
+            <version>${marytts.version}</version>
+        </dependency>
         <!-- LOGGING DEPENDENCIES - LOG4J -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -368,6 +383,11 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
+        </repository>
+        <repository>
+            <id>marytts</id>
+            <url>https://maven-repository.com/artifact/latest</url>
+
         </repository>
     </repositories>
 </project>
