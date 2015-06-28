@@ -16,12 +16,11 @@
 
                     count = 0,
 
-                    CANVAS_WIDTH = 200,
-                    CANVAS_HEIGHT = 200;
+                    CANVAS_WIDTH = 400,
+                    CANVAS_HEIGHT = 400;
 
 
             container = document.getElementById('canvas');
-            document.body.appendChild(container);
 
             renderer = new THREE.WebGLRenderer();
             renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -87,7 +86,10 @@
 </wicket:head>
 <wicket:extend>
 
-    <div id="canvas"></div>
+    <div class="container">
+        <div id="canvas"></div>
+    </div>
+
 
 </wicket:extend>
 </body>
