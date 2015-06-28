@@ -29,13 +29,21 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.util.string.Strings;
+import org.wicketstuff.html5.media.MediaSource;
+import org.wicketstuff.html5.media.audio.Html5Audio;
+import org.wicketstuff.html5.media.video.Html5Video;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class SignInPage extends LoginTemplatePage {
@@ -55,6 +63,42 @@ public class SignInPage extends LoginTemplatePage {
 
         handleProperties();
 
+        final List<MediaSource> mm = new ArrayList<>();
+
+        String contextPath = WebApplication.get().getServletContext().getContextPath();
+
+        mm.add(new MediaSource(contextPath + "/audio?audio=1", "audio/wav"));
+
+        IModel<List<MediaSource>> mediaSourceList = new AbstractReadOnlyModel<List<MediaSource>>() {
+
+            private static final long serialVersionUID = 1L;
+
+            public List<MediaSource> getObject() {
+                return mm;
+            }
+        };
+
+        add(new Html5Audio("audioPlayer", mediaSourceList) {
+
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            protected boolean isControls() {
+                return true;
+            }
+
+            @Override
+            protected boolean isAutoPlay() {
+                return true;
+            }
+
+            @Override
+            protected boolean isAutoBuffer() {
+                return true;
+            }
+
+
+        });
 
         StatelessForm form = new StatelessForm("loginForm") {
             @Override

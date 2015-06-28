@@ -96,6 +96,11 @@
         </dependency>
         <dependency>
             <groupId>de.dfki.mary</groupId>
+            <artifactId>marytts-lang-tr</artifactId>
+            <version>${marytts.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.dfki.mary</groupId>
             <artifactId>voice-cmu-slt-hsmm</artifactId>
             <version>${marytts.version}</version>
         </dependency>

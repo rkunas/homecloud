@@ -25,8 +25,6 @@ public class VideoProducerResource extends AbstractResource {
     @Override
     protected ResourceResponse newResourceResponse(Attributes attributes) {
 
-        String rootFolder = configService.getAllHashMap().get("FOLDER_URL").getValue();
-
         ResourceResponse resourceResponse = new ResourceResponse();
         resourceResponse.setContentType("video/mp4");
         resourceResponse.setTextEncoding("utf-8");
