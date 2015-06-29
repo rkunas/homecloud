@@ -5,7 +5,7 @@ Youre Homecloud written in Java. Possibilitiy for a new ecosystem of a private c
 ##Folder Explanation:
 
 ####src
-Folder of Homeclowds Main Source
+Folder of Homecloud's Main Source
 
 ####db
 OrientDB we want to use NoSQL instead of PostgreSQL
