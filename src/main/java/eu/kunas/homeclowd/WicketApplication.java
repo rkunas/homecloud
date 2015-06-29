@@ -1,6 +1,8 @@
 package eu.kunas.homeclowd;
 
 import eu.kunas.homeclowd.resource.AudioProducerResource;
+import eu.kunas.homeclowd.resource.VideoProducerResource;
+import eu.kunas.homeclowd.resource.VideoStreamingServlet;
 import eu.kunas.homeclowd.service.ConfigServiceImpl;
 import eu.kunas.homeclowd.utils.SpringContext;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
@@ -61,6 +63,21 @@ public class WicketApplication extends AuthenticatedWebApplication {
         mountPage("/media", MediaPage.class);
         mountPage("/stlviewer", StlviewerPage.class);
         mountPage("/player", PlayerPage.class);
+
+        ResourceReference videoResourceReference = new ResourceReference("videoProducer") {
+            VideoProducerResource videoProducerResource = new VideoProducerResource();
+
+
+            @Override
+            public IResource getResource() {
+                inj.inject(videoProducerResource);
+                return
+                        videoProducerResource;
+            }
+        };
+
+        mountResource("/rootvideo?videofile=${videofile}", videoResourceReference);
+
 
         ResourceReference audioResourceReference = new ResourceReference("videoProducer") {
             AudioProducerResource audioProducerResource = new AudioProducerResource();

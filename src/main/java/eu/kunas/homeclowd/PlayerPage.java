@@ -4,15 +4,20 @@ import eu.kunas.homeclowd.dto.MediaDto;
 import eu.kunas.homeclowd.service.ConfigServiceImpl;
 import eu.kunas.homeclowd.template.TemplatePage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.DownloadLink;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.handler.resource.ResourceStreamRequestHandler;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.util.resource.FileResourceStream;
+import org.apache.wicket.util.resource.IResourceStream;
 import org.wicketstuff.html5.media.MediaSource;
 import org.wicketstuff.html5.media.video.Html5Video;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +54,16 @@ public class PlayerPage extends TemplatePage {
                 return mm;
             }
         };
+
+        add(new DownloadLink("downloadButton", new File(selectedMedia.getAbsolutePath()), "download") {
+            @Override
+            public void onClick() {
+                File file = (File) getModelObject();
+                IResourceStream resourceStream = new FileResourceStream(new org.apache.wicket.util.file.File(file));
+
+                getRequestCycle().scheduleRequestHandlerAfterCurrent(new ResourceStreamRequestHandler(resourceStream, file.getName()));
+            }
+        });
 
         add(new Html5Video("currentVideoPlayer", mediaSourceList) {
 
