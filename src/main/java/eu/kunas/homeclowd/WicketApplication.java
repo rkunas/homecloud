@@ -85,6 +85,8 @@ public class WicketApplication extends AuthenticatedWebApplication {
 
             @Override
             public IResource getResource() {
+                inj.inject(audioProducerResource);
+
                 return audioProducerResource;
             }
         };
