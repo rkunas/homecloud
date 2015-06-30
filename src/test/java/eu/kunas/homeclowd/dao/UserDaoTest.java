@@ -28,7 +28,7 @@ import javax.inject.Named;
 public class UserDaoTest {
 
     private static final String TEST_PASSWORD = "TEST_PASS";
-    private static final String TEST_USERNAME = "TEST_USER";
+    private static final String TEST_USERNAME = "6a179ee3da3af9fc20afbc56df9e4053";
 
     @Inject
     @Named("userDao")

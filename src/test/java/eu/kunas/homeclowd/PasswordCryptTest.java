@@ -12,7 +12,7 @@ public class PasswordCryptTest {
     @Test
     public void cryptIt() {
 
-        String pass = "ADMIN2";
+        String pass = "TEST_USER";
         String s = new String(DigestUtils.md5DigestAsHex(pass.getBytes()));
         System.out.println(s);
 
