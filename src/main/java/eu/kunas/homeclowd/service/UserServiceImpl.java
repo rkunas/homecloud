@@ -3,6 +3,7 @@ package eu.kunas.homeclowd.service;
 import eu.kunas.homeclowd.dao.UserDaoImpl;
 import eu.kunas.homeclowd.dto.UserDto;
 import eu.kunas.homeclowd.model.HCUserEntity;
+import eu.kunas.homeclowd.utils.Crypt;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -29,4 +30,8 @@ public class UserServiceImpl {
         return userDao.getUser(username,password);
     }
 
+    public HCUserEntity saveNewUser(HCUserEntity newUser){
+        newUser.setPassword(Crypt.rehash(newUser.getPassword()));
+        return userDao.save(newUser);
+    }
 }

@@ -2,6 +2,7 @@ package eu.kunas.homeclowd.dao;
 
 import eu.kunas.homeclowd.model.HCConfigEntity;
 import eu.kunas.homeclowd.model.HCUserEntity;
+import eu.kunas.homeclowd.service.UserServiceImpl;
 import eu.kunas.homeclowd.utils.SpringContext;
 import org.junit.Assert;
 import org.junit.Before;
@@ -28,11 +29,15 @@ import javax.inject.Named;
 public class UserDaoTest {
 
     private static final String TEST_PASSWORD = "TEST_PASS";
-    private static final String TEST_USERNAME = "6a179ee3da3af9fc20afbc56df9e4053";
+    private static final String TEST_USERNAME = "TEST_USER";
 
     @Inject
     @Named("userDao")
     private UserDaoImpl userDao;
+
+    @Inject
+    @Named("userService")
+    private UserServiceImpl userService;
 
     @Before
     public void prepare(){
@@ -41,7 +46,7 @@ public class UserDaoTest {
         userEntity.setUsername(TEST_USERNAME);
         userEntity.setPassword(TEST_PASSWORD);
 
-        userDao.save(userEntity);
+        userService.saveNewUser(userEntity);
     }
 
     @Test
