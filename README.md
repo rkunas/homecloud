@@ -10,8 +10,9 @@ OrientDB we want to use NoSQL instead of PostgreSQL
 ##Features
 Current Features:
 - File Browsing
-- Download of Files
-- Streaming Video with HTML5 Content
+- Download File
+- Streaming Video with HTML5 Video Content
+- Download Video Files
 - Text to Speech Engine (Talking Cloud)
 
 Next Features
