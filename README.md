@@ -7,7 +7,7 @@ Youre Homecloud written in Java. Possibilitiy for a new ecosystem of a private c
 Folder of Homecloud's Main Source
 ####db
 OrientDB we want to use NoSQL instead of PostgreSQL
-
+##Features
 Current Features:
 - File Browsing
 - Download of Files
