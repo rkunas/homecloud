@@ -1,8 +1,7 @@
 package eu.kunas.homeclowd;
 
-import eu.kunas.homeclowd.HomePage;
-import eu.kunas.homeclowd.WicketApplication;
-import eu.kunas.homeclowd.dto.MediaDto;
+import eu.kunas.homeclowd.frontend.WicketApplication;
+import eu.kunas.homeclowd.frontend.pages.MediaPage;
 import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
