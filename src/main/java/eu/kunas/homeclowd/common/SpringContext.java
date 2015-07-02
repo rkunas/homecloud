@@ -3,6 +3,7 @@ package eu.kunas.homeclowd.common;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jmx.export.MBeanExporter;
 import org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource;
@@ -23,6 +24,10 @@ import javax.persistence.EntityManagerFactory;
 @ComponentScan(value = "eu.kunas.homeclowd")
 public class SpringContext {
 
+    @Bean(destroyMethod = "shutdownDb", initMethod = "startDb")
+    public StarterOrientDb starterOrientDb(){
+        return new StarterOrientDb();
+    }
 
     @Bean
     public DriverManagerDataSource datasource() {
@@ -35,6 +40,8 @@ public class SpringContext {
 
         return dataSource;
     }
+
+
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
