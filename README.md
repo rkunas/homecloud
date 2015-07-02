@@ -24,6 +24,7 @@ OrientDB we want to use NoSQL instead of PostgreSQL
 
 ###2.2 Next Features to be implemented
 - User Profile Edit
+
 ###2.3 Backlog Features
 - Separate User Folder
 - 3D Viewer for STL Files
