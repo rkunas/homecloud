@@ -2,6 +2,7 @@
 
 Youre Homecloud written in Java. Possibilitiy for a new ecosystem of a private cloud.
 
+
 ##1. Folder and Package Explanation:
 ####1.1 Folder src 
 Folder of Homecloud's Main Source
@@ -21,8 +22,11 @@ OrientDB we want to use NoSQL instead of PostgreSQL
 - Download Video Files
 - Text to Speech Engine (Talking Cloud)
 
-###2.2 Next Features
+###2.2 Next Features to be implemented
 - User Profile Edit
+###2.3 Backlog Features
+- Separate User Folder
+- 3D Viewer for STL Files
 
 
 ####Current Version is 1.0-SNAPSHOT
