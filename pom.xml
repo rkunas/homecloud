@@ -285,7 +285,7 @@
             <version>6.20.0</version>
         </dependency>
 
-        <!-- ORIENT DB
+        <!-- ORIENT DB -->
 
         <dependency>
             <groupId>com.orientechnologies</groupId>
@@ -296,26 +296,26 @@
         <dependency>
             <groupId>com.orientechnologies</groupId>
             <artifactId>orient-commons</artifactId>
-            <version>2.0.11</version>
+            <version>2.0.10</version>
         </dependency>
 
         <dependency>
             <groupId>com.orientechnologies</groupId>
             <artifactId>orientdb-client</artifactId>
-            <version>2.0.11</version>
+            <version>2.0.10</version>
         </dependency>
 
         <dependency>
             <groupId>com.orientechnologies</groupId>
             <artifactId>orientdb-object</artifactId>
-            <version>2.0.11</version>
+            <version>2.0.10</version>
         </dependency>
 
         <dependency>
             <groupId>com.orientechnologies</groupId>
             <artifactId>orientdb-enterprise</artifactId>
-            <version>2.0.11</version>
-        </dependency> -->
+            <version>2.0.10</version>
+        </dependency>
 
 
 
