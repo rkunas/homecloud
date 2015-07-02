@@ -5,10 +5,10 @@ Youre Homecloud written in Java. Possibilitiy for a new ecosystem of a private c
 ##Folder and Package Explanation:
 ####src 
 Folder of Homecloud's Main Source
+#####Packages
 - backend: Source of Backend like Save Data to DB
 - common: Source of Backend and Frontend like Model, Entity, Dto's
 - frontend: Source of Frontend like UI Logik  
-
 
 ####db
 OrientDB we want to use NoSQL instead of PostgreSQL
