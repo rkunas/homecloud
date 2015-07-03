@@ -28,7 +28,6 @@ public class SpringContext {
    // public StarterOrientDb starterOrientDb(){
    //     return new StarterOrientDb();
    // }
-
     @Bean
     public DriverManagerDataSource datasource() {
 
