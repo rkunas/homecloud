@@ -24,10 +24,10 @@ import javax.persistence.EntityManagerFactory;
 @ComponentScan(value = "eu.kunas.homeclowd")
 public class SpringContext {
 
-    @Bean(destroyMethod = "shutdownDb", initMethod = "startDb")
-    public StarterOrientDb starterOrientDb(){
-        return new StarterOrientDb();
-    }
+   // @Bean(destroyMethod = "shutdownDb", initMethod = "startDb")
+   // public StarterOrientDb starterOrientDb(){
+   //     return new StarterOrientDb();
+   // }
 
     @Bean
     public DriverManagerDataSource datasource() {
@@ -54,7 +54,7 @@ public class SpringContext {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 
         entityManagerFactoryBean.getJpaPropertyMap().put("hibernate.enable_lazy_load_no_trans", true);
-        entityManagerFactoryBean.setPackagesToScan("eu.kunas.homeclowd");
+        entityManagerFactoryBean.setPackagesToScan("eu.kunas.homeclowd.common.model");
         entityManagerFactoryBean.setDataSource(datasource());
         entityManagerFactoryBean.setJpaVendorAdapter(hibernateJpaVendorAdapter);
 
