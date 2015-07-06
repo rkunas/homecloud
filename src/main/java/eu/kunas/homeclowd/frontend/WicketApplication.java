@@ -3,6 +3,13 @@ package eu.kunas.homeclowd.frontend;
 import eu.kunas.homeclowd.common.SpringContext;
 import eu.kunas.homeclowd.frontend.auth.BasicAuthenticationSession;
 import eu.kunas.homeclowd.frontend.pages.*;
+import eu.kunas.homeclowd.frontend.pages.administration.Settings;
+import eu.kunas.homeclowd.frontend.pages.auth.AccessDenied;
+import eu.kunas.homeclowd.frontend.pages.auth.SignInPage;
+import eu.kunas.homeclowd.frontend.pages.player.PlayerPage;
+import eu.kunas.homeclowd.frontend.pages.player.StlviewerPage;
+import eu.kunas.homeclowd.frontend.pages.profile.DetailsPage;
+import eu.kunas.homeclowd.frontend.pages.profile.PasswordRenewPage;
 import eu.kunas.homeclowd.frontend.resource.AudioProducerResource;
 import eu.kunas.homeclowd.frontend.resource.VideoProducerResource;
 import eu.kunas.homeclowd.backend.service.ConfigServiceImpl;
@@ -64,6 +71,8 @@ public class WicketApplication extends AuthenticatedWebApplication {
         mountPage("/media", MediaPage.class);
         mountPage("/stlviewer", StlviewerPage.class);
         mountPage("/player", PlayerPage.class);
+        mountPage("/passwordrenew", PasswordRenewPage.class);
+        mountPage("/details", DetailsPage.class);
 
         ResourceReference videoResourceReference = new ResourceReference("videoProducer") {
             VideoProducerResource videoProducerResource = new VideoProducerResource();

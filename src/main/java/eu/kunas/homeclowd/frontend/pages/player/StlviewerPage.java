@@ -1,4 +1,4 @@
-package eu.kunas.homeclowd.frontend.pages;
+package eu.kunas.homeclowd.frontend.pages.player;
 
 import eu.kunas.homeclowd.common.dto.MediaDto;
 import eu.kunas.homeclowd.frontend.template.TemplatePage;

@@ -1,4 +1,4 @@
-package eu.kunas.homeclowd.frontend.pages;
+package eu.kunas.homeclowd.frontend.pages.auth;
 
 import eu.kunas.homeclowd.frontend.template.TemplatePage;
 import org.apache.wicket.request.mapper.parameter.PageParameters;

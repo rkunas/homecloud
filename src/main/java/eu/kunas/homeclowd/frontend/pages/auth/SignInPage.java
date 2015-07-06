@@ -14,7 +14,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package eu.kunas.homeclowd.frontend.pages;
+package eu.kunas.homeclowd.frontend.pages.auth;
 
 
 import eu.kunas.homeclowd.common.dto.UserDto;

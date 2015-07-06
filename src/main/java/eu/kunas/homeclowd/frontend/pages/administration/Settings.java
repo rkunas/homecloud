@@ -1,7 +1,8 @@
-package eu.kunas.homeclowd.frontend.pages;
+package eu.kunas.homeclowd.frontend.pages.administration;
 
 import eu.kunas.homeclowd.common.model.HCConfigEntity;
 import eu.kunas.homeclowd.backend.service.ConfigServiceImpl;
+import eu.kunas.homeclowd.frontend.pages.MediaPage;
 import eu.kunas.homeclowd.frontend.template.TemplatePage;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.form.Form;

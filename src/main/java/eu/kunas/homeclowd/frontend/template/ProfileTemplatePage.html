@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:head>
+    <title>HOMECLOWD - Player</title>
+    <link href="videojs/video-js.min.css" rel="stylesheet">
+    <script src="videojs/video.js"></script>
+</wicket:head>
+<wicket:extend>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation"><a wicket:id="dashboardLink">Dashboard</a></li>
+                <li role="presentation"><a wicket:id="detailsLink">Details</a></li>
+                <li role="presentation"><a wicket:id="passwordLink">Password</a></li>
+            </ul>
+                </div>
+            <div class="col-md-10">
+                <wicket:child/>
+            </div>
+        </div>
+    </div>
+</wicket:extend>
+</body>
+</html>

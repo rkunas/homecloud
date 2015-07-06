@@ -1,7 +1,9 @@
 package eu.kunas.homeclowd.frontend.template;
 
 import eu.kunas.homeclowd.frontend.auth.BasicAuthenticationSession;
-import eu.kunas.homeclowd.frontend.pages.Settings;
+import eu.kunas.homeclowd.frontend.pages.administration.Settings;
+import eu.kunas.homeclowd.frontend.pages.profile.PasswordRenewPage;
+import eu.kunas.homeclowd.frontend.pages.profile.ProfileDashboardPage;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.ExternalLink;
@@ -47,6 +49,7 @@ public class HeaderPanel extends Panel {
         Link profile = new Link("profile") {
             @Override
             public void onClick() {
+                setResponsePage(ProfileDashboardPage.class);
             }
         };
 
