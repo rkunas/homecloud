@@ -4,6 +4,8 @@ Youre Homecloud written in Java. Possibilitiy for a new ecosystem of a private c
 
 <img src="http://81.169.224.34:8090/download/attachments/9961474/Bildschirmfoto%202015-07-06%20um%2008.28.31.png?version=1&modificationDate=1436164203966&api=v2"/>
 
+<img src="http://81.169.224.34:8090/download/attachments/9961474/Bildschirmfoto%202015-07-06%20um%2008.27.06.png?api=v2"/>
+
 
 ##1. Folder and Package Explanation:
 ###1.1. Folder src 
