@@ -39,7 +39,9 @@ public class UserServiceImpl {
             return false;
         }
 
+        user.setPassword(Crypt.rehash(newPassword));
 
+        userDao.save(user);
 
         return true;
     }
