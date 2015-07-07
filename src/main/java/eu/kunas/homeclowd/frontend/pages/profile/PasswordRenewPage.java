@@ -1,17 +1,13 @@
 package eu.kunas.homeclowd.frontend.pages.profile;
 
-import eu.kunas.homeclowd.backend.service.FilesFolderServiceImpl;
 import eu.kunas.homeclowd.backend.service.UserServiceImpl;
-import eu.kunas.homeclowd.common.model.HCUserEntity;
 import eu.kunas.homeclowd.frontend.auth.BasicAuthenticationSession;
 import eu.kunas.homeclowd.frontend.template.ProfileTemplatePage;
 import eu.kunas.homeclowd.frontend.util.ExactErrorLevelFilter;
 import org.apache.wicket.bean.validation.PropertyValidator;
 import org.apache.wicket.feedback.FeedbackMessage;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
-import org.apache.wicket.markup.html.form.StatelessForm;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -32,23 +28,24 @@ public class PasswordRenewPage extends ProfileTemplatePage {
 
     private FeedbackPanel feedbackPanel;
 
-    public PasswordRenewPage(){
+    public PasswordRenewPage() {
         Form form = new Form("renewPasswordForm") {
             @Override
             protected void onSubmit() {
                 BasicAuthenticationSession session = (BasicAuthenticationSession) getSession();
 
-                if(session.getUserEntity() != null){
+                if (session.getUserEntity() != null) {
 
-                    if(newPassword.equals(newPasswordRetype)){
-                        Boolean changed = userService.changePassword(session.getUserEntity().getUsername(),oldPassword,newPassword);
-                        if(changed){
+                    if (newPassword.equals(newPasswordRetype)) {
+                        Boolean changed = userService.changePassword(session.getUserEntity().getUsername(), oldPassword, newPassword);
+                        if (changed) {
                             this.success("Password is changed");
+                            feedbackPanel.setVisible(true);
                         }
-                    }else{
+                    } else {
                         this.error("New password and retype not same");
+                        feedbackPanel.setVisible(true);
                     }
-
                 }
 
                 oldPassword = null;
@@ -68,8 +65,9 @@ public class PasswordRenewPage extends ProfileTemplatePage {
         form.add(new PasswordTextField("newPassword").add(new PropertyValidator()));
         form.add(new PasswordTextField("newPasswordRetype").add(new PropertyValidator()));
 
-         feedbackPanel = new FeedbackPanel("successFeedbackMessage", new ExactErrorLevelFilter(FeedbackMessage.SUCCESS));
+        feedbackPanel = new FeedbackPanel("successFeedbackMessage", new ExactErrorLevelFilter(FeedbackMessage.SUCCESS));
         feedbackPanel.setVisible(false);
+        form.add(feedbackPanel);
 
         add(form);
     }

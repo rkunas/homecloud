@@ -33,11 +33,13 @@ public class UserServiceImpl {
 
     public Boolean changePassword(String username,String enteredOldPassword, String newPassword) {
 
-        HCUserEntity user =  getUser(username,Crypt.rehash(enteredOldPassword));
+        HCUserEntity user =  getUser(username,enteredOldPassword);
 
         if(user == null){
-            return null;
+            return false;
         }
+
+
 
         return true;
     }
