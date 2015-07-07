@@ -26,7 +26,8 @@ public class PasswordRenewPage extends ProfileTemplatePage {
 
     private String newPasswordRetype;
 
-    private FeedbackPanel feedbackPanel;
+    private FeedbackPanel successFeedbackPanel;
+    private FeedbackPanel errorFeedbackPanel;
 
     public PasswordRenewPage() {
         Form form = new Form("renewPasswordForm") {
@@ -40,11 +41,17 @@ public class PasswordRenewPage extends ProfileTemplatePage {
                         Boolean changed = userService.changePassword(session.getUserEntity().getUsername(), oldPassword, newPassword);
                         if (changed) {
                             this.success("Password is changed");
-                            feedbackPanel.setVisible(true);
+                            successFeedbackPanel.setVisible(true);
+                            errorFeedbackPanel.setVisible(false);
+                        }else{
+                            this.error("Password change was not possible");
+                            errorFeedbackPanel.setVisible(true);
+                            successFeedbackPanel.setVisible(false);
                         }
                     } else {
                         this.error("New password and retype not same");
-                        feedbackPanel.setVisible(true);
+                        errorFeedbackPanel.setVisible(true);
+                        successFeedbackPanel.setVisible(false);
                     }
                 }
 
@@ -65,9 +72,14 @@ public class PasswordRenewPage extends ProfileTemplatePage {
         form.add(new PasswordTextField("newPassword").add(new PropertyValidator()));
         form.add(new PasswordTextField("newPasswordRetype").add(new PropertyValidator()));
 
-        feedbackPanel = new FeedbackPanel("successFeedbackMessage", new ExactErrorLevelFilter(FeedbackMessage.SUCCESS));
-        feedbackPanel.setVisible(false);
-        form.add(feedbackPanel);
+        successFeedbackPanel = new FeedbackPanel("successFeedbackMessage", new ExactErrorLevelFilter(FeedbackMessage.SUCCESS));
+        successFeedbackPanel.setVisible(false);
+
+        errorFeedbackPanel = new FeedbackPanel("errorFeedbackMessage", new ExactErrorLevelFilter(FeedbackMessage.ERROR));
+        errorFeedbackPanel.setVisible(false);
+
+        form.add(errorFeedbackPanel);
+        form.add(successFeedbackPanel);
 
         add(form);
     }

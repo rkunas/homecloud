@@ -10,6 +10,7 @@ import eu.kunas.homeclowd.frontend.pages.player.PlayerPage;
 import eu.kunas.homeclowd.frontend.pages.player.StlviewerPage;
 import eu.kunas.homeclowd.frontend.pages.profile.DetailsPage;
 import eu.kunas.homeclowd.frontend.pages.profile.PasswordRenewPage;
+import eu.kunas.homeclowd.frontend.pages.profile.ProfileDashboardPage;
 import eu.kunas.homeclowd.frontend.resource.AudioProducerResource;
 import eu.kunas.homeclowd.frontend.resource.VideoProducerResource;
 import eu.kunas.homeclowd.backend.service.ConfigServiceImpl;
@@ -73,6 +74,7 @@ public class WicketApplication extends AuthenticatedWebApplication {
         mountPage("/player", PlayerPage.class);
         mountPage("/passwordrenew", PasswordRenewPage.class);
         mountPage("/details", DetailsPage.class);
+        mountPage("/dashboard", ProfileDashboardPage.class);
 
         ResourceReference videoResourceReference = new ResourceReference("videoProducer") {
             VideoProducerResource videoProducerResource = new VideoProducerResource();
