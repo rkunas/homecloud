@@ -2,7 +2,6 @@ package eu.kunas.homeclowd.frontend.template;
 
 import eu.kunas.homeclowd.frontend.auth.BasicAuthenticationSession;
 import eu.kunas.homeclowd.frontend.pages.administration.Settings;
-import eu.kunas.homeclowd.frontend.pages.profile.PasswordRenewPage;
 import eu.kunas.homeclowd.frontend.pages.profile.ProfileDashboardPage;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.html.basic.Label;
@@ -60,7 +59,7 @@ public class HeaderPanel extends Panel {
             profile.add(profileLabel);
 
             add(profile);
-        }else{
+        } else {
             Label profileLabel = new Label("profileName", new Model<>(""));
 
             profile.add(profileLabel);

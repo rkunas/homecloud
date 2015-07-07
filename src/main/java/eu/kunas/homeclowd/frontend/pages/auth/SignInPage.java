@@ -130,7 +130,6 @@ public class SignInPage extends LoginTemplatePage {
         feedbackPanel = new FeedbackPanel("feedbackMessage", new ExactErrorLevelFilter(FeedbackMessage.ERROR));
         feedbackPanel.setVisible(false);
 
-
         form.add(feedbackPanel);
     }
 
