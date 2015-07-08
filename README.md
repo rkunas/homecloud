@@ -58,5 +58,8 @@ Download an Tomcat 8.X from tomcat.apache.org and copy it into a folder
 ###4.3 War
 Copy the homclowd.war into the webapps folder of youre Tomcat 8 installation.
 
+###4.4 Start Tomcat
+Start youre Tomcat with ./catalina.sh start from the bin folder 
+
 ####Current Version is 1.0
 
