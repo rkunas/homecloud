@@ -1,8 +1,0 @@
-#canvas {
-    background-color: #8c8c8c;
-    width: 400px;
-    height: 400px;
-    border: 1px solid black;
-    padding: 0px;
-    position: static; /* fixed or static */
-}

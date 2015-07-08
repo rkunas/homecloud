@@ -3,92 +3,32 @@
 <body>
 <wicket:head>
     <title>HOMECLOWD - STL Viewer</title>
-    <script src="threejs/three.min.js"></script>
-    <link href="threejs.css" rel="stylesheet">
+
+    <script src="threejs/Three.js"></script>
+    <script src="threejs/plane.js"></script>
+    <script src="threejs/thingiview.js"></script>
+
     <script>
-        window.onload = function() {
-            // Three.js ray.intersects with offset canvas
+        window.onload = function () {
+            // You may want to place these lines inside an onload handler
 
-            var container, camera, scene, renderer, mesh,
-
-                    mouse = {x: 0, y: 0},
-                    objects = [],
-
-                    count = 0,
-
-                    CANVAS_WIDTH = 400,
-                    CANVAS_HEIGHT = 400;
-
-
-            container = document.getElementById('canvas');
-
-            renderer = new THREE.WebGLRenderer();
-            renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
-            container.appendChild(renderer.domElement);
-
-            scene = new THREE.Scene();
-
-            camera = new THREE.PerspectiveCamera(50, CANVAS_WIDTH / CANVAS_HEIGHT, 1, 1000);
-            camera.position.y = 150;
-            camera.position.z = 500;
-            camera.lookAt(scene.position);
-
-            mesh = new THREE.Mesh(
-                    new THREE.BoxGeometry(200, 200, 200, 1, 1, 1),
-                    new THREE.MeshBasicMaterial({color: 0xff0000, wireframe: true}
-                    ));
-            scene.add(mesh);
-            objects.push(mesh);
-
-            // find intersections
-            var vector = new THREE.Vector3();
-            var raycaster = new THREE.Raycaster();
-
-            // mouse listener
-            document.addEventListener('mousedown', function (event) {
-
-                // For the following method to work correctly, set the canvas position *static*; margin > 0 and padding > 0 are OK
-                mouse.x = ( ( event.clientX - renderer.domElement.offsetLeft ) / renderer.domElement.width ) * 2 - 1;
-                mouse.y = -( ( event.clientY - renderer.domElement.offsetTop ) / renderer.domElement.height ) * 2 + 1;
-
-                // For this alternate method, set the canvas position *fixed*; set top > 0, set left > 0; padding must be 0; margin > 0 is OK
-                //mouse.x = ( ( event.clientX - container.offsetLeft ) / container.clientWidth ) * 2 - 1;
-                //mouse.y = - ( ( event.clientY - container.offsetTop ) / container.clientHeight ) * 2 + 1;
-
-                vector.set(mouse.x, mouse.y, 0.5);
-                vector.unproject(camera);
-
-                raycaster.set(camera.position, vector.sub(camera.position).normalize());
-
-                intersects = raycaster.intersectObjects(objects);
-
-
-            }, false);
-
-            function render() {
-
-                mesh.rotation.y += 0.01;
-
-                renderer.render(scene, camera);
-
-            }
-
-            (function animate() {
-
-                requestAnimationFrame(animate);
-
-                render();
-
-            })();
+            thingiurlbase = "threejs";
+            thingiview = new Thingiview("viewer");
+            thingiview.setObjectColor('#C0D8F0');
+            thingiview.initScene();
+            // thingiview.setShowPlane(true);
+            // if (getUrlVars()["stl"]) {
+            //    thingiview.loadSTL(getUrlVars()["stl"]);
+            //} else {
+            // thingiview.loadSTL("../examples/objects/cube.stl");
+            thingiview.loadSTL("../tire_rc.stl");
+            //  }
         }
-
     </script>
 </wicket:head>
 <wicket:extend>
 
-    <div class="container">
-        <div id="canvas"></div>
-    </div>
+    <div id="viewer" style="width:50%;height:400px"></div>
 
 
 </wicket:extend>
