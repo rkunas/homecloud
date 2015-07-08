@@ -9,8 +9,11 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
  */
 public class StlviewerPage extends TemplatePage {
 
+    private MediaDto selectedMediaDto;
+
     public StlviewerPage(final PageParameters parameters, MediaDto mediaDto) {
         super("HOMECLOWD - STL Viewer");
+        this.selectedMediaDto = mediaDto;
     }
 
     public StlviewerPage(){

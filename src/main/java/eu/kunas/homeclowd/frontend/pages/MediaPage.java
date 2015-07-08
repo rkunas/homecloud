@@ -3,6 +3,7 @@ package eu.kunas.homeclowd.frontend.pages;
 import eu.kunas.homeclowd.common.dto.MediaDto;
 import eu.kunas.homeclowd.backend.service.FilesFolderServiceImpl;
 import eu.kunas.homeclowd.frontend.pages.player.PlayerPage;
+import eu.kunas.homeclowd.frontend.pages.player.StlviewerPage;
 import eu.kunas.homeclowd.frontend.template.TemplatePage;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebApplication;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
@@ -92,7 +93,7 @@ public class MediaPage extends TemplatePage {
 
                     @Override
                     public boolean isVisible() {
-                        if (item.getModel().getObject().getType().contains("Folder") || item.getModel().getObject().getDescription().endsWith(".mp4")) {
+                        if (item.getModel().getObject().getType().contains("Folder") || item.getModel().getObject().getDescription().endsWith(".mp4") || item.getModel().getObject().getDescription().endsWith(".stl") ) {
                             return false;
                         }
                         return true;
@@ -111,6 +112,26 @@ public class MediaPage extends TemplatePage {
                     @Override
                     public boolean isVisible() {
                         if (item.getModel().getObject().getDescription().endsWith(".mp4")) {
+                            return true;
+                        }
+                        return false;
+                    }
+
+                });
+
+
+                item.add(new DownloadLink("playStlButton", new File(item.getModel().getObject().getAbsolutePath()), "download") {
+                    @Override
+                    public void onClick() {
+                        StlviewerPage stlviewerPage = new StlviewerPage(parameters,item.getModelObject());
+
+                        stlviewerPage.getPageParameters().add("stlfile",item.getModel().getObject().getAbsolutePath().replace(filesFolderService.getRootFolderEntity().getValue(),""));
+                        setResponsePage(stlviewerPage);
+                    }
+
+                    @Override
+                    public boolean isVisible() {
+                        if (item.getModel().getObject().getDescription().endsWith(".stl")) {
                             return true;
                         }
                         return false;

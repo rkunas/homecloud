@@ -12,6 +12,7 @@ import eu.kunas.homeclowd.frontend.pages.profile.DetailsPage;
 import eu.kunas.homeclowd.frontend.pages.profile.PasswordRenewPage;
 import eu.kunas.homeclowd.frontend.pages.profile.ProfileDashboardPage;
 import eu.kunas.homeclowd.frontend.resource.AudioProducerResource;
+import eu.kunas.homeclowd.frontend.resource.StlProducerResource;
 import eu.kunas.homeclowd.frontend.resource.VideoProducerResource;
 import eu.kunas.homeclowd.backend.service.ConfigServiceImpl;
 import org.apache.wicket.authroles.authentication.AbstractAuthenticatedWebSession;
@@ -76,24 +77,8 @@ public class WicketApplication extends AuthenticatedWebApplication {
         mountPage("/details", DetailsPage.class);
         mountPage("/dashboard", ProfileDashboardPage.class);
 
-        ResourceReference videoResourceReference = new ResourceReference("videoProducer") {
-            VideoProducerResource videoProducerResource = new VideoProducerResource();
-
-
-            @Override
-            public IResource getResource() {
-                inj.inject(videoProducerResource);
-                return
-                        videoProducerResource;
-            }
-        };
-
-        mountResource("/rootvideo?videofile=${videofile}", videoResourceReference);
-
-
-        ResourceReference audioResourceReference = new ResourceReference("videoProducer") {
+        ResourceReference audioResourceReference = new ResourceReference("audioProducer") {
             AudioProducerResource audioProducerResource = new AudioProducerResource();
-
 
             @Override
             public IResource getResource() {
@@ -104,6 +89,19 @@ public class WicketApplication extends AuthenticatedWebApplication {
         };
 
         mountResource("/audio?audio=${audio}", audioResourceReference);
+
+        ResourceReference stlResourceReference = new ResourceReference("stlProducer") {
+            StlProducerResource stlProducerResource = new StlProducerResource();
+
+            @Override
+            public IResource getResource() {
+                inj.inject(stlProducerResource);
+
+                return stlProducerResource;
+            }
+        };
+
+        mountResource("/stl?stlfile=${stlfile}",stlResourceReference);
 
         getApplicationSettings().setAccessDeniedPage(AccessDenied.class);
 
