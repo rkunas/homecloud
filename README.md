@@ -32,6 +32,7 @@ OrientDB we want to use NoSQL instead of PostgreSQL
 
 ###2.2. Next Features to be implemented
 - File Upload
+- Spring Boot Integration
 
 ###2.3. Backlog Features
 - Separate User Folder
