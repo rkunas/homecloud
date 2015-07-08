@@ -28,9 +28,9 @@ OrientDB we want to use NoSQL instead of PostgreSQL
 - Download Video Files
 - Text to Speech Engine (Talking Cloud)
 - User change Password
+- 3D Viewer for STL Files
 
 ###2.2. Next Features to be implemented
-- 3D Viewer for STL Files
 - File Upload
 
 ###2.3. Backlog Features
