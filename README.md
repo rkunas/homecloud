@@ -7,6 +7,8 @@ The cloud with new technologies.
 
 <img src="http://81.169.224.34:8090/download/attachments/9961474/Bildschirmfoto%202015-07-07%20um%2019.10.06.png?version=1&modificationDate=1436289018884&api=v2"/>
 
+<img src="http://81.169.224.34:8090/download/attachments/9961474/Bildschirmfoto%202015-07-08%20um%2020.21.29.png?version=1&modificationDate=1436379725233&api=v2"/>
+
 ##1. Folder and Package Explanation:
 ###1.1. Folder src 
 Folder of Homecloud's Main Source
@@ -26,10 +28,11 @@ OrientDB we want to use NoSQL instead of PostgreSQL
 - Download Video Files
 - Text to Speech Engine (Talking Cloud)
 - User change Password
+- 3D Viewer for STL Files
 
 ###2.2. Next Features to be implemented
-- 3D Viewer for STL Files
 - File Upload
+- Spring Boot Integration
 
 ###2.3. Backlog Features
 - Separate User Folder
