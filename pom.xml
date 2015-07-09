@@ -295,6 +295,17 @@
 
         -->
 
+        <dependency>
+            <version>1.0-SNAPSHOT</version>
+            <groupId>edu.cmu.sphinx</groupId>
+            <artifactId>sphinx4-data</artifactId>
+        </dependency>
+
+        <dependency>
+            <version>1.0-SNAPSHOT</version>
+            <groupId>edu.cmu.sphinx</groupId>
+            <artifactId>sphinx4-core</artifactId>
+        </dependency>
 
 
 
