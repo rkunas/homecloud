@@ -1,26 +1,83 @@
 
-2015-07-01 17:03:25:907 INFO  OrientDB auto-config DISKCACHE=5.688MB (heap=455MB os=8.192MB disk=7.556MB) [orientechnologies]
-2015-07-01 17:03:25:910 INFO  Loading configuration from: /Users/ramazan/Dev/Projects/homeclowd/db/config/orientdb-server-config.xml... [OServerConfigurationLoaderXml]
-2015-07-01 17:03:26:085 INFO  OrientDB Server v2.0.11 (build UNKNOWN@r; 2015-06-19 15:38:17+0000) is starting up... [OServer]
-2015-07-01 17:03:26:100 INFO  Databases directory: /Users/ramazan/Dev/Projects/homeclowd/db/databases [OServer]
-2015-07-01 17:03:26:130 INFO  Listening binary connections on 0.0.0.0:2424 (protocol v.28, socket=default) [OServerNetworkListener]
-2015-07-01 17:03:26:131 INFO  Listening http connections on 0.0.0.0:2480 (protocol v.10, socket=default) [OServerNetworkListener]
-2015-07-01 17:03:26:142 INFO  Installing dynamic plugin 'studio-2.0.zip'... [OServerPluginManager]
-2015-07-01 17:03:26:211 INFO  Installing GREMLIN language v.2.6.0 - graph.pool.max=50 [OGraphServerHandler]
-2015-07-01 17:03:26:211 INFO  [OVariableParser.resolveVariables] Error on resolving property: distributed [orientechnologies]
-2015-07-01 17:03:26:213 INFO  Installing Script interpreter. WARN: authenticated clients can execute any kind of code into the server by using the following allowed languages: [sql] [OServerSideScriptInterpreter]
-2015-07-01 17:03:26:213 INFO  OrientDB Server v2.0.11 is active. [OServer]
-2015-07-01 17:03:35:862 INFO  Received shutdown command from the remote client /172.20.10.2:53924 [ONetworkProtocolBinary]
-2015-07-01 17:03:35:863 INFO  Remote client /172.20.10.2:53924 authenticated. Starting shutdown of server... [ONetworkProtocolBinary]
-2015-07-01 17:03:35:864 INFO  OrientDB Server is shutting down... [OServer]
-2015-07-01 17:03:35:864 INFO  Shutting down listeners: [OServer]
-2015-07-01 17:03:35:867 INFO  - ONetworkProtocolBinary /0.0.0.0:2424: [OServer]
-2015-07-01 17:03:35:868 INFO  - ONetworkProtocolHttpDb /0.0.0.0:2480: [OServer]
-2015-07-01 17:03:35:868 INFO  Shutting down protocols [OServer]
-2015-07-01 17:03:35:868 INFO  Shutting down plugins: [OServerPluginManager]
-2015-07-01 17:03:35:868 INFO  - studio [OServerPluginManager]
-2015-07-01 17:03:35:869 INFO  - script-interpreter [OServerPluginManager]
-2015-07-01 17:03:35:869 INFO  - graph [OServerPluginManager]
-2015-07-01 17:03:35:869 INFO  Shutting down databases: [OServer]
-2015-07-01 17:03:35:872 INFO  OrientDB Engine shutdown complete [Orient]
-2015-07-01 17:03:35:872 INFO  OrientDB Server shutdown complete [OServer]
+2015-07-10 18:05:38:506 INFO  OrientDB auto-config DISKCACHE=5.688MB (heap=455MB os=8.192MB disk=9.461MB) [orientechnologies]
+2015-07-10 18:05:38:512 INFO  Loading configuration from: /Users/ramazan/Dev/Projects/homeclowd/db/config/orientdb-server-config.xml... [OServerConfigurationLoaderXml]
+2015-07-10 18:05:38:851 INFO  OrientDB Server v2.0.11 (build UNKNOWN@r; 2015-06-19 15:38:17+0000) is starting up... [OServer]
+2015-07-10 18:05:38:891 INFO  Databases directory: /Users/ramazan/Dev/Projects/homeclowd/db/databases [OServer]
+2015-07-10 18:05:38:962 INFO  Listening binary connections on 0.0.0.0:2424 (protocol v.28, socket=default) [OServerNetworkListener]
+2015-07-10 18:05:38:965 INFO  Listening http connections on 0.0.0.0:2480 (protocol v.10, socket=default) [OServerNetworkListener]
+2015-07-10 18:05:38:986 INFO  Installing dynamic plugin 'studio-2.0.zip'... [OServerPluginManager]
+2015-07-10 18:05:39:083 INFO  Installing GREMLIN language v.2.6.0 - graph.pool.max=50 [OGraphServerHandler]
+2015-07-10 18:05:39:084 INFO  [OVariableParser.resolveVariables] Error on resolving property: distributed [orientechnologies]
+2015-07-10 18:05:39:085 INFO  Installing Script interpreter. WARN: authenticated clients can execute any kind of code into the server by using the following allowed languages: [sql] [OServerSideScriptInterpreter]
+2015-07-10 18:05:39:085 INFO  OrientDB Server v2.0.11 is active. [OServer]
+2015-07-10 18:06:14:391 WARNING {db=homeclowd} segment file 'database.ocf' was not closed correctly last time [OSingleFileSegment]
+2015-07-10 18:06:14:469 WARNING {db=homeclowd} Storage homeclowd was not closed properly. Will try to restore from write ahead log. [OLocalPaginatedStorage]
+2015-07-10 18:06:14:470 INFO  {db=homeclowd} Looking for last checkpoint... [OLocalPaginatedStorage]
+2015-07-10 18:06:14:473 INFO  {db=homeclowd} FULL checkpoint found. [OLocalPaginatedStorage]
+2015-07-10 18:06:14:475 INFO  {db=homeclowd} Data restore procedure from full checkpoint is started. Restore is performed from LSN OLogSequenceNumber{segment=0, position=353388} [OLocalPaginatedStorage]
+2015-07-10 18:06:14:477 WARNING {db=homeclowd} Record com.orientechnologies.orient.core.storage.impl.local.paginated.wal.OCheckpointEndRecord{lsn=OLogSequenceNumber{segment=0, position=353416}} will be skipped during data restore. [OLocalPaginatedStorage]
+2015-07-10 18:06:14:478 WARNING {db=homeclowd} Non tx operation was used during data modification we will need index rebuild. [OLocalPaginatedStorage]
+2015-07-10 18:06:14:505 INFO  {db=homeclowd} Storage data restore was completed [OLocalPaginatedStorage]
+2015-07-10 18:06:14:686 INFO  {db=homeclowd} Wait till indexes restore after crash was finished. [OIndexManagerShared]
+2015-07-10 18:06:14:721 INFO  {db=homeclowd} Index dictionary is not automatic index and will be added as is. [OIndexManagerShared$RecreateIndexesTask]
+2015-07-10 18:06:14:723 SEVERE {db=homeclowd}  [OIndexDictionary]
+2015-07-10 18:06:14:752 INFO  {db=homeclowd} Index dictionary was added in DB index list. [OIndexManagerShared$RecreateIndexesTask]
+2015-07-10 18:06:14:755 INFO  {db=homeclowd} Start creation of index ORole.name [OIndexManagerShared$RecreateIndexesTask]
+2015-07-10 18:06:14:756 INFO  {db=homeclowd} Index ORole.name was successfully created and rebuild is going to be started. [OIndexManagerShared$RecreateIndexesTask]
+2015-07-10 18:06:14:758 INFO  {db=homeclowd} - Rebuilding index homeclowd.ORole.name (estimated 3 items)... [OIndexRebuildOutputListener]
+2015-07-10 18:06:14:768 INFO  {db=homeclowd} --> OK, indexed 3 items in 10 ms [OIndexRebuildOutputListener]
+2015-07-10 18:06:14:773 INFO  {db=homeclowd} Rebuild of ORole.name index was successfully finished. [OIndexManagerShared$RecreateIndexesTask]
+2015-07-10 18:06:14:773 INFO  {db=homeclowd} Start creation of index OUser.name [OIndexManagerShared$RecreateIndexesTask]
+2015-07-10 18:06:14:775 INFO  {db=homeclowd} Index OUser.name was successfully created and rebuild is going to be started. [OIndexManagerShared$RecreateIndexesTask]
+2015-07-10 18:06:14:777 INFO  {db=homeclowd} - Rebuilding index homeclowd.OUser.name (estimated 3 items)... [OIndexRebuildOutputListener]
+2015-07-10 18:06:14:783 INFO  {db=homeclowd} --> OK, indexed 3 items in 5 ms [OIndexRebuildOutputListener]
+2015-07-10 18:06:14:788 INFO  {db=homeclowd} Rebuild of OUser.name index was successfully finished. [OIndexManagerShared$RecreateIndexesTask]
+2015-07-10 18:06:14:804 INFO  {db=homeclowd} 3 indexes were restored successfully, 0 errors [OIndexManagerShared$RecreateIndexesTask]
+2015-07-10 18:06:14:805 INFO  {db=homeclowd} Indexes restore after crash was finished. [OIndexManagerShared]
+2015-07-10 18:10:24:416 INFO  Creating database plocal:/Users/ramazan/Dev/Projects/homeclowd/db/databases/homecloud [OServerCommandPostDatabase]
+2015-07-10 18:10:39:573 SEVERE {db=homeclowd} Internal server error:
+com.orientechnologies.orient.core.index.sbtree.local.OSBTreeException: Error during delete of sbtree with name null
+--> java.lang.NullPointerException [ONetworkProtocolHttpDb]
+2015-07-10 18:10:48:810 SEVERE Internal server error:
+com.orientechnologies.orient.core.exception.OStorageException: Storage homeclowd is not opened. [ONetworkProtocolHttpDb]
+2015-07-10 18:13:58:508 SEVERE Internal server error:
+com.orientechnologies.orient.core.exception.OStorageException: Storage homeclowd is not opened. [ONetworkProtocolHttpDb]
+2015-07-10 18:14:38:242 SEVERE Internal server error:
+com.orientechnologies.orient.core.exception.OStorageException: Storage homeclowd is not opened. [ONetworkProtocolHttpDb]
+2015-07-10 18:21:48:029 SEVERE Internal server error:
+com.orientechnologies.orient.core.exception.OStorageException: Storage homeclowd is not opened. [ONetworkProtocolHttpDb]
+2015-07-10 18:22:54:081 SEVERE Internal server error:
+com.orientechnologies.orient.core.exception.OStorageException: Storage homeclowd is not opened. [ONetworkProtocolHttpDb]
+2015-07-10 18:23:06:180 SEVERE Internal server error:
+com.orientechnologies.orient.core.exception.OStorageException: Storage homeclowd is not opened. [ONetworkProtocolHttpDb]
+2015-07-10 18:23:29:464 SEVERE Internal server error:
+com.orientechnologies.orient.core.exception.OStorageException: Storage homeclowd is not opened. [ONetworkProtocolHttpDb]Sent run-time exception to the client /127.0.0.1:56926: com.orientechnologies.orient.core.exception.OStorageException: Storage homeclowd is not opened.
+com.orientechnologies.orient.core.exception.OStorageException: Storage homeclowd is not opened.
+	at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.checkOpeness(OAbstractPaginatedStorage.java:1321)
+	at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.getClusterIdByName(OAbstractPaginatedStorage.java:866)
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.getClusterIdByName(ODatabaseDocumentTx.java:1149)
+	at com.orientechnologies.orient.core.metadata.OMetadataDefault.init(OMetadataDefault.java:174)
+	at com.orientechnologies.orient.core.metadata.OMetadataDefault.load(OMetadataDefault.java:77)
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.initAtFirstOpen(ODatabaseDocumentTx.java:2687)
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.open(ODatabaseDocumentTx.java:255)
+	at com.orientechnologies.orient.server.OServer.openDatabase(OServer.java:647)
+	at com.orientechnologies.orient.server.network.protocol.binary.ONetworkProtocolBinary.openDatabase(ONetworkProtocolBinary.java:652)
+	at com.orientechnologies.orient.server.network.protocol.binary.ONetworkProtocolBinary.executeRequest(ONetworkProtocolBinary.java:283)
+	at com.orientechnologies.orient.server.network.protocol.binary.OBinaryNetworkProtocolAbstract.execute(OBinaryNetworkProtocolAbstract.java:217)
+	at com.orientechnologies.common.thread.OSoftThread.run(OSoftThread.java:69)
+Sent run-time exception to the client /127.0.0.1:56929: com.orientechnologies.orient.core.exception.OStorageException: Storage homeclowd is not opened.
+com.orientechnologies.orient.core.exception.OStorageException: Storage homeclowd is not opened.
+	at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.checkOpeness(OAbstractPaginatedStorage.java:1321)
+	at com.orientechnologies.orient.core.storage.impl.local.OAbstractPaginatedStorage.getClusterIdByName(OAbstractPaginatedStorage.java:866)
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.getClusterIdByName(ODatabaseDocumentTx.java:1149)
+	at com.orientechnologies.orient.core.metadata.OMetadataDefault.init(OMetadataDefault.java:174)
+	at com.orientechnologies.orient.core.metadata.OMetadataDefault.load(OMetadataDefault.java:77)
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.initAtFirstOpen(ODatabaseDocumentTx.java:2687)
+	at com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx.open(ODatabaseDocumentTx.java:255)
+	at com.orientechnologies.orient.server.OServer.openDatabase(OServer.java:647)
+	at com.orientechnologies.orient.server.network.protocol.binary.ONetworkProtocolBinary.openDatabase(ONetworkProtocolBinary.java:652)
+	at com.orientechnologies.orient.server.network.protocol.binary.ONetworkProtocolBinary.executeRequest(ONetworkProtocolBinary.java:283)
+	at com.orientechnologies.orient.server.network.protocol.binary.OBinaryNetworkProtocolAbstract.execute(OBinaryNetworkProtocolAbstract.java:217)
+	at com.orientechnologies.common.thread.OSoftThread.run(OSoftThread.java:69)
+
+2015-07-10 18:27:38:808 INFO  Received signal: SIGINT [OSignalHandler]
