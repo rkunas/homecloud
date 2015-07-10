@@ -1,6 +1,6 @@
 package eu.kunas.homeclowd.backend.dao;
 
-import eu.kunas.homeclowd.common.model.HCUserEntity;
+import eu.kunas.homeclowd.common.model.entity.HCUserEntity;
 import eu.kunas.homeclowd.backend.util.Crypt;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

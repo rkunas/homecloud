@@ -1,6 +1,6 @@
 package eu.kunas.homeclowd.backend.dao;
 
-import eu.kunas.homeclowd.common.model.HCUserEntity;
+import eu.kunas.homeclowd.common.model.entity.HCUserEntity;
 import eu.kunas.homeclowd.backend.service.UserServiceImpl;
 import eu.kunas.homeclowd.common.SpringContext;
 import org.junit.Assert;

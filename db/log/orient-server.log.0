@@ -10,3 +10,4 @@
 2015-07-10 18:28:06:069 INFO  [OVariableParser.resolveVariables] Error on resolving property: distributed [orientechnologies]
 2015-07-10 18:28:06:070 INFO  Installing Script interpreter. WARN: authenticated clients can execute any kind of code into the server by using the following allowed languages: [sql] [OServerSideScriptInterpreter]
 2015-07-10 18:28:06:070 INFO  OrientDB Server v2.0.11 is active. [OServer]
+2015-07-10 19:04:06:314 INFO  Received signal: SIGINT [OSignalHandler]

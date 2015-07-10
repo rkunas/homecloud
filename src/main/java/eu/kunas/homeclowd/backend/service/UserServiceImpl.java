@@ -2,7 +2,7 @@ package eu.kunas.homeclowd.backend.service;
 
 import eu.kunas.homeclowd.backend.dao.UserDaoImpl;
 import eu.kunas.homeclowd.backend.util.Crypt;
-import eu.kunas.homeclowd.common.model.HCUserEntity;
+import eu.kunas.homeclowd.common.model.entity.HCUserEntity;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;

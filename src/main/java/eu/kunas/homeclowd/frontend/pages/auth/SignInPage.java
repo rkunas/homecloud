@@ -17,7 +17,7 @@
 package eu.kunas.homeclowd.frontend.pages.auth;
 
 
-import eu.kunas.homeclowd.common.dto.UserDto;
+import eu.kunas.homeclowd.common.model.dto.UserDto;
 import eu.kunas.homeclowd.frontend.template.LoginTemplatePage;
 import eu.kunas.homeclowd.frontend.util.ExactErrorLevelFilter;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;

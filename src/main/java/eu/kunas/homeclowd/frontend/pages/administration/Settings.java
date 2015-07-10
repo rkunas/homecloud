@@ -1,6 +1,6 @@
 package eu.kunas.homeclowd.frontend.pages.administration;
 
-import eu.kunas.homeclowd.common.model.HCConfigEntity;
+import eu.kunas.homeclowd.common.model.entity.HCConfigEntity;
 import eu.kunas.homeclowd.backend.service.ConfigServiceImpl;
 import eu.kunas.homeclowd.frontend.pages.MediaPage;
 import eu.kunas.homeclowd.frontend.template.TemplatePage;

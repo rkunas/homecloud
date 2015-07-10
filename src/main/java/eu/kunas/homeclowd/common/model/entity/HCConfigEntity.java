@@ -1,4 +1,4 @@
-package eu.kunas.homeclowd.common.model;
+package eu.kunas.homeclowd.common.model.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

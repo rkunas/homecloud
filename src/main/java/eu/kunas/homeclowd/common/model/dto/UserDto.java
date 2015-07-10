@@ -1,4 +1,4 @@
-package eu.kunas.homeclowd.common.dto;
+package eu.kunas.homeclowd.common.model.dto;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;

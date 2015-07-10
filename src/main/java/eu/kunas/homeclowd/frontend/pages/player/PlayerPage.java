@@ -1,6 +1,6 @@
 package eu.kunas.homeclowd.frontend.pages.player;
 
-import eu.kunas.homeclowd.common.dto.MediaDto;
+import eu.kunas.homeclowd.common.model.dto.MediaDto;
 import eu.kunas.homeclowd.backend.service.ConfigServiceImpl;
 import eu.kunas.homeclowd.frontend.template.TemplatePage;
 import org.apache.wicket.markup.html.basic.Label;

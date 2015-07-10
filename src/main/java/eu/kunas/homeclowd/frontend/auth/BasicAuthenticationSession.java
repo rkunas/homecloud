@@ -16,7 +16,7 @@
  */
 package eu.kunas.homeclowd.frontend.auth;
 
-import eu.kunas.homeclowd.common.model.HCUserEntity;
+import eu.kunas.homeclowd.common.model.entity.HCUserEntity;
 import eu.kunas.homeclowd.backend.service.UserServiceImpl;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.authroles.authorization.strategies.role.Roles;

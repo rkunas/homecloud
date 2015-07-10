@@ -1,6 +1,6 @@
 package eu.kunas.homeclowd.backend.dao;
 
-import eu.kunas.homeclowd.common.model.HCConfigEntity;
+import eu.kunas.homeclowd.common.model.entity.HCConfigEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

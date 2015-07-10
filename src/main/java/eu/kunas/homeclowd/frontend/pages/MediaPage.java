@@ -1,6 +1,6 @@
 package eu.kunas.homeclowd.frontend.pages;
 
-import eu.kunas.homeclowd.common.dto.MediaDto;
+import eu.kunas.homeclowd.common.model.dto.MediaDto;
 import eu.kunas.homeclowd.backend.service.FilesFolderServiceImpl;
 import eu.kunas.homeclowd.frontend.pages.player.PlayerPage;
 import eu.kunas.homeclowd.frontend.pages.player.StlviewerPage;

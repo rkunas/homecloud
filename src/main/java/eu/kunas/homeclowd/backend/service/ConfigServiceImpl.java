@@ -1,7 +1,7 @@
 package eu.kunas.homeclowd.backend.service;
 
 import eu.kunas.homeclowd.backend.dao.ConfigDaoImpl;
-import eu.kunas.homeclowd.common.model.HCConfigEntity;
+import eu.kunas.homeclowd.common.model.entity.HCConfigEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

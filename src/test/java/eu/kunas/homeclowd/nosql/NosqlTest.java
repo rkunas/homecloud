@@ -1,7 +1,6 @@
 package eu.kunas.homeclowd.nosql;
 
 import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
-import eu.kunas.homeclowd.common.model.HCUserEntity;
 import org.junit.Test;
 
 /**
@@ -11,11 +10,11 @@ public class NosqlTest {
 
     @Test
     public void createDataOnNoSql(){
-        OObjectDatabaseTx db = new OObjectDatabaseTx ("remote:localhost/homeclowd").open("root", "-_-");
+        OObjectDatabaseTx db = new OObjectDatabaseTx ("remote:localhost/homecloud").open("root", "-_-");
 
-        db.getEntityManager().registerEntityClasses("eu.kunas.homeclowd.common");
+        db.getEntityManager().registerEntityClasses("eu.kunas.homeclowd.common.model");
 
-        db.open("root","-_-");
+        db.open("root", "-_-");
 
         db.drop();
     }
