@@ -1,6 +1,7 @@
 package eu.kunas.homeclowd.nosql;
 
 import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -9,6 +10,7 @@ import org.junit.Test;
 public class NosqlTest {
 
     @Test
+    @Ignore
     public void createDataOnNoSql(){
         OObjectDatabaseTx db = new OObjectDatabaseTx ("remote:localhost/homecloud").open("root", "-_-");
 
