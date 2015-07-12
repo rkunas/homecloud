@@ -44,7 +44,8 @@ OrientDB we want to use NoSQL instead of PostgreSQL
 - Bootstrap 3.3.5
 - Spring Framework 4.1.6
 - Hibernate 5.1
-- MaryTTS Speech Engine 5.2-SNAPSHOT (build by our jenkins) 
+- MaryTTS Text to Speech Engine 5.2-SNAPSHOT (build by our jenkins) 
+- Sphinx4 Speech to Text Engine 1.0-SNAPSHOT (build by our jenkins)
 
 ###4.0 Installation Instructions
 Homcloud needs PostgreSQL 9.X Database for its Administration Data.
