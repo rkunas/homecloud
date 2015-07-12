@@ -12,6 +12,7 @@ import eu.kunas.homeclowd.frontend.pages.profile.DetailsPage;
 import eu.kunas.homeclowd.frontend.pages.profile.PasswordRenewPage;
 import eu.kunas.homeclowd.frontend.pages.profile.ProfileDashboardPage;
 import eu.kunas.homeclowd.frontend.resource.AudioProducerResource;
+import eu.kunas.homeclowd.frontend.resource.FileUploadResource;
 import eu.kunas.homeclowd.frontend.resource.StlProducerResource;
 import eu.kunas.homeclowd.frontend.resource.VideoProducerResource;
 import eu.kunas.homeclowd.backend.service.ConfigServiceImpl;
@@ -89,6 +90,19 @@ public class WicketApplication extends AuthenticatedWebApplication {
         };
 
         mountResource("/audio?audio=${audio}", audioResourceReference);
+
+        ResourceReference fileUploadResourceReference = new ResourceReference("fileUploadResource") {
+            FileUploadResource fileUploadResource = new FileUploadResource();
+
+            @Override
+            public IResource getResource() {
+                inj.inject(fileUploadResource);
+
+                return fileUploadResource;
+            }
+        };
+
+        mountResource("/fileupload?uploadfolder=${uploadfolder}",fileUploadResourceReference);
 
         ResourceReference stlResourceReference = new ResourceReference("stlProducer") {
             StlProducerResource stlProducerResource = new StlProducerResource();

@@ -4,34 +4,54 @@
 <wicket:head>
     <title>HOMECLOUD - Media</title>
 
+    <link rel="stylesheet" href="dropzone/dropzone.min.css" />
+    <script src="dropzone/dropzone.min.js" ></script>
+
     <script>
-
-
+            Dropzone.options.mediaDropzone = {
+                maxFilesize: 3000, // MB
+                init: function () {
+                    // Set up any event handlers
+                    this.on('complete', function () {
+                        if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                            location.reload();
+                        }
+                    });
+                }
+            }
     </script>
 </wicket:head>
 <wicket:extend>
+    <div class="container">
+        <div wicket:id="folder" class="alert alert-success" role="alert">
+        </div>
+        <table class="table table-condensed" style="margin-bottom: 0px" wicket:id="medias" id="medias">
 
-    <div wicket:id="folder" class="alert alert-success" role="alert">
+            <tr>
+                <td wicket:id="type" style="width: 100px;"></td>
+                <td wicket:id="description" style="width: 90%"></td>
+                <td wicket:id="size" style="min-width: 150px"></td>
+                <td style="width:200px">
+                    <input type="button" class="btn btn-small btn-primary btn-custom" wicket:id="downloadButton"
+                           value="Download"/>
+                    <input type="submit" class="btn btn-small btn-primary btn-custom" wicket:id="viewFolderButton"
+                           value="View"/>
+                    <input type="submit" class="btn btn-small btn-primary btn-custom" wicket:id="playVideoButton"
+                           value="Play"/>
+                    <input type="submit" class="btn btn-small btn-primary btn-custom" wicket:id="playStlButton"
+                           value="View 3D"/>
+                </td>
+            </tr>
+        </table>
+
+        <form id="mediaDropzone" wicket:id="mediaDropzone" action="fileupload" class="dropzone">
+
+        </form>
+        <br />
+        <br />
+        <br />
+        <br />
     </div>
-    <table class="table table-condensed" style="margin-bottom: 0px" wicket:id="medias" id="medias">
-
-        <tr>
-            <td wicket:id="type" style="width: 100px;"></td>
-            <td wicket:id="description" style="width: 90%"></td>
-            <td wicket:id="size" style="min-width: 150px"></td>
-            <td style="width:200px">
-                <input type="button" class="btn btn-small btn-primary btn-custom" wicket:id="downloadButton"
-                       value="Download"/>
-                <input type="submit" class="btn btn-small btn-primary btn-custom" wicket:id="viewFolderButton"
-                       value="View"/>
-                <input type="submit" class="btn btn-small btn-primary btn-custom" wicket:id="playVideoButton"
-                       value="Play"/>
-                <input type="submit" class="btn btn-small btn-primary btn-custom" wicket:id="playStlButton"
-                       value="View 3D"/>
-            </td>
-        </tr>
-    </table>
-
 </wicket:extend>
 </body>
 </html>
