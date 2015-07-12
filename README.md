@@ -32,9 +32,11 @@ OrientDB we want to use NoSQL instead of PostgreSQL
 - File Upload Dropzone 
 
 ###2.2. Next Features to be implemented
-- Spring Boot Integration
+- Delete Files and Folders
+- Create Folders
 
 ###2.3. Backlog Features
+- Spring Boot Integration
 - Separate User Folder
 
 ###3.0 Technologies
