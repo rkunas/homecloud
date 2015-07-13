@@ -37,6 +37,8 @@ OrientDB we want to use NoSQL instead of PostgreSQL
 
 ###2.3. Backlog Features
 - Spring Boot Integration
+- Spring Security Integration
+- Restructuring for SubModules
 - Separate User Folder
 
 ###3.0 Technologies
