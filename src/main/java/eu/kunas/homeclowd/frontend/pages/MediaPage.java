@@ -60,7 +60,17 @@ public class MediaPage extends TemplatePage {
             @Override
             protected void populateItem(ListItem<MediaDto> item) {
                 item.add(new Label("description", new PropertyModel(item.getModel(), "description")));
-                item.add(new Label("type", new PropertyModel(item.getModel(), "type")));
+
+                Label type = new Label("type") ;
+
+                if(item.getModel().getObject().getType().equals("Folder")){
+                   type.add(AttributeModifier.replace("class","glyphicon glyphicon-folder-close"));
+                }
+                if(item.getModel().getObject().getType().equals("File")){
+                    type.add(AttributeModifier.replace("class","glyphicon glyphicon-file"));
+                }
+
+                item.add(type);
                 item.add(new Label("size", new PropertyModel<Long>(item.getModel(), "size")) {
                     @Override
                     public void onComponentTagBody(MarkupStream markupStream, ComponentTag openTag) {
