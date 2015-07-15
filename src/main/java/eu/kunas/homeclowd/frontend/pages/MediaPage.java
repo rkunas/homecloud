@@ -61,7 +61,7 @@ public class MediaPage extends TemplatePage {
             protected void populateItem(ListItem<MediaDto> item) {
                 item.add(new Label("description", new PropertyModel(item.getModel(), "description")));
 
-                Label type = new Label("type") ;
+                Label type = new Label("type");
 
                 if(item.getModel().getObject().getType().equals("Folder")){
                    type.add(AttributeModifier.replace("class","glyphicon glyphicon-folder-close"));
