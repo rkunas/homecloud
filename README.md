@@ -10,7 +10,7 @@ The smartest cloud ever.
 <img src="http://81.169.224.34:8090/download/attachments/9961474/Bildschirmfoto%202015-07-08%20um%2020.21.29.png?version=1&modificationDate=1436379725233&api=v2"/>
 
 ## 1. Build Information
-- travis-ci.org 
+Homecloud is build by travis-ci.org on each push, you can see the curent state
 [![Build Status](https://travis-ci.org/rkunas/homecloud.svg?branch=master)](https://travis-ci.org/rkunas/homecloud)
 
 ##2. Folder and Package Explanation:
