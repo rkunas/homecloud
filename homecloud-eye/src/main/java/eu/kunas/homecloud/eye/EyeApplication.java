@@ -1,6 +1,7 @@
 package eu.kunas.homecloud.eye;
 
 import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamMotionDetector;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
@@ -27,6 +28,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -170,6 +172,32 @@ public class EyeApplication extends Application {
 
         bottomCameraControlPane.setDisable(false);
         btnCamreaStart.setDisable(true);
+
+
+        Thread motionThread = new Thread(new Runnable() {
+            public void run() {
+                WebcamMotionDetector detector = new WebcamMotionDetector(webcam, 255, 1000);
+                detector.setInterval(1000);
+                detector.start();
+
+                while (true) {
+
+                    if (detector.isMotion()) {
+                        System.out.print("Motion detected");
+                    } else {
+                       System.out.println("No Motion");
+                    }
+
+                    try {
+                        Thread.sleep(100 * 2);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        motionThread.setDaemon(true);
+        motionThread.start();
     }
 
     protected void startWebCamStream() {
