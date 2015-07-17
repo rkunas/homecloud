@@ -10,16 +10,20 @@ The cloud with new technologies.
 <img src="http://81.169.224.34:8090/download/attachments/9961474/Bildschirmfoto%202015-07-08%20um%2020.21.29.png?version=1&modificationDate=1436379725233&api=v2"/>
 
 ##1. Folder and Package Explanation:
-###1.1. Folder src 
-Folder of Homecloud's Main Source
+###1.1. Folder homecloud-server 
+Homecloud Server where the *.war is created
 
 ####1.1.1. Packages
 - backend: Source of Backend like Save Data to DB
 - common: Source of Backend and Frontend like Model, Entity, Dto's
 - frontend: Source of Frontend like UI Logik  
 
-###1.2. Folder db
-OrientDB we want to use NoSQL instead of PostgreSQL
+###1.2. Folder homecloud-eye
+Homcloud Eye is an Tool which records youre webcam and publishs it to the cloud. Usefull for survailance.
+
+###1.3 Folder db
+Where going to switch from PostgreSQL DB to a NoSQL Database.
+
 ##2. Features
 ###2.1. Current Features:
 - File Browsing
@@ -35,7 +39,6 @@ OrientDB we want to use NoSQL instead of PostgreSQL
 - Delete Files and Folders
 - Create Folders
 - Rename Files and Folders
-
 
 ###2.3. Backlog Features
 - Spring Boot Integration
