@@ -1,7 +1,7 @@
 # Homecloud
 
 Youre Homecloud written in Java. Possibilitiy for a new ecosystem of a private cloud.
-The cloud with new technologies.
+The smartest cloud ever. 
 
 <img src="http://81.169.224.34:8090/download/attachments/9961474/Bildschirmfoto%202015-07-07%20um%2019.08.00.png?version=1&modificationDate=1436288899390&api=v2"/>
 
