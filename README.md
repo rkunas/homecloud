@@ -12,8 +12,6 @@ The smartest cloud ever.
 ## 1. Build Information
 Homecloud is build by travis-ci.org on each push, you can see the curent state
 
-[![Build Status](https://travis-ci.org/rkunas/homecloud.svg?branch=master)](https://travis-ci.org/rkunas/homecloud)
-
 ##2. Folder and Package Explanation:
 ###2.2. Folder homecloud-server 
 Homecloud Server where the *.war is created
