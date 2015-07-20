@@ -29,7 +29,10 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.WritableRaster;
 import java.io.IOException;
 
 /**
@@ -88,6 +91,8 @@ public class EyeApplication extends Application {
         createCameraControls();
         root.setBottom(bottomCameraControlPane);
 
+        webcam.setViewSize(new Dimension(640, 480));
+
         primaryStage.setScene(new Scene(root));
         primaryStage.setHeight(700);
         primaryStage.setWidth(600);
@@ -113,6 +118,7 @@ public class EyeApplication extends Application {
         imgWebCamCapturedImage.prefHeight(height);
         imgWebCamCapturedImage.prefWidth(width);
         imgWebCamCapturedImage.setPreserveRatio(true);
+        imgWebCamCapturedImage.setSmooth(false);
 
     }
 
@@ -173,32 +179,16 @@ public class EyeApplication extends Application {
         bottomCameraControlPane.setDisable(false);
         btnCamreaStart.setDisable(true);
 
-
-        Thread motionThread = new Thread(new Runnable() {
-            public void run() {
-                WebcamMotionDetector detector = new WebcamMotionDetector(webcam, 255, 1000);
-                detector.setInterval(1000);
-                detector.start();
-
-                while (true) {
-
-                    if (detector.isMotion()) {
-                        System.out.print("Motion detected");
-                    } else {
-                       System.out.println("No Motion");
-                    }
-
-                    try {
-                        Thread.sleep(100 * 2);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        motionThread.setDaemon(true);
-        motionThread.start();
     }
+
+    static BufferedImage deepCopy(BufferedImage bi) {
+        ColorModel cm = bi.getColorModel();
+        boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
+        WritableRaster raster = bi.copyData(null);
+        return new BufferedImage(cm, raster, isAlphaPremultiplied, null);
+    }
+
+
 
     protected void startWebCamStream() {
 
@@ -206,6 +196,7 @@ public class EyeApplication extends Application {
 
         Task<Void> task = new Task<Void>() {
 
+            public BufferedImage oldImage;
             @Override
             protected Void call() throws Exception {
 
@@ -216,12 +207,17 @@ public class EyeApplication extends Application {
                             Platform.runLater(new Runnable() {
 
                                 public void run() {
+
                                     Image mainiamge = SwingFXUtils.toFXImage(grabbedImage, null);
+
                                     imageProperty.set(mainiamge);
+
                                 }
                             });
 
                             grabbedImage.flush();
+
+
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -237,6 +233,20 @@ public class EyeApplication extends Application {
         th.start();
         imgWebCamCapturedImage.imageProperty().bind(imageProperty);
 
+    }
+
+    boolean imagesAreEqual(BufferedImage image1, BufferedImage image2) {
+        if (image1.getWidth() != image2.getWidth() || image1.getHeight() != image2.getHeight()) {
+            return false;
+        }
+        for (int x = 1; x < image2.getHeight(); x++) {
+            for (int y = 1; y < image2.getHeight(); y++) {
+                if (image1.getRGB(x, y) != image2.getRGB(x, y)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private void createCameraControls() {
