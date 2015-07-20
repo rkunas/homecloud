@@ -310,7 +310,7 @@
 
     </dependencies>
     <build>
-        <finalName>homeclowd</finalName>
+        <finalName>homecloud</finalName>
         <resources>
 
             <resource>
