@@ -7,17 +7,17 @@
     <script src="videojs/video.js"></script>
 </wicket:head>
 <wicket:extend>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-2 sidebar">
 
-            <ul class="nav nav-pills nav-stacked">
-                <li role="presentation"><a wicket:id="dashboardLink">Dashboard</a></li>
-                <li role="presentation"><a wicket:id="detailsLink">Details</a></li>
-                <li role="presentation"><a wicket:id="passwordLink">Password</a></li>
-            </ul>
-                </div>
-            <div class="col-md-10">
+                <ul class="nav nav-sidebar">
+                    <li role="presentation"><a wicket:id="dashboardLink">Dashboard</a></li>
+                    <li role="presentation"><a wicket:id="detailsLink">Details</a></li>
+                    <li role="presentation"><a wicket:id="passwordLink">Password</a></li>
+                </ul>
+            </div>
+            <div class=" col-md-10  main">
                 <wicket:child/>
             </div>
         </div>

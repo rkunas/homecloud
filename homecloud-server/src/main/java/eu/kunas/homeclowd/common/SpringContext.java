@@ -41,8 +41,6 @@ public class SpringContext {
         return dataSource;
     }
 
-
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
@@ -59,7 +57,6 @@ public class SpringContext {
         entityManagerFactoryBean.setJpaVendorAdapter(hibernateJpaVendorAdapter);
 
         return entityManagerFactoryBean ;
-
     }
 
     @Bean
