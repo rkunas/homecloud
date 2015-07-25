@@ -24,6 +24,7 @@ import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.bean.validation.PropertyValidator;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.StatelessForm;
 import org.apache.wicket.markup.html.form.TextField;
@@ -95,7 +96,7 @@ public class SignInPage extends LoginTemplatePage {
 
         });
 
-        StatelessForm form = new StatelessForm("loginForm") {
+        Form form = new StatelessForm("loginForm") {
             @Override
             protected void onSubmit() {
 

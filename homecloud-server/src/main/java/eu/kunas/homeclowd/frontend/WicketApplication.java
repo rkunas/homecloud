@@ -122,18 +122,8 @@ public class WicketApplication extends AuthenticatedWebApplication {
         new BeanValidationConfiguration().configure(this);
         getApplicationSettings().setDefaultMaximumUploadSize(Bytes.kilobytes(100));
 
-        configureBootstrap();
-
         setHeaderResponseDecorator(new JavaScriptToBucketResponseDecorator("footer-container"));
 
-        // IRequestCycleListener videoRequest = new VideoRequestCylceListener();
-
-        // getRequestCycleListeners().add(videoRequest);
-
-        //  setRootRequestMapper(new CryptoMapper(getRootRequestMapper(), this));
-    }
-
-    private void configureBootstrap() {
     }
 
     static class JavaScriptToBucketResponseDecorator implements IHeaderResponseDecorator {
