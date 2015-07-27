@@ -41,6 +41,10 @@ public class SilentRecorder {
             return;
         }
 
+        if(webcam.getImage()==null){
+            return;
+        }
+
         File file = new File("output" + j + ".mp4");
 
         writer = ToolFactory.makeWriter(file.getName());
