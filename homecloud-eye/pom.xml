@@ -32,6 +32,11 @@
             <artifactId>webcam-capture</artifactId>
             <version>0.3.11-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>xuggle</groupId>
+            <artifactId>xuggle-xuggler</artifactId>
+            <version>5.4</version>
+        </dependency>
     </dependencies>
 
 </project>

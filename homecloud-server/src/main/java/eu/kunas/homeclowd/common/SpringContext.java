@@ -3,18 +3,14 @@ package eu.kunas.homeclowd.common;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jmx.export.MBeanExporter;
-import org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource;
-import org.springframework.jmx.export.assembler.MetadataMBeanInfoAssembler;
-import org.springframework.jmx.export.naming.MetadataNamingStrategy;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import javax.persistence.EntityManagerFactory;
 
 /**
  * Created by ramazan on 29.04.15.
@@ -22,12 +18,14 @@ import javax.persistence.EntityManagerFactory;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(value = "eu.kunas.homeclowd")
+@EnableAsync
+@EnableScheduling
 public class SpringContext {
 
-   // @Bean(destroyMethod = "shutdownDb", initMethod = "startDb")
-   // public StarterOrientDb starterOrientDb(){
-   //     return new StarterOrientDb();
-   // }
+    // @Bean(destroyMethod = "shutdownDb", initMethod = "startDb")
+    // public StarterOrientDb starterOrientDb(){
+    //     return new StarterOrientDb();
+    // }
 
     @Bean
     public DriverManagerDataSource datasource() {
@@ -56,7 +54,7 @@ public class SpringContext {
         entityManagerFactoryBean.setDataSource(datasource());
         entityManagerFactoryBean.setJpaVendorAdapter(hibernateJpaVendorAdapter);
 
-        return entityManagerFactoryBean ;
+        return entityManagerFactoryBean;
     }
 
     @Bean

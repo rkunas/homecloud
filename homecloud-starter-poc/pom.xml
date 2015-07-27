@@ -8,7 +8,7 @@
     <artifactId>homecloud-starter-poc</artifactId>
     <groupId>eu.kunas.homecloud</groupId>
     <version>1.0-SNAPSHOT</version>
-
+    <name>HOMECLOUD-STARTER-POC</name>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
