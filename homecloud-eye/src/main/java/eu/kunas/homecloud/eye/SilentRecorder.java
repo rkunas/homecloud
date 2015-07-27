@@ -1,7 +1,6 @@
 package eu.kunas.homecloud.eye;
 
 import com.github.sarxos.webcam.Webcam;
-import com.github.sarxos.webcam.WebcamResolution;
 import com.xuggle.mediatool.IMediaWriter;
 import com.xuggle.mediatool.ToolFactory;
 import com.xuggle.xuggler.ICodec;
@@ -23,17 +22,15 @@ public class SilentRecorder {
     IMediaWriter writer;
     Dimension size;
 
-
     public void openCam(int i) {
 
         if (webcam == null) {
-            size = new Dimension(640,480);
+            size = new Dimension(640, 480);
             webcam = Webcam.getDefault();
             webcam.setViewSize(size);
             webcam.open(true);
         }
     }
-
 
     public void record(int j) throws Exception {
 
@@ -41,7 +38,7 @@ public class SilentRecorder {
             return;
         }
 
-        if(webcam.getImage()==null){
+        if (webcam.getImage() == null) {
             return;
         }
 
@@ -50,7 +47,6 @@ public class SilentRecorder {
         writer = ToolFactory.makeWriter(file.getName());
 
         writer.addVideoStream(0, 0, ICodec.ID.CODEC_ID_H264, size.width, size.height);
-
 
         long start = System.currentTimeMillis();
 
