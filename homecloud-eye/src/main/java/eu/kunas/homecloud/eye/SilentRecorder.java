@@ -12,15 +12,16 @@ import com.xuggle.xuggler.video.IConverter;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.time.LocalDateTime;
 
 /**
  * Created by ramazan on 27.07.15.
  */
 public class SilentRecorder {
 
-    Webcam webcam;
-    IMediaWriter writer;
-    Dimension size;
+    private Webcam webcam;
+    private IMediaWriter writer;
+    private Dimension size;
 
     public void openCam(int i) {
 
@@ -30,6 +31,27 @@ public class SilentRecorder {
             webcam.setViewSize(size);
             webcam.open(true);
         }
+    }
+
+    public StringBuffer createFilename(){
+        LocalDateTime time = LocalDateTime.now();
+
+        StringBuffer filename = new StringBuffer();
+        filename.append("video-");
+        filename.append(time.getDayOfMonth());
+        filename.append("-");
+        filename.append(time.getMonth());
+        filename.append("-");
+        filename.append(time.getYear());
+        filename.append("_");
+        filename.append(time.getHour());
+        filename.append("-");
+        filename.append(time.getMinute());
+        filename.append("-");
+        filename.append(time.getSecond());
+        filename.append(".mp4");
+
+        return filename;
     }
 
     public void record(int j) throws Exception {
@@ -42,7 +64,7 @@ public class SilentRecorder {
             return;
         }
 
-        File file = new File("output" + j + ".mp4");
+        File file = new File(createFilename().toString() );
 
         writer = ToolFactory.makeWriter(file.getName());
 
@@ -51,8 +73,6 @@ public class SilentRecorder {
         long start = System.currentTimeMillis();
 
         for (int i = 0; i < 1000; i++) {
-
-            System.out.println("Capture frame " + i);
 
             BufferedImage capturedImage = webcam.getImage();
             if (capturedImage != null) {
@@ -68,11 +88,8 @@ public class SilentRecorder {
                 // 10 FPS
                 Thread.sleep(10);
             }
-
         }
 
         writer.close();
-
-
     }
 }
