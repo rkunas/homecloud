@@ -20,7 +20,7 @@ public class MainWindow extends JFrame {
 
     private JButton startCam = new JButton("Start Cam");
     private JButton silentMode = new JButton("Silent Mode");
-
+    private JTextField folder = new JTextField();
     private Thread silentThead;
 
     public MainWindow() {
@@ -81,11 +81,14 @@ public class MainWindow extends JFrame {
         add(panel);
         add(startCam);
         add(silentMode);
-
+        folder.setSize(new Dimension(150, 30));
+        folder.setPreferredSize(new Dimension(150,30));
+        add(folder);
         setTitle("EyeApplication");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
+        setBounds(100,100,370,500);
 
     }
 
