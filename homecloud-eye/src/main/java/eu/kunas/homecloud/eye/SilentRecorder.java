@@ -23,7 +23,14 @@ public class SilentRecorder {
     private IMediaWriter writer;
     private Dimension size;
 
-    public void openCam(int i) {
+    private String folder;
+
+    public void init(String folder) {
+        this.folder = folder;
+        System.out.println(folder);
+    }
+
+    public void openCam() {
 
         if (webcam == null) {
             size = new Dimension(640, 480);
@@ -33,7 +40,7 @@ public class SilentRecorder {
         }
     }
 
-    public StringBuffer createFilename(){
+    public StringBuffer createFilename() {
         LocalDateTime time = LocalDateTime.now();
 
         StringBuffer filename = new StringBuffer();
@@ -54,7 +61,7 @@ public class SilentRecorder {
         return filename;
     }
 
-    public void record(int j) throws Exception {
+    public void record() throws Exception {
 
         if (webcam == null) {
             return;
@@ -64,15 +71,15 @@ public class SilentRecorder {
             return;
         }
 
-        File file = new File(createFilename().toString() );
+        File file = new File(folder + createFilename().toString());
 
-        writer = ToolFactory.makeWriter(file.getName());
+        writer = ToolFactory.makeWriter(file.getAbsolutePath());
 
         writer.addVideoStream(0, 0, ICodec.ID.CODEC_ID_H264, size.width, size.height);
 
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
 
             BufferedImage capturedImage = webcam.getImage();
             if (capturedImage != null) {

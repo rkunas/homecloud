@@ -51,24 +51,22 @@ public class MainWindow extends JFrame {
                     public void run() {
 
                         SilentRecorder recorder = new SilentRecorder();
-                        int i = 0;
                         while (true) {
 
                             try {
-                                recorder.openCam(i);
-                                recorder.record(i);
-                            } catch (Exception e1) {
-                                System.out.println(e1.getMessage());
-                            }
-                            i++;
+                                String f = folder.getText();
 
+                                recorder.init(f);
+                                recorder.openCam();
+                                recorder.record();
+                            } catch (Exception e1) {
+                                // Do nothing.
+                            }
                         }
                     }
                 };
 
                 silentThead.start();
-
-
             }
         });
 
@@ -82,13 +80,13 @@ public class MainWindow extends JFrame {
         add(startCam);
         add(silentMode);
         folder.setSize(new Dimension(150, 30));
-        folder.setPreferredSize(new Dimension(150,30));
+        folder.setPreferredSize(new Dimension(150, 30));
         add(folder);
         setTitle("EyeApplication");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
-        setBounds(100,100,370,500);
+        setBounds(100, 100, 370, 500);
 
     }
 
