@@ -30,5 +30,6 @@
         <module>homecloud-server</module>
         <module>homecloud-eye</module>
         <module>homecloud-starter-poc</module>
+        <module>homecloud-eye-parent</module>
     </modules>
 </project>

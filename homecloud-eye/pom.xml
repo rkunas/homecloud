@@ -29,9 +29,9 @@
     <name>HOMECLOUD-EYE</name>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.5.RELEASE</version>
+        <groupId>eu.kunas.homecloud</groupId>
+        <artifactId>homecloud-eye-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <build>
