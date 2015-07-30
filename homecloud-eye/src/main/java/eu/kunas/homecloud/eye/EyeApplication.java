@@ -16,7 +16,9 @@ import javax.swing.*;
 public class EyeApplication extends JFrame {
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(EyeApplication.class, args);
+        SpringApplication app = new SpringApplication(EyeApplication.class);
+        app.setShowBanner(false);
+        app.run(args);
     }
 
     @Bean

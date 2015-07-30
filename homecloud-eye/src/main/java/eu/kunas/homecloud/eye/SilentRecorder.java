@@ -8,6 +8,7 @@ import com.xuggle.xuggler.IPixelFormat;
 import com.xuggle.xuggler.IVideoPicture;
 import com.xuggle.xuggler.video.ConverterFactory;
 import com.xuggle.xuggler.video.IConverter;
+import org.springframework.boot.CommandLineRunner;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,7 +18,13 @@ import java.time.LocalDateTime;
 /**
  * Created by ramazan on 27.07.15.
  */
-public class SilentRecorder {
+public class SilentRecorder implements CommandLineRunner {
+
+
+    @Override
+    public void run(String... strings) throws Exception {
+
+    }
 
     private Webcam webcam;
     private IMediaWriter writer;
