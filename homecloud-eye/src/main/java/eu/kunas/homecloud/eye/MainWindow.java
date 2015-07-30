@@ -3,6 +3,7 @@ package eu.kunas.homecloud.eye;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +16,8 @@ import java.util.*;
  */
 public class MainWindow extends JFrame {
 
+    @Autowired
+    private SilentRecorder silentRecorder;
 
     private java.util.List<WebcamPanel> panels = new ArrayList<WebcamPanel>();
 
@@ -50,15 +53,14 @@ public class MainWindow extends JFrame {
                     @Override
                     public void run() {
 
-                        SilentRecorder recorder = new SilentRecorder();
                         while (true) {
 
                             try {
                                 String f = folder.getText();
 
-                                recorder.init(f);
-                                recorder.openCam();
-                                recorder.record();
+                                silentRecorder.init(f);
+                                silentRecorder.openCam();
+                                silentRecorder.record();
                             } catch (Exception e1) {
                                 // Do nothing.
                             }
