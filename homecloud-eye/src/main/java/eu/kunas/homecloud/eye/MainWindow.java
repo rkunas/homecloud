@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Created by ramazan on 28.07.15.
@@ -70,13 +70,20 @@ public class MainWindow extends JFrame {
             }
         });
 
-        Webcam webcam = Webcam.getWebcams().get(0);
+        java.util.List<Webcam> webcams = Webcam.getWebcams();
 
-        webcam.setViewSize(WebcamResolution.QVGA.getSize());
-        WebcamPanel panel = new WebcamPanel(webcam, false);
 
-        panels.add(panel);
-        add(panel);
+        if(!webcams.isEmpty()){
+            Webcam webcam = webcams.get(0);
+            webcam.setViewSize(WebcamResolution.QVGA.getSize());
+            WebcamPanel panel = new WebcamPanel(webcam, false);
+            panels.add(panel);
+            add(panel);
+        }
+
+
+
+
         add(startCam);
         add(silentMode);
         folder.setSize(new Dimension(150, 30));
