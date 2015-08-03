@@ -9,10 +9,12 @@ import com.xuggle.xuggler.IVideoPicture;
 import com.xuggle.xuggler.video.ConverterFactory;
 import com.xuggle.xuggler.video.IConverter;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.scheduling.annotation.Async;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.nio.Buffer;
 import java.time.LocalDateTime;
 
 /**
@@ -24,6 +26,11 @@ public class SilentRecorder implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
+    }
+
+    @Async
+    public void compareImage(BufferedImage img1, BufferedImage img2){
+        ImageDiffUtil.diff(img1,img2);
     }
 
     private Webcam webcam;
