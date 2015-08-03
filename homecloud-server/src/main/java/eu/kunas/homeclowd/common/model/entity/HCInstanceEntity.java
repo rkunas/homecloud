@@ -25,7 +25,7 @@ public class HCInstanceEntity implements Serializable {
     @Column(name = "PORT")
     private String port;
 
-    @Column(name = "context")
+    @Column(name = "CONTEXT")
     private String context;
 
     public HCInstanceEntity() {
