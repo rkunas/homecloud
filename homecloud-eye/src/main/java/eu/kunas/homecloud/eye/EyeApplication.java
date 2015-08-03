@@ -9,11 +9,21 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class EyeApplication {
 
     public static void main(String[] args) throws Exception {
-        SpringApplicationBuilder builder = new SpringApplicationBuilder(EyeModeWindow.class);
 
-        builder.headless(false);
+        Boolean silent = Boolean.FALSE;
 
-        builder.run(args);
+        for (String arg : args){
+            if(arg.contains("silent")){
+                silent = Boolean.TRUE;
+            }
+        }
+        if(!silent) {
+            SpringApplicationBuilder builder = new SpringApplicationBuilder(EyeModeWindow.class);
+
+            builder.headless(false);
+
+            builder.run(args);
+        }
     }
 
 
