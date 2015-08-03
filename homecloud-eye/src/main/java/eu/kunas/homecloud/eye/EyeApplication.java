@@ -2,6 +2,7 @@ package eu.kunas.homecloud.eye;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
@@ -11,14 +12,15 @@ import javax.swing.*;
 /**
  * Created by ramazan on 16.07.15.
  */
-@Controller
-@EnableAutoConfiguration
-public class EyeApplication extends JFrame {
+
+public class EyeApplication {
 
     public static void main(String[] args) throws Exception {
-        SpringApplication app = new SpringApplication(EyeApplication.class);
-        app.setShowBanner(false);
-        app.run(args);
+        SpringApplicationBuilder builder = new SpringApplicationBuilder(EyeApplication.class);
+
+        builder.headless(false);
+
+        builder.run(args);
     }
 
     @Bean
@@ -27,7 +29,7 @@ public class EyeApplication extends JFrame {
     }
 
     @Bean
-    public SilentRecorder recorder(){
+    public SilentRecorder recorder() {
         return new SilentRecorder();
     }
 
