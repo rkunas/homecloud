@@ -12,12 +12,12 @@ public class EyeApplication {
 
         Boolean silent = Boolean.FALSE;
 
-        for (String arg : args){
-            if(arg.contains("silent")){
+        for (String arg : args) {
+            if (arg.contains("silent")) {
                 silent = Boolean.TRUE;
             }
         }
-        if(!silent) {
+        if (!silent) {
             SpringApplicationBuilder builder = new SpringApplicationBuilder(EyeModeWindow.class);
 
             builder.headless(false);
@@ -25,8 +25,6 @@ public class EyeApplication {
             builder.run(args);
         }
     }
-
-
 
 
 }
