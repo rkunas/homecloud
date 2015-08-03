@@ -23,6 +23,12 @@ public class EyeApplication {
             builder.headless(false);
 
             builder.run(args);
+        }else{
+            SpringApplicationBuilder builder = new SpringApplicationBuilder(EyeModeSilent.class);
+
+            builder.headless(true);
+
+            builder.run(args);
         }
     }
 

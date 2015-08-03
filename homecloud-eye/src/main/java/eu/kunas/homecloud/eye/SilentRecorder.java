@@ -25,7 +25,7 @@ public class SilentRecorder implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-
+        Thread.sleep(5000);
     }
 
     @Async
