@@ -1,5 +1,6 @@
 package eu.kunas.homecloud.eye;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
@@ -24,6 +25,8 @@ public class EyeApplication {
             builder.headless(false);
 
             builder.run(args);
+            
+            builder.context().getBean(MainWindow.class).init();
         }else{
             SpringApplicationBuilder builder = new SpringApplicationBuilder(EyeModeSilent.class);
 

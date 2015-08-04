@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.time.LocalDateTime;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by ramazan on 27.07.15.
@@ -46,7 +47,7 @@ public class Recorder implements CommandLineRunner {
         moves = ImageDiffUtil.diff(img1, img2);
     }
 
-    private Webcam webcam;
+    public Webcam webcam;
     private IMediaWriter writer;
     private Dimension size;
 

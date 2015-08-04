@@ -27,6 +27,9 @@ public class MainWindow extends JFrame {
     private Thread silentThead;
 
     public MainWindow() {
+    }
+    
+    public void init(){
 
         setLayout(new FlowLayout());
 
@@ -53,7 +56,7 @@ public class MainWindow extends JFrame {
                     @Override
                     public void run() {
                         silentRecorder.startRecord(folderTextField.getText());
-                        
+
                     }
                 };
 
@@ -61,19 +64,12 @@ public class MainWindow extends JFrame {
             }
         });
 
-        java.util.List<Webcam> webcams = Webcam.getWebcams();
+        //java.util.List<Webcam> webcams = Webcam.getWebcams();
+        silentRecorder.openCam();
 
-
-        if(!webcams.isEmpty()){
-            Webcam webcam = webcams.get(0);
-            webcam.setViewSize(WebcamResolution.QVGA.getSize());
-            WebcamPanel panel = new WebcamPanel(webcam, false);
-            panels.add(panel);
-            add(panel);
-        }
-
-
-
+        WebcamPanel panel = new WebcamPanel(silentRecorder.webcam, false);
+        panels.add(panel);
+        add(panel);
 
         add(startCam);
         add(silentMode);
@@ -85,8 +81,9 @@ public class MainWindow extends JFrame {
         pack();
         setVisible(true);
         setBounds(100, 100, 370, 500);
+        
+        panel.start();
 
     }
-
 
 }

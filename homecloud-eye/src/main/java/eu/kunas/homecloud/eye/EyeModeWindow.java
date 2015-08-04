@@ -9,11 +9,13 @@ public class EyeModeWindow {
 
     @Bean
     public MainWindow mainWindow() {
-        return new MainWindow();
+        MainWindow main = new MainWindow();
+        return main;
     }
 
     @Bean
     public Recorder recorder() {
-        return new Recorder();
+        Recorder rec = new Recorder();
+        return rec;
     }
 }
