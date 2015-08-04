@@ -13,7 +13,7 @@ public class EyeModeWindow {
     }
 
     @Bean
-    public SilentRecorder recorder() {
-        return new SilentRecorder();
+    public Recorder recorder() {
+        return new Recorder();
     }
 }

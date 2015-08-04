@@ -7,9 +7,8 @@ import org.springframework.context.annotation.Bean;
  */
 public class EyeModeSilent {
 
-
     @Bean
-    public SilentRecorder recorder() {
-        return new SilentRecorder();
+    public Recorder recorder() {
+        return new Recorder();
     }
 }

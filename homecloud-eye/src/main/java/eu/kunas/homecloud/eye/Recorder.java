@@ -19,13 +19,26 @@ import java.time.LocalDateTime;
 /**
  * Created by ramazan on 27.07.15.
  */
-public class SilentRecorder implements CommandLineRunner {
+public class Recorder implements CommandLineRunner {
 
     private double moves = 0;
 
     @Override
     public void run(String... strings) throws Exception {
 
+    }
+
+    @Async
+    public void startRecord(String folder) {
+        while (true) {
+            try {
+                init(folder);
+                openCam();
+                record();
+            } catch (Exception exc) {
+                // Do nothing.
+            }
+        }
     }
 
     @Async
@@ -77,6 +90,27 @@ public class SilentRecorder implements CommandLineRunner {
 
     private BufferedImage temp;
 
+    protected BufferedImage writeTime(BufferedImage image) {
+        Graphics2D gO = image.createGraphics();
+        gO.setColor(Color.WHITE);
+        gO.setFont(new Font("SansSerif", Font.BOLD, 18));
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        gO.drawString(localDateTime.getDayOfMonth()
+                + "."
+                + localDateTime.getMonthValue()
+                + "."
+                + localDateTime.getYear()
+                + " "
+                + localDateTime.getHour()
+                + ":"
+                + localDateTime.getMinute()
+                + ":"
+                + localDateTime.getSecond(), size.width - 190, size.height - 30);
+        return image;
+    }
+
     public void record() throws Exception {
 
         if (webcam == null) {
@@ -95,10 +129,13 @@ public class SilentRecorder implements CommandLineRunner {
 
         long start = System.currentTimeMillis();
 
-        int recordTimer = 0
-        
-        for (int i = 0; i < 10000; i++) {
+        int recordTimer = 0;
 
+        int frametimer = 0;
+
+        int pictimer = 1;
+
+        while (file.length() < 10000000) {
             BufferedImage capturedImage = webcam.getImage();
             if (capturedImage != null) {
                 BufferedImage image = ConverterFactory.convertToType(capturedImage, BufferedImage.TYPE_3BYTE_BGR);
@@ -107,25 +144,30 @@ public class SilentRecorder implements CommandLineRunner {
                     temp = image;
                 }
 
-                if (recordTimer == 20) {
+                // Compare every 15 Pictures
+                if (recordTimer == 15) {
                     compareImage(temp, image);
                     recordTimer = 0;
                     temp = image;
                 }
 
-                if(moves > 4.0){
-                    System.out.println("Aufnahme " + moves ) ;
+                if (moves > 2.0) {
+                    image = writeTime(image);
+                    System.out.println("Aufnahme " + moves);
+                    IConverter converter = ConverterFactory.createConverter(image, IPixelFormat.Type.YUV420P);
+
+                    IVideoPicture frame = converter.toPicture(image, pictimer * 2000);
+                    frame.setKeyFrame(frametimer == 0);
+                    frame.setQuality(0);
+
+                    writer.encodeVideo(0, frame);
+                    pictimer++;
+                } else {
+                    System.out.println("Keine Aufnahme " + moves);
                 }
-                
+
+                frametimer++;
                 recordTimer++;
-
-                IConverter converter = ConverterFactory.createConverter(image, IPixelFormat.Type.YUV420P);
-
-                IVideoPicture frame = converter.toPicture(image, (System.currentTimeMillis() - start) * 1000);
-                frame.setKeyFrame(i == 0);
-                frame.setQuality(0);
-
-                writer.encodeVideo(0, frame);
 
                 // 10 FPS
                 Thread.sleep(10);

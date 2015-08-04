@@ -17,7 +17,7 @@ import java.util.*;
 public class MainWindow extends JFrame {
 
     @Autowired
-    private SilentRecorder silentRecorder;
+    private Recorder silentRecorder;
 
     private java.util.List<WebcamPanel> panels = new ArrayList<WebcamPanel>();
 
@@ -52,19 +52,8 @@ public class MainWindow extends JFrame {
                 silentThead = new Thread() {
                     @Override
                     public void run() {
-
-                        while (true) {
-
-                            try {
-                                String folder = folderTextField.getText();
-
-                                silentRecorder.init(folder);
-                                silentRecorder.openCam();
-                                silentRecorder.record();
-                            } catch (Exception exc) {
-                                // Do nothing.
-                            }
-                        }
+                        silentRecorder.startRecord(folderTextField.getText());
+                        
                     }
                 };
 

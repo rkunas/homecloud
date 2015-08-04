@@ -1,11 +1,12 @@
 package eu.kunas.homecloud.eye;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
  * Created by ramazan on 16.07.15.
  */
-
+@SpringBootApplication
 public class EyeApplication {
 
     public static void main(String[] args) throws Exception {
