@@ -23,7 +23,7 @@ public class MainWindow extends JFrame {
 
     private JButton startCam = new JButton("Start Cam");
     private JButton silentMode = new JButton("Silent Mode");
-    private JTextField folder = new JTextField();
+    private JTextField folderTextField = new JTextField();
     private Thread silentThead;
 
     public MainWindow() {
@@ -56,12 +56,12 @@ public class MainWindow extends JFrame {
                         while (true) {
 
                             try {
-                                String f = folder.getText();
+                                String folder = folderTextField.getText();
 
-                                silentRecorder.init(f);
+                                silentRecorder.init(folder);
                                 silentRecorder.openCam();
                                 silentRecorder.record();
-                            } catch (Exception e1) {
+                            } catch (Exception exc) {
                                 // Do nothing.
                             }
                         }
@@ -88,9 +88,9 @@ public class MainWindow extends JFrame {
 
         add(startCam);
         add(silentMode);
-        folder.setSize(new Dimension(150, 30));
-        folder.setPreferredSize(new Dimension(150, 30));
-        add(folder);
+        folderTextField.setSize(new Dimension(150, 30));
+        folderTextField.setPreferredSize(new Dimension(150, 30));
+        add(folderTextField);
         setTitle("EyeApplication");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();

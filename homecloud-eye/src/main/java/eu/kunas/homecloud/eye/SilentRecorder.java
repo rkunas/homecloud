@@ -14,7 +14,6 @@ import org.springframework.scheduling.annotation.Async;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.nio.Buffer;
 import java.time.LocalDateTime;
 
 /**
@@ -22,15 +21,16 @@ import java.time.LocalDateTime;
  */
 public class SilentRecorder implements CommandLineRunner {
 
+    private double moves = 0;
 
     @Override
     public void run(String... strings) throws Exception {
-        Thread.sleep(5000);
+
     }
 
     @Async
-    public void compareImage(BufferedImage img1, BufferedImage img2){
-        ImageDiffUtil.diff(img1,img2);
+    public void compareImage(BufferedImage img1, BufferedImage img2) {
+        moves = ImageDiffUtil.diff(img1, img2);
     }
 
     private Webcam webcam;
@@ -75,6 +75,8 @@ public class SilentRecorder implements CommandLineRunner {
         return filename;
     }
 
+    private BufferedImage temp;
+
     public void record() throws Exception {
 
         if (webcam == null) {
@@ -93,11 +95,30 @@ public class SilentRecorder implements CommandLineRunner {
 
         long start = System.currentTimeMillis();
 
+        int recordTimer = 0
+        
         for (int i = 0; i < 10000; i++) {
 
             BufferedImage capturedImage = webcam.getImage();
             if (capturedImage != null) {
                 BufferedImage image = ConverterFactory.convertToType(capturedImage, BufferedImage.TYPE_3BYTE_BGR);
+
+                if (temp == null) {
+                    temp = image;
+                }
+
+                if (recordTimer == 20) {
+                    compareImage(temp, image);
+                    recordTimer = 0;
+                    temp = image;
+                }
+
+                if(moves > 4.0){
+                    System.out.println("Aufnahme " + moves ) ;
+                }
+                
+                recordTimer++;
+
                 IConverter converter = ConverterFactory.createConverter(image, IPixelFormat.Type.YUV420P);
 
                 IVideoPicture frame = converter.toPicture(image, (System.currentTimeMillis() - start) * 1000);
