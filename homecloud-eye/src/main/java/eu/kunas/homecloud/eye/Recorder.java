@@ -145,14 +145,14 @@ public class Recorder implements CommandLineRunner {
                     temp = image;
                 }
 
-                // Compare every 15 Pictures
-                if (recordTimer == 15) {
+                // Compare every 20 Pictures
+                if (recordTimer == 20) {
                     compareImage(temp, image);
                     recordTimer = 0;
                     temp = image;
                 }
 
-                if (moves > 2.0) {
+                if (moves > 1.5) {
                     image = writeTime(image);
                     System.out.println("Aufnahme " + moves);
                     IConverter converter = ConverterFactory.createConverter(image, IPixelFormat.Type.YUV420P);
