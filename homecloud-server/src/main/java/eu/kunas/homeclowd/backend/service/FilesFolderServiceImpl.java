@@ -8,7 +8,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -73,12 +76,10 @@ public class FilesFolderServiceImpl {
                 }
             }
 
-
             for (final File fileEntry : temp.listFiles()) {
                 MediaDto m = new MediaDto();
                 m.setAbsolutePath(fileEntry.getAbsolutePath());
                 m.setDescription(fileEntry.getName());
-
 
                 if (fileEntry.isDirectory()) {
                     m.setType("Folder");
@@ -86,6 +87,10 @@ public class FilesFolderServiceImpl {
                 } else {
                     m.setType("File");
                     m.setSize(fileEntry.length());
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy HH:mm");
+                    Date resultdate = new Date(fileEntry.lastModified());
+                    m.setModified(sdf.format(resultdate));
 
                 }
 

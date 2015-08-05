@@ -12,14 +12,25 @@ public class MediaDto implements Serializable {
     private Long size;
     private String absolutePath;
     private String description;
+    private String modified;
 
     public MediaDto() {
 
     }
 
-    public MediaDto(String description) {
+     public MediaDto(String description) {
         this.description = description;
     }
+    
+    public String getModified() {
+        return modified;
+    }
+
+    public void setModified(String modified) {
+        this.modified = modified;
+    }
+
+   
 
     public Long getSize() {
         return size;

@@ -61,6 +61,8 @@ public class MediaPage extends TemplatePage {
             protected void populateItem(ListItem<MediaDto> item) {
                 item.add(new Label("description", new PropertyModel(item.getModel(), "description")));
 
+                item.add(new Label("modified", new PropertyModel(item.getModel(), "modified")));
+                
                 Label type = new Label("type");
 
                 if(item.getModel().getObject().getType().equals("Folder")){
