@@ -1,8 +1,7 @@
-package eu.kunas.homecloud.eye;
+package eu.kunas.homecloud.eye.ui;
 
-import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
-import com.github.sarxos.webcam.WebcamResolution;
+import eu.kunas.homecloud.eye.business.RecorderService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.swing.*;
@@ -17,7 +16,7 @@ import java.util.*;
 public class MainWindow extends JFrame {
 
     @Autowired
-    private Recorder silentRecorder;
+    private RecorderService recorderService;
 
     private java.util.List<WebcamPanel> panels = new ArrayList<WebcamPanel>();
 
@@ -39,7 +38,7 @@ public class MainWindow extends JFrame {
                 silentThead = new Thread() {
                     @Override
                     public void run() {
-                        silentRecorder.startRecord(folderTextField.getText());
+                        recorderService.startRecord(folderTextField.getText());
                     }
                 };
 
@@ -47,9 +46,9 @@ public class MainWindow extends JFrame {
             }
         });
 
-        silentRecorder.openCam();
+        recorderService.openCam();
 
-        WebcamPanel panel = new WebcamPanel(silentRecorder.webcam, false);
+        WebcamPanel panel = new WebcamPanel(recorderService.webcam, false);
         panels.add(panel);
         add(panel);
 

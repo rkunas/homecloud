@@ -1,6 +1,8 @@
 package eu.kunas.homecloud.eye;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import eu.kunas.homecloud.eye.modes.EyeModeSilent;
+import eu.kunas.homecloud.eye.modes.EyeModeWindow;
+import eu.kunas.homecloud.eye.ui.MainWindow;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 

@@ -1,4 +1,4 @@
-package eu.kunas.homecloud.eye;
+package eu.kunas.homecloud.eye.business;
 
 import com.github.sarxos.webcam.Webcam;
 import com.xuggle.mediatool.IMediaWriter;
@@ -8,6 +8,7 @@ import com.xuggle.xuggler.IPixelFormat;
 import com.xuggle.xuggler.IVideoPicture;
 import com.xuggle.xuggler.video.ConverterFactory;
 import com.xuggle.xuggler.video.IConverter;
+import eu.kunas.homecloud.eye.utils.ImageUtil;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.scheduling.annotation.Async;
 
@@ -16,14 +17,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.time.LocalDateTime;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by ramazan on 27.07.15.
  */
-public class Recorder implements CommandLineRunner {
+public class RecorderService implements CommandLineRunner {
     
-    public final Logger log = Logger.getLogger(Recorder.class);
+    public final Logger log = Logger.getLogger(RecorderService.class);
 
     private double moves = 0;
 
@@ -47,7 +47,7 @@ public class Recorder implements CommandLineRunner {
 
     @Async
     public void compareImage(BufferedImage img1, BufferedImage img2) {
-        moves = ImageDiffUtil.diff(img1, img2);
+        moves = ImageUtil.diff(img1, img2);
     }
 
     public Webcam webcam;
@@ -92,34 +92,7 @@ public class Recorder implements CommandLineRunner {
         return filename;
     }
 
-    private BufferedImage temp;
-
-    /**
-     * Writes Timestamp to the current image
-     * 
-     * @param image
-     * @return 
-     */
-    protected BufferedImage writeTime(BufferedImage image) {
-        Graphics2D gO = image.createGraphics();
-        gO.setColor(Color.WHITE);
-        gO.setFont(new Font("SansSerif", Font.BOLD, 18));
-
-        LocalDateTime localDateTime = LocalDateTime.now();
-
-        gO.drawString(localDateTime.getDayOfMonth()
-                + "."
-                + localDateTime.getMonthValue()
-                + "."
-                + localDateTime.getYear()
-                + " "
-                + localDateTime.getHour()
-                + ":"
-                + localDateTime.getMinute()
-                + ":"
-                + localDateTime.getSecond(), size.width - 190, size.height - 30);
-        return image;
-    }
+    private BufferedImage oldImage;
 
     /**
      * The Record Algorithm
@@ -153,20 +126,20 @@ public class Recorder implements CommandLineRunner {
             if (capturedImage != null) {
                 BufferedImage image = ConverterFactory.convertToType(capturedImage, BufferedImage.TYPE_3BYTE_BGR);
 
-                if (temp == null) {
-                    temp = image;
+                if (oldImage == null) {
+                    oldImage = image;
                 }
 
                 // Compare every 20 Pictures
                 if (compareTimer == 20) {
-                    compareImage(temp, image);
+                    compareImage(oldImage, image);
                     compareTimer = 0;
-                    temp = image;
+                    oldImage = image;
                 }
 
                 // Maybe there are some moves in the current picture
                 if (moves > 1.5) {
-                    image = writeTime(image);
+                    image = ImageUtil.writeTime(image, size.width, size.height);
                     log.info("Aufnahme " + moves);
                     IConverter converter = ConverterFactory.createConverter(image, IPixelFormat.Type.YUV420P);
 

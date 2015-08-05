@@ -1,11 +1,40 @@
-package eu.kunas.homecloud.eye;
+package eu.kunas.homecloud.eye.utils;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.time.LocalDateTime;
 
 /**
  * Created by Kunas on 03.08.2015.
  */
-public class ImageDiffUtil {
+public class ImageUtil {
+
+    /**
+     * Writes Timestamp to the current image
+     *
+     * @param image
+     * @return
+     */
+    public static BufferedImage writeTime(BufferedImage image, int width, int height) {
+        Graphics2D gO = image.createGraphics();
+        gO.setColor(Color.WHITE);
+        gO.setFont(new Font("SansSerif", Font.BOLD, 18));
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+
+        gO.drawString(localDateTime.getDayOfMonth()
+                + "."
+                + localDateTime.getMonthValue()
+                + "."
+                + localDateTime.getYear()
+                + " "
+                + localDateTime.getHour()
+                + ":"
+                + localDateTime.getMinute()
+                + ":"
+                + localDateTime.getSecond(), width - 190, height - 30);
+        return image;
+    }
 
     public static double diff(BufferedImage img1, BufferedImage img2) {
         // long start = System.currentTimeMillis();
