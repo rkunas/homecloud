@@ -15,12 +15,15 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.time.LocalDateTime;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by ramazan on 27.07.15.
  */
 public class Recorder implements CommandLineRunner {
+    
+    public final Logger log = Logger.getLogger(Recorder.class);
 
     private double moves = 0;
 
@@ -91,6 +94,12 @@ public class Recorder implements CommandLineRunner {
 
     private BufferedImage temp;
 
+    /**
+     * Writes Timestamp to the current image
+     * 
+     * @param image
+     * @return 
+     */
     protected BufferedImage writeTime(BufferedImage image) {
         Graphics2D gO = image.createGraphics();
         gO.setColor(Color.WHITE);
@@ -112,6 +121,11 @@ public class Recorder implements CommandLineRunner {
         return image;
     }
 
+    /**
+     * The Record Algorithm
+     * 
+     * @throws Exception 
+     */
     public void record() throws Exception {
 
         if (webcam == null) {
@@ -128,13 +142,11 @@ public class Recorder implements CommandLineRunner {
 
         writer.addVideoStream(0, 0, ICodec.ID.CODEC_ID_H264, size.width, size.height);
 
-        long start = System.currentTimeMillis();
+        int compareTimer = 0;
 
-        int recordTimer = 0;
+        int keyfrmaeTimer = 0;
 
-        int frametimer = 0;
-
-        int pictimer = 1;
+        int picTimer = 1;
 
         while (file.length() < 10000000) {
             BufferedImage capturedImage = webcam.getImage();
@@ -146,29 +158,30 @@ public class Recorder implements CommandLineRunner {
                 }
 
                 // Compare every 20 Pictures
-                if (recordTimer == 20) {
+                if (compareTimer == 20) {
                     compareImage(temp, image);
-                    recordTimer = 0;
+                    compareTimer = 0;
                     temp = image;
                 }
 
+                // Maybe there are some moves in the current picture
                 if (moves > 1.5) {
                     image = writeTime(image);
-                    System.out.println("Aufnahme " + moves);
+                    log.info("Aufnahme " + moves);
                     IConverter converter = ConverterFactory.createConverter(image, IPixelFormat.Type.YUV420P);
 
-                    IVideoPicture frame = converter.toPicture(image, pictimer * 2000);
-                    frame.setKeyFrame(frametimer == 0);
+                    IVideoPicture frame = converter.toPicture(image, picTimer * 2000);
+                    frame.setKeyFrame(keyfrmaeTimer == 0);
                     frame.setQuality(0);
 
                     writer.encodeVideo(0, frame);
-                    pictimer++;
+                    picTimer++;
                 } else {
-                    System.out.println("Keine Aufnahme " + moves);
+                    log.info("Keine Aufnahme " + moves);
                 }
 
-                frametimer++;
-                recordTimer++;
+                keyfrmaeTimer++;
+                compareTimer++;
 
                 // 10 FPS
                 Thread.sleep(10);

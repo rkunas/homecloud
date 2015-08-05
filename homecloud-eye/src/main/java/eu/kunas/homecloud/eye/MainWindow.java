@@ -21,8 +21,7 @@ public class MainWindow extends JFrame {
 
     private java.util.List<WebcamPanel> panels = new ArrayList<WebcamPanel>();
 
-    private JButton startCam = new JButton("Start Cam");
-    private JButton silentMode = new JButton("Silent Mode");
+    private JButton silentMode = new JButton("Start Record");
     private JTextField folderTextField = new JTextField();
     private Thread silentThead;
 
@@ -33,21 +32,6 @@ public class MainWindow extends JFrame {
 
         setLayout(new FlowLayout());
 
-        startCam.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-
-                SwingUtilities.invokeLater(new Runnable() {
-
-                    public void run() {
-                        for (WebcamPanel panel : panels) {
-                            panel.start();
-                        }
-                    }
-                });
-            }
-        });
-
         silentMode.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -56,7 +40,6 @@ public class MainWindow extends JFrame {
                     @Override
                     public void run() {
                         silentRecorder.startRecord(folderTextField.getText());
-
                     }
                 };
 
@@ -64,14 +47,12 @@ public class MainWindow extends JFrame {
             }
         });
 
-        //java.util.List<Webcam> webcams = Webcam.getWebcams();
         silentRecorder.openCam();
 
         WebcamPanel panel = new WebcamPanel(silentRecorder.webcam, false);
         panels.add(panel);
         add(panel);
 
-        add(startCam);
         add(silentMode);
         folderTextField.setSize(new Dimension(150, 30));
         folderTextField.setPreferredSize(new Dimension(150, 30));
