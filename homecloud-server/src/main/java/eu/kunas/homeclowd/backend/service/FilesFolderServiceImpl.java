@@ -11,7 +11,11 @@ import java.io.FileInputStream;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -48,10 +52,10 @@ public class FilesFolderServiceImpl {
 
         return null;
     }
-    
-    public void deleteFile(MediaDto media){
+
+    public void deleteFile(MediaDto media) {
         File toDelete = new File(media.getAbsolutePath());
-        
+
         toDelete.delete();
     }
 
@@ -106,6 +110,14 @@ public class FilesFolderServiceImpl {
             // do nothing
         }
 
-        return list;
+        MediaDto[] mediasArray = list.toArray(new MediaDto[list.size()]); 
+        
+        Arrays.sort(mediasArray, new Comparator<MediaDto>() {
+            public int compare(MediaDto f1, MediaDto f2) {
+                return f2.getType().compareTo(f1.getType());
+            }
+        });
+
+        return Arrays.asList(mediasArray);
     }
 }
