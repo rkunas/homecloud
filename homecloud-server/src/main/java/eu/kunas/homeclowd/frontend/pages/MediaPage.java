@@ -102,6 +102,17 @@ public class MediaPage extends TemplatePage {
                     }
                 });
 
+                item.add(new DownloadLink("deleteButton", new File(item.getModel().getObject().getAbsolutePath()), "download") {
+                    @Override
+                    public void onClick() {
+                        filesFolderService.deleteFile(item.getModelObject());
+                        setResponsePage(MediaPage.this);
+                    }
+
+
+                });
+
+                
                 item.add(new DownloadLink("downloadButton", new File(item.getModel().getObject().getAbsolutePath()), "download") {
                     @Override
                     public void onClick() {

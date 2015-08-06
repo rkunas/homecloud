@@ -48,6 +48,12 @@ public class FilesFolderServiceImpl {
 
         return null;
     }
+    
+    public void deleteFile(MediaDto media){
+        File toDelete = new File(media.getAbsolutePath());
+        
+        toDelete.delete();
+    }
 
     public List<MediaDto> getFolderItems(File toFolder) {
 

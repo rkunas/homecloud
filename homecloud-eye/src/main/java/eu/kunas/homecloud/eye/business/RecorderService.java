@@ -75,7 +75,7 @@ public class RecorderService implements CommandLineRunner {
         LocalDateTime time = LocalDateTime.now();
 
         StringBuffer filename = new StringBuffer();
-        filename.append("video-");
+        filename.append("Video-");
         filename.append(time.getDayOfMonth());
         filename.append("-");
         filename.append(time.getMonth());
