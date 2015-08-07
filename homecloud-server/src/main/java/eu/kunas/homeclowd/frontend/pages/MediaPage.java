@@ -102,7 +102,7 @@ public class MediaPage extends TemplatePage {
                     }
                 });
 
-                item.add(new DownloadLink("deleteButton", new File(item.getModel().getObject().getAbsolutePath()), "download") {
+                item.add(new Link("deleteButton") {
                     @Override
                     public void onClick() {
                         filesFolderService.deleteFile(item.getModelObject());
@@ -133,7 +133,7 @@ public class MediaPage extends TemplatePage {
 
                 });
 
-                item.add(new DownloadLink("playVideoButton", new File(item.getModel().getObject().getAbsolutePath()), "download") {
+                item.add(new Link("playVideoButton") {
                     @Override
                     public void onClick() {
                         PlayerPage newPlayerPage = new PlayerPage(parameters, item.getModelObject());
@@ -152,7 +152,7 @@ public class MediaPage extends TemplatePage {
                 });
 
 
-                item.add(new DownloadLink("playStlButton", new File(item.getModel().getObject().getAbsolutePath()), "download") {
+                item.add(new Link("playStlButton" ) {
                     @Override
                     public void onClick() {
                         StlviewerPage stlviewerPage = new StlviewerPage(parameters, item.getModelObject());
@@ -228,7 +228,7 @@ public class MediaPage extends TemplatePage {
 
     public void refill(File to) {
         ListView<MediaDto> listView = (ListView<MediaDto>) get("medias");
-        listView.getModel().getObject().clear();
+       // listView.getModel().getObject().clear();
 
         listView.setModelObject(filesFolderService.getFolderItems(to));
 
