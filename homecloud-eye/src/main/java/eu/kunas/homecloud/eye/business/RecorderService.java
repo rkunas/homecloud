@@ -139,7 +139,7 @@ public class RecorderService implements CommandLineRunner {
                 }
 
                 // Maybe there are some moves in the current picture
-                if (moves > 1.5) {
+                if (moves > 1.0) {
                     image = ImageUtil.writeTime(image, size.width, size.height);
                     log.info("Aufnahme " + moves);
                     IConverter converter = ConverterFactory.createConverter(image, IPixelFormat.Type.YUV420P);
