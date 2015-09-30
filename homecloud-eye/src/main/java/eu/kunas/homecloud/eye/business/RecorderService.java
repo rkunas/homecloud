@@ -64,8 +64,9 @@ public class RecorderService implements CommandLineRunner {
     public void openCam() {
 
         if (webcam == null) {
-            size = new Dimension(640, 480);
-            webcam = Webcam.getDefault();
+            size = new Dimension(1920, 1080);
+            webcam = Webcam.getWebcams().get(1);
+            webcam.setCustomViewSizes(new Dimension[] { size });
             webcam.setViewSize(size);
             webcam.open(true);
         }
