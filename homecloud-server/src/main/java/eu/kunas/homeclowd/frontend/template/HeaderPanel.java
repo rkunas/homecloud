@@ -21,11 +21,7 @@ public class HeaderPanel extends Panel {
 
         String contextPath = WebApplication.get().getServletContext().getContextPath();
 
-        //  PackageResourceReference resourceReference =
-        //         new PackageResourceReference(getClass(), "logo.png");
         ExternalLink li = new ExternalLink("contextPath", contextPath);
-
-        //li.add(new Image("logoResPicture", resourceReference));
 
         add(li);
 

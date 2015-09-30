@@ -21,13 +21,21 @@ public class MainWindow extends JFrame {
     private java.util.List<WebcamPanel> panels = new ArrayList<WebcamPanel>();
 
     private JButton silentMode = new JButton("Start Record");
+    private JButton viewCam = new JButton("View Cam");
+
     private JTextField folderTextField = new JTextField();
+    private JTextField xWidthTextField = new JTextField();
+    private JTextField yWidthTextField = new JTextField();
+
+    private JPanel camPanel = new JPanel();
     private Thread silentThead;
+
+    WebcamPanel webcamPanel = null;
 
     public MainWindow() {
     }
-    
-    public void init(){
+
+    public void init() {
 
         setLayout(new FlowLayout());
 
@@ -38,7 +46,7 @@ public class MainWindow extends JFrame {
                 silentThead = new Thread() {
                     @Override
                     public void run() {
-                        recorderService.startRecord(folderTextField.getText());
+                        recorderService.startRecord(folderTextField.getText(),new Integer(xWidthTextField.getText()), new Integer(yWidthTextField.getText()));
                     }
                 };
 
@@ -46,23 +54,61 @@ public class MainWindow extends JFrame {
             }
         });
 
-        recorderService.openCam();
+        viewCam.addActionListener(new ActionListener() {
 
-        WebcamPanel panel = new WebcamPanel(recorderService.webcam, false);
-        panels.add(panel);
-        add(panel);
+            public void actionPerformed(ActionEvent e) {
 
+                Dimension[] nonStandardResolutions = new Dimension[] {
+                        new Dimension(1280, 720)
+                };
+                webcamPanel.stop();
+                recorderService.webcam.close();
+
+                recorderService.webcam.setCustomViewSizes(nonStandardResolutions);
+                recorderService.webcam.setViewSize(new Dimension(1280, 720));
+                recorderService.webcam.open();
+                webcamPanel.start();
+            }
+        });
+
+        recorderService.openCam(800, 600);
+         webcamPanel = new WebcamPanel(recorderService.webcam, false);
+        camPanel.add(webcamPanel);
+        webcamPanel.start();
+
+        camPanel.setSize(new Dimension(1024, 576));
+        camPanel.setPreferredSize(new Dimension(1024, 576));
+
+        add(camPanel);
+
+        add(viewCam);
         add(silentMode);
-        folderTextField.setSize(new Dimension(150, 30));
-        folderTextField.setPreferredSize(new Dimension(150, 30));
+
+
+
+        folderTextField.setSize(new Dimension(400, 30));
+        folderTextField.setPreferredSize(new Dimension(400, 30));
+
+        yWidthTextField.setText("600");
+        yWidthTextField.setSize(new Dimension(150, 30));
+        yWidthTextField.setPreferredSize(new Dimension(150, 30));
+
+        xWidthTextField.setText("800");
+        xWidthTextField.setSize(new Dimension(150, 30));
+        xWidthTextField.setPreferredSize(new Dimension(150, 30));
+
+        add(xWidthTextField);
+        add(yWidthTextField);
+
+        folderTextField.setText("/home/developer/");
+
         add(folderTextField);
         setTitle("EyeApplication");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
-        setBounds(100, 100, 370, 500);
-        
-        panel.start();
+        setBounds(100, 100, 900, 700);
+
 
     }
 

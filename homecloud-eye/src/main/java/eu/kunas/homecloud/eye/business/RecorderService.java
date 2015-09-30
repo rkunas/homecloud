@@ -1,6 +1,7 @@
 package eu.kunas.homecloud.eye.business;
 
 import com.github.sarxos.webcam.Webcam;
+import com.github.sarxos.webcam.WebcamResolution;
 import com.xuggle.mediatool.IMediaWriter;
 import com.xuggle.mediatool.ToolFactory;
 import com.xuggle.xuggler.ICodec;
@@ -33,11 +34,11 @@ public class RecorderService implements CommandLineRunner {
     }
 
     @Async
-    public void startRecord(String folder) {
+    public void startRecord(String folder,int width, int heigth) {
         while (true) {
             try {
                 init(folder);
-                openCam();
+                openCam(width,heigth);
                 record();
             } catch (Exception exc) {
                 // Do nothing.
@@ -61,12 +62,17 @@ public class RecorderService implements CommandLineRunner {
         System.out.println(folder);
     }
 
-    public void openCam() {
+    public void openCam(int width, int height) {
+
+        Dimension[] nonStandardResolutions = new Dimension[] {
+                new Dimension(width, height)
+        };
+
 
         if (webcam == null) {
-            size = new Dimension(640, 480);
             webcam = Webcam.getDefault();
-            webcam.setViewSize(size);
+            webcam.setCustomViewSizes(nonStandardResolutions);
+            webcam.setViewSize(new Dimension(width, height));
             webcam.open(true);
         }
     }
