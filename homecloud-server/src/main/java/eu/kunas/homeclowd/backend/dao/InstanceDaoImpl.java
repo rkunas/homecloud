@@ -25,7 +25,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author ramazan
  */
-@Repository("userDao")
+@Repository("instanceDao")
 public class InstanceDaoImpl {
 
     @PersistenceContext

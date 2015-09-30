@@ -37,16 +37,17 @@ Where going to switch from PostgreSQL DB to a NoSQL Database.
 - User change Password
 - 3D Viewer for STL Files
 - File Upload Dropzone 
+- Delete File
+- Video Survailance with Homecloud Eye 
 
 ###3.2. Next Features to be implemented
-- Delete Files and Folders
+- Delete Folders
 - Create Folders
 - Rename Files and Folders
 
 ###3.3. Backlog Features
 - Spring Boot Integration
 - Spring Security Integration
-- Restructuring for SubModules
 - Separate User Folder
 
 ###4.0 Technologies
