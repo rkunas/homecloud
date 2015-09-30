@@ -20,7 +20,7 @@ public class MainWindow extends JFrame {
 
     private java.util.List<WebcamPanel> panels = new ArrayList<WebcamPanel>();
 
-    private JButton silentMode = new JButton("Start Record");
+    private JButton recordButton = new JButton("Start Record");
     private JButton viewCam = new JButton("View Cam");
 
     private JTextField folderTextField = new JTextField();
@@ -39,14 +39,15 @@ public class MainWindow extends JFrame {
 
         setLayout(new FlowLayout());
 
-        silentMode.addActionListener(new ActionListener() {
+        recordButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
 
                 silentThead = new Thread() {
                     @Override
                     public void run() {
-                        recorderService.startRecord(folderTextField.getText(),new Integer(xWidthTextField.getText()), new Integer(yWidthTextField.getText()));
+                        recorderService.startRecord(folderTextField.getText(), new Integer(xWidthTextField.getText()), new Integer(yWidthTextField.getText()));
+
                     }
                 };
 
@@ -58,7 +59,7 @@ public class MainWindow extends JFrame {
 
             public void actionPerformed(ActionEvent e) {
 
-                Dimension[] nonStandardResolutions = new Dimension[] {
+                Dimension[] nonStandardResolutions = new Dimension[]{
                         new Dimension(1280, 720)
                 };
                 webcamPanel.stop();
@@ -71,8 +72,8 @@ public class MainWindow extends JFrame {
             }
         });
 
-        recorderService.openCam(800, 600);
-         webcamPanel = new WebcamPanel(recorderService.webcam, false);
+        recorderService.openCam(640, 480);
+        webcamPanel = new WebcamPanel(recorderService.webcam, false);
         camPanel.add(webcamPanel);
         webcamPanel.start();
 
@@ -82,8 +83,7 @@ public class MainWindow extends JFrame {
         add(camPanel);
 
         add(viewCam);
-        add(silentMode);
-
+        add(recordButton);
 
 
         folderTextField.setSize(new Dimension(400, 30));

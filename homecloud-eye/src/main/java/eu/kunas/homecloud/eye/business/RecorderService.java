@@ -22,16 +22,11 @@ import org.apache.log4j.Logger;
 /**
  * Created by ramazan on 27.07.15.
  */
-public class RecorderService implements CommandLineRunner {
+public class RecorderService {
     
     public final Logger log = Logger.getLogger(RecorderService.class);
 
     private double moves = 0;
-
-    @Override
-    public void run(String... strings) throws Exception {
-
-    }
 
     @Async
     public void startRecord(String folder,int width, int heigth) {
@@ -59,7 +54,6 @@ public class RecorderService implements CommandLineRunner {
 
     public void init(String folder) {
         this.folder = folder;
-        System.out.println(folder);
     }
 
     public void openCam(int width, int height) {
