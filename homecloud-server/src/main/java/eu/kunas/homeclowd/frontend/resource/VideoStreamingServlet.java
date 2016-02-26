@@ -67,13 +67,17 @@ public final class VideoStreamingServlet extends HttpServlet {
         Matcher matcher = RANGE_PATTERN.matcher(range);
 
         if (matcher.matches()) {
+
             String startGroup = matcher.group("start");
+            System.out.println("Startgroup" + startGroup);
+
             start = startGroup.isEmpty() ? start : Integer.valueOf(startGroup);
             start = start < 0 ? 0 : start;
 
             String endGroup = matcher.group("end");
             end = endGroup.isEmpty() ? end : Integer.valueOf(endGroup);
             end = end > length - 1 ? length - 1 : end;
+            System.out.println("End" + end);
         }
 
         int contentLength = end - start + 1;
