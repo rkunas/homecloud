@@ -91,6 +91,7 @@ public final class VideoStreamingServlet extends HttpServlet {
         response.setContentType(Files.probeContentType(video));
         response.setHeader("Content-Range", String.format("bytes %s-%s/%s", start, end, length));
         response.setHeader("Content-Length", String.format("%s", contentLength));
+        response.setHeader("Content-Type","video/mp4");
         response.setStatus(HttpServletResponse.SC_PARTIAL_CONTENT);
 
         int bytesRead;
