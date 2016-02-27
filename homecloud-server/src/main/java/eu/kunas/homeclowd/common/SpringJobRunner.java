@@ -11,6 +11,5 @@ public class SpringJobRunner {
 
     @Scheduled(cron="*/1 * * * * ?")
     public void doSome(){
-        System.out.println("running");
     }
 }
