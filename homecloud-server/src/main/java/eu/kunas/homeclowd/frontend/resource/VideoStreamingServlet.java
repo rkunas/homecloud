@@ -66,10 +66,13 @@ public final class VideoStreamingServlet extends HttpServlet {
         String range = request.getHeader("Range");
         Matcher matcher = RANGE_PATTERN.matcher(range);
 
+        System.out.println(request.getHeaderNames().toString());
+
         if (matcher.matches()) {
 
+
             String startGroup = matcher.group("start");
-            System.out.println("Startgroup" + startGroup);
+            System.out.println("Startgroup:" + startGroup);
 
             start = startGroup.isEmpty() ? start : Integer.valueOf(startGroup);
             start = start < 0 ? 0 : start;
