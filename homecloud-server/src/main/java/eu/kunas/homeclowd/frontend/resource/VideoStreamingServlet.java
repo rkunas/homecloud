@@ -16,6 +16,7 @@ import java.nio.channels.SeekableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Enumeration;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -24,7 +25,7 @@ import static java.nio.file.StandardOpenOption.READ;
 /**
  * Video Streaming Servlet
  * Funktioniert derzeit nur für HTML5, Flash nicht getestet
- *
+ * <p/>
  * Created by ramazan on 26.06.15.
  */
 public final class VideoStreamingServlet extends HttpServlet {
@@ -36,11 +37,11 @@ public final class VideoStreamingServlet extends HttpServlet {
     private static final Pattern RANGE_PATTERN = Pattern.compile("bytes=(?<start>\\d*)-(?<end>\\d*)");
     private String videoPath;
 
-    private SpringComponentInjector inj =null;
+    private SpringComponentInjector inj = null;
 
     @Override
     public void init() throws ServletException {
-        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext( SpringContext.class);
+        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringContext.class);
 
         configService = context.getBean(ConfigServiceImpl.class);
 
@@ -53,7 +54,7 @@ public final class VideoStreamingServlet extends HttpServlet {
 
     private void processRequest(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
 
-         String rootFolder = configService.getAllHashMap().get("FOLDER_URL").getValue();
+        String rootFolder = configService.getAllHashMap().get("FOLDER_URL").getValue();
 
         String videoFilename = request.getParameter("video");
 
@@ -66,7 +67,11 @@ public final class VideoStreamingServlet extends HttpServlet {
         String range = request.getHeader("Range");
         Matcher matcher = RANGE_PATTERN.matcher(range);
 
-        System.out.println(request.getHeaderNames().toString());
+        Enumeration enumeration = request.getHeaderNames();
+        while (enumeration.hasMoreElements()) {
+            Object o = enumeration.nextElement();
+            System.out.println(o);
+        }
 
         if (matcher.matches()) {
 
@@ -94,7 +99,7 @@ public final class VideoStreamingServlet extends HttpServlet {
         response.setContentType(Files.probeContentType(video));
         response.setHeader("Content-Range", String.format("bytes %s-%s/%s", start, end, length));
         response.setHeader("Content-Length", String.format("%s", contentLength));
-        response.setHeader("Content-Type","video/mp4");
+        response.setHeader("Content-Type", "video/mp4");
         response.setStatus(HttpServletResponse.SC_PARTIAL_CONTENT);
 
         int bytesRead;
