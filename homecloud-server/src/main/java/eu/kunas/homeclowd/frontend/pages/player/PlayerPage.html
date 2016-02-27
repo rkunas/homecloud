@@ -8,7 +8,12 @@
     <script>
 
         var video = document.getElementById('currentVideoPlayer');
-            video.addEventListener('click',function(){
+        video.addEventListener('click',function(){
+            video.play();
+        },false);
+
+        var play = document.getElementById('play');
+        play.addEventListener('click',function(){
             video.play();
         },false);
 
@@ -20,9 +25,11 @@
     <div class="container">
         <div class="row">
             <video wicket:id="currentVideoPlayer" class="video-js vjs-default-skin vjs-big-play-centered"
-                   id="currentVideoPlayer" controls loop
+                   id="currentVideoPlayer" controls loop autobuffer
                    width="100%" height="auto">
             </video>
+
+            <p class="control" id="play">Play</p>
 
 
         </div>
