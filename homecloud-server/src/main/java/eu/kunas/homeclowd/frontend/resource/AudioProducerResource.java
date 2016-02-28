@@ -37,7 +37,7 @@ public class AudioProducerResource extends AbstractResource {
                 byte[] audio = null;
 
                 if (id.contains("1")) {
-                    audio = textSpeechService.speech("Welcome to youre Cloud !");
+                    audio = textSpeechService.speech("Hello Aisha! I love you !");
                 }
 
                 OutputStream outputStream = attributes.getResponse().getOutputStream();

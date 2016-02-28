@@ -17,11 +17,11 @@ public class TextSpeechServiceTest {
 
     @Test
     public void testSpeech(){
-        textSpeechService.speech("Hallo");
+        textSpeechService.speech("Ayse i love you !");
     }
 
     @Test
     public void testSpeechDirectly(){
-        textSpeechService.speechDirectly("Systems are online !");
+        textSpeechService.speechDirectly("Hello Aisha! I love you !");
     }
 }
