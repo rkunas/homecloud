@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Component
 public class InstanceFacadeImpl {
-    @RequestMapping("/greeting")
     public String getHello(){
         return "Hallo";
     }

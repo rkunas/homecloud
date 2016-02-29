@@ -40,11 +40,12 @@ public class PlayerPage extends TemplatePage {
 
         String contextPath = WebApplication.get().getServletContext().getContextPath();
 
+        String url = contextPath + "/stream?video=" + selectedMedia.getAbsolutePath().replace(configService.getAllHashMap().get("FOLDER_URL").getValue(), "");
         final List<MediaSource> mm = new ArrayList<>();
 
-        mm.add(new MediaSource(contextPath + "/stream?video=" + selectedMedia.getAbsolutePath().replace(configService.getAllHashMap().get("FOLDER_URL").getValue(), ""), "video/mp4"));
-        mm.add(new MediaSource(contextPath + "/stream?video=" + selectedMedia.getAbsolutePath().replace(configService.getAllHashMap().get("FOLDER_URL").getValue(), ""), "video/ogg"));
-        mm.add(new MediaSource(contextPath + "/stream?video=" + selectedMedia.getAbsolutePath().replace(configService.getAllHashMap().get("FOLDER_URL").getValue(), ""), "video/webm"));
+        mm.add(new MediaSource(url, "video/mp4"));
+        mm.add(new MediaSource(url, "video/ogg"));
+        mm.add(new MediaSource(url, "video/webm"));
 
         IModel<List<MediaSource>> mediaSourceList = new AbstractReadOnlyModel<List<MediaSource>>() {
 
