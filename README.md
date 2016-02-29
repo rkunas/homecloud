@@ -3,11 +3,11 @@
 Youre Homecloud written in Java. Possibilitiy for a new ecosystem of a private cloud.
 The smartest cloud ever. 
 
-<img src="http://81.169.224.34:8090/download/attachments/9961474/Bildschirmfoto%202015-07-07%20um%2019.08.00.png?version=1&modificationDate=1436288899390&api=v2"/>
+<img src="http://85.25.248.7:8090/download/attachments/9961474/Bildschirmfoto%202015-07-07%20um%2019.08.00.png?version=1&modificationDate=1436288899390&api=v2"/>
 
-<img src="http://81.169.224.34:8090/download/attachments/9961474/Bildschirmfoto%202015-07-07%20um%2019.10.06.png?version=1&modificationDate=1436289018884&api=v2"/>
+<img src="http://85.25.248.7:8090/download/attachments/9961474/Bildschirmfoto%202015-07-07%20um%2019.10.06.png?version=1&modificationDate=1436289018884&api=v2"/>
 
-<img src="http://81.169.224.34:8090/download/attachments/9961474/Bildschirmfoto%202015-07-08%20um%2020.21.29.png?version=1&modificationDate=1436379725233&api=v2"/>
+<img src="http://85.25.248.7:8090/download/attachments/9961474/Bildschirmfoto%202015-07-08%20um%2020.21.29.png?version=1&modificationDate=1436379725233&api=v2"/>
 
 ## 1. Build Information
 Homecloud is build by travis-ci.org on each push, you can see the curent state
