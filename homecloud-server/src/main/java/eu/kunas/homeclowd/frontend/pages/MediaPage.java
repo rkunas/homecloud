@@ -143,7 +143,7 @@ public class MediaPage extends TemplatePage {
 
                     @Override
                     public boolean isVisible() {
-                        if (item.getModel().getObject().getDescription().endsWith(".mp4")) {
+                        if (item.getModel().getObject().getDescription().endsWith(".mp4") || item.getModel().getObject().getDescription().endsWith(".avi")) {
                             return true;
                         }
                         return false;
